@@ -11,22 +11,24 @@
 
     <h1 class="center">Welcome to my<br>Paperclip Knockoff Game!</h1>
     <a href="paperclip_about.htm">
-        <button type="button" class="right">About</button>
+        <button type="button" class="center">About</button>
     </a>
-    <h3>Importing/Exporting Data</h3>
+    <h3">Importing/Exporting Data<br></h3>
 
-    <button type="button" onclick="export_data()">Click me to export data!</button>
+    <button type="button" onclick="export_data()">Click me to export<br> data!</button>
+    <br>
 
     <input type="file" id="csvInput" accept=".csv">
 
-    <div class="column">
-        <div class="purchase_col">
+    <div>
+        <div class="purchase_col right">
             <h3>Number of Managers:</h3>
             <p id="manager">0 </p>
             <h4>Cost of a Manager:</h4>
             <p id="mgr_cost">10</p>
+            <button type="button" onclick="manager()">Purchase a Manager</button>
         </div>
-        <div class="center purchase_col">
+        <div class="center">
             <h3>Number of Paperclips:</h3>
             <p id="paperclip">0</p>
             <img src="https://static.gosquared.com/images/april/clippy/icon_clippy_01.png" , alt="clickme!" ,
@@ -36,8 +38,6 @@
         </div>
 
     </div>
-
-    <button type="button" onclick="manager()">Purchase a Manager</button>
 
 </body>
 
