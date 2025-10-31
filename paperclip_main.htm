@@ -8,20 +8,33 @@
 </head>
 
 <body>
-
-    <h1 class="center">Welcome to my<br>Paperclip Knockoff Game!</h1>
-    <a href="paperclip_about.htm">
-        <button type="button" class="center">About</button>
-    </a>
-    <h3">Importing/Exporting Data<br></h3>
-
-    <button type="button" onclick="export_data()">Click me to export<br> data!</button>
-    <br>
-
-    <input type="file" id="csvInput" accept=".csv">
-
+    <div id="topBar">
+        <div id="topCredits">
+            Code Clicker<sub>(Patent Pending)</sub>, 2025 - Jimmy Savaryn -
+        </div>
+        <div id="topAbout">
+            <a href="paperclip_about.htm" target="_blank"> About</a> -
+        </div>
+        <!--
+        <p>
+            <a href="https://github.com/LightRiver3010" target="_blank">Github</a> - 
+            <a href="https://github.com/LightRiver3010/Clicker-Game" target="_blank">(Repo for this game)</a> - 
+            <a href="https://www.linkedin.com/in/jsavaryn/" target="_blank">LinkedIn</a> - 
+            <a href="mailto:james.savaryn@gmail.com">Email Me!</a>
+            <button type="button" class="right" onclick="export_data()">Click me to export data!</button>
+        </p>
+    -->
+        <!--
+        <div class="right">
+            <input type="file" id="csvInput" accept=".csv">
+            <label for="csvInput">Click me to import data!</label>
+        
+        </div>
+        -->
+    </div>
+    <!--
     <div>
-        <div class="purchase_col right">
+        <div class="purchase_col">
             <h3>Number of Managers:</h3>
             <p id="manager">0 </p>
             <h4>Cost of a Manager:</h4>
@@ -38,6 +51,7 @@
         </div>
 
     </div>
+--> 
 
 </body>
 
