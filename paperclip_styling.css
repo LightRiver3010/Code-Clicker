@@ -46,4 +46,26 @@ body {
     background-image: url(https://as1.ftcdn.net/v2/jpg/02/86/00/18/1000_F_286001899_BzwjxnzuSEBpFmqqyWGy35IMBUl1eKXf.jpg);
 }
 
+/*CLICKER*/
+
+h1 {
+    color: white;
+}
+.clicker {
+    width: 55%;
+    border: 4px, solid, white;
+    margin-top: 35px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.clicker img {
+    max-width: 30%;
+    cursor: pointer;
+}
+
+/*UPGRADES/MANAGERS*/
+
+
 /*FOOTER*/
