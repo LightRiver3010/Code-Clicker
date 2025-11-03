@@ -10,7 +10,7 @@
 }
 
 .link {
-    display: inline-block;
+    display: inline-block; 
     font-size: 18px;
     margin-top: -6px;
 }
@@ -43,7 +43,7 @@
 
 /*BODY*/
 body {
-    background-image: url(https://as1.ftcdn.net/v2/jpg/02/86/00/18/1000_F_286001899_BzwjxnzuSEBpFmqqyWGy35IMBUl1eKXf.jpg);
+    background-color: darkgrey;
 }
 
 /*CLICKER*/
@@ -52,11 +52,13 @@ h1 {
     color: white;
 }
 .clicker {
+    display: inline-block;
     width: 55%;
     border: 4px, solid, white;
     margin-top: 35px;
     padding: 20px;
     text-align: center;
+    background-image: url(https://as1.ftcdn.net/v2/jpg/02/86/00/18/1000_F_286001899_BzwjxnzuSEBpFmqqyWGy35IMBUl1eKXf.jpg);
 
 }
 
@@ -67,5 +69,22 @@ h1 {
 
 /*UPGRADES/MANAGERS*/
 
+.upgrades {
+    display: inline-block;
+    width: 20%;
+    height: 40%;
+    margin-left: 20%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border: 4px, solid, white;
+    vertical-align: top;
+}
+
+.upgrade-button {
+    border: 3px solid black;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
 
 /*FOOTER*/
