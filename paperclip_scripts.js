@@ -1,8 +1,8 @@
 
 ppc_element = document.getElementById("paperclip");
-mgr_element = document.getElementById("manager");
+/*mgr_element = document.getElementById("manager");
 mgr_cost_element = document.getElementById("mgr_cost");
-per_sec_element = document.getElementById("per_second");
+per_sec_element = document.getElementById("per_second");*/
 
 let ppc = 0;
 let mgr = 0;
@@ -14,7 +14,7 @@ export_button.addEventListener("input", (import_data));
 
 
 function update() {
-    mgr_element.innerHTML = mgr;
+    /*mgr_element.innerHTML = mgr;*/
     ppc_element.innerHTML = ppc;
 }
 
@@ -32,10 +32,6 @@ function export_data() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}
-
-function import_data() {
-
 }
 
 function increase() {
