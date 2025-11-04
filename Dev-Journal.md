@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 4 PM - 
+Made good progress. I met with Mori this afternoon and he explained a lot of ideas to me, which helped greatly. He didn't write all my code though; important distinction. I also did a few more freeCodeCamp lessons on flexbox so you could say I'm starting to get the hang of it. Like I said before, once this basic skeleton is done, I imagine it'll be smoother sailing. I'll just have to learn more about styling, which seems a lot more fun! I can't wait for the animations and dropdown menus...
+
 Nov. 4 AM - 
 Made some ok progress. Definitely not what I wanted to have done. I'm still grasping the idea of flex containers and how to organize elements within them. I'm starting to get it, but need some more practice to fully understand. But, once I do understand this, I'll be set for designing the rest of the layout for the game interface. And after that, it's all logic and polish! This part I'm in now is probably the hardest, which is encouraging!
 

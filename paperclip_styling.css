@@ -1,15 +1,20 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
 /*HEADER*/
 .topBar {
     height: 40px;
     width: auto;
-    background-color:darkslategray;
+    background-color: darkslategray;
     padding-left: 10px;
     display: flex;
 
 }
 
 .link {
-    display: inline-block; 
+    display: inline-block;
     font-size: 18px;
     margin-top: -6px;
 }
@@ -20,36 +25,36 @@
 }
 
 .link a {
-    color:rgb(101, 188, 14);
+    color: rgb(101, 188, 14);
 }
 
 .link p {
     color: greenyellow;
-    border-color:black;
+    border-color: black;
     border-width: 1px;
 }
 
-.link a:hover{
+.link a:hover {
     color: greenyellow;
-}
-
-.head {
-    position: absolute;
-    width: 300px;
-    border: 5px solid lavender;
-    right: 200px;
 }
 
 /*BODY*/
 body {
     background-color: darkgrey;
+    position: fixed;
+    height: 100dvh;
+    width: 100dvw;
+    top: 0;
+    left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .mainGame {
     display: flex;
-    width: auto;
-    height: 50%;
     border: 4px solid blue;
+    flex: 1;
 }
 
 /*CLICKER*/
@@ -57,13 +62,13 @@ body {
 h1 {
     color: white;
 }
+
 .clicker {
-    width: 110%;
+    width: 55%;
     border: 4px, solid, white;
     padding: 20px;
-    padding-top: 50px;
     text-align: center;
-    background-image: url(https://as1.ftcdn.net/v2/jpg/02/86/00/18/1000_F_286001899_BzwjxnzuSEBpFmqqyWGy35IMBUl1eKXf.jpg);
+    display: flex;
 
 }
 
@@ -72,42 +77,101 @@ h1 {
     cursor: pointer;
 }
 
-/*UPGRADES/MANAGERS*/
+.clicking-square {
+    padding: 30px;
+    background-image: url(https://as1.ftcdn.net/v2/jpg/02/86/00/18/1000_F_286001899_BzwjxnzuSEBpFmqqyWGy35IMBUl1eKXf.jpg);
+    border-radius: 30px;
+}
+
+/*UPGRADES*/
 
 .upgrades {
     border: 4px, solid, white;
     text-align: center;
     height: 100%;
     width: 10%;
+    flex: 1.5;
 }
 
 .upgrade-button {
+    display: flex;
     border: 3px solid black;
-    width: 100%;
-    height: 40px;
     cursor: pointer;
+    font-size: 20px;
+    width: 100%;
+    align-items: center;
 }
 
-.managers {
+.upgrade-button :first-child {
+    flex: 1;
+}
+
+.upgrade-count {
+    width: 30%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+/*UPGRADE TREE*/
+.upgrade_tree {
     display: flex;
+    align-items: 20%;
+    justify-content: center;
+    border: 3px solid salmon;
+    background-color:darkcyan;
+    flex: 2;
+    height: 100%;
+}
+
+.upgrade_item {
+    width: 30%;
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    border: 4px dotted pink;
+    height: 20%;
+
+}
+
+/*MANAGERS*/
+
+.managers {
     border: 5px, solid, violet;
     text-align: right;
-    height: 100px;
+    height: 100%;
     width: 35%;
+    flex: 2; 
 }
 
 .manage-button {
+    display: flex;
     border: 3px solid black;
-    width: 35%;
-    height: 100%;
     cursor: pointer;
     font-size: 30px;
+    width: 100%;
+    align-items: center;
+}
+
+.manage-button :first-child {
+    flex: 1;
 }
 
 .manage-count {
-    border: 2px solid red;
     width: 30%;
     height: 100%;
+    align-items: center;
 }
 
+
+
 /*FOOTER*/
+
+/*ABOUT*/
+
+.head {
+    position: absolute;
+    width: 300px;
+    border: 5px solid lavender;
+    right: 200px;
+}

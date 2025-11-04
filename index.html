@@ -8,63 +8,71 @@
 </head>
 
 <body>
-    <main>
-        <div class="topBar">
-            <section>
-                <article class="link">
-                    <p>Code Clicker, 2025 - Jimmy Savaryn -</p>
-                </article>
-                <article class="link">
-                    <p><a href="paperclip_about.htm" target="_blank" class="right"> About</a> -</p>
-                </article>
-                <article class="link">
-                    <p><a href="https://github.com/LightRiver3010" target="_blank">Github</a> - </p>
-                </article>
-                <article class="link">
-                    <p><a href="https://github.com/LightRiver3010/Clicker-Game" target="_blank">(Repo for this game)</a> - </p>
-                </article>
-                <article class="link">
-                    <p><a href="https://www.linkedin.com/in/jsavaryn/" target="_blank">LinkedIn</a> - </p>
-                </article>
-                <article class="link">
-                    <p><a href="mailto:james.savaryn@gmail.com">Email Me!</a> - </p>
-                </article>
-            </section>
-            <!--
+    <div class="topBar">
+        <section>
+            <article class="link">
+                <p>Code Clicker, 2025 - Jimmy Savaryn -</p>
+            </article>
+            <article class="link">
+                <p><a href="paperclip_about" target="_blank" class="right"> About</a> -</p>
+            </article>
+            <article class="link">
+                <p><a href="https://github.com/LightRiver3010" target="_blank">Github</a> - </p>
+            </article>
+            <article class="link">
+                <p><a href="https://github.com/LightRiver3010/Clicker-Game" target="_blank">(Repo for this game)</a> -
+                </p>
+            </article>
+            <article class="link">
+                <p><a href="https://www.linkedin.com/in/jsavaryn/" target="_blank">LinkedIn</a> - </p>
+            </article>
+            <article class="link">
+                <p><a href="mailto:james.savaryn@gmail.com">Email Me!</a> - </p>
+            </article>
+        </section>
+        <!--
             <section>
                 <article class="setting">
                     <p> Settings</p>
                 </article>
             </section>
         -->
-        </div>
-        <div class="mainGame">
-            <div class="clicker">
-                <h1>Score: <p id="paperclip">0</p></h1>
-                <img src="https://cdn3.iconfinder.com/data/icons/flat-pro-basic-set-1-1/32/number-1-1024.png",
-                alt="click me!", onclick="increase()">
-            </div>
-            <div class="upgrades">
-                <button type="button" class="upgrade-button">Upgrade</button>
-                <p>Test</p>
-                <button type="button" class="upgrade-button">Upgrade 2</button>
-            </div>
-            <div class="managers">
-                <div>
-                    <button type="button" class="manage-button">Manager</button>
-                    <div class="manage-count">0</div>
-                </div>
+    </div>
+    <div class="mainGame">
+        <div class="clicker">
+            <div class="clicking-square">
+                <h1>Score: <p id="paperclip">0</p>
+                </h1>
+                <img src="https://cdn3.iconfinder.com/data/icons/flat-pro-basic-set-1-1/32/number-1-1024.png" ,
+                    alt="click me!" , onclick="increase()">
             </div>
         </div>
-
-    </main>
-        <!--
+        <div class="upgrades">
+            <button type="button" class="upgrade-button" onclick="upgr_increase()">
+                <div>Upgrade</div>
+                <div class="upgrade-count" id="upgrade1count">0</div>
+            </button>
+        </div>
+        <div class="upgrade_tree">
+            <div class="upgrade_item"><h1>1</h1></div>
+        </div>
+        <div class="managers">
+            <button type="button" class="manage-button" onclick="mgr_increase()">
+                <div>Manager</div>
+                <div class="manage-count" id="manager1count">0</div>
+            </button>
+        </div>
+    </div>
+    <footer>
+        <p>Test</p>
+    </footer>
+    <!--
         <p>
             
             <button type="button" class="right" onclick="export_data()">Click me to export data!</button>
         </p>
     -->
-        <!--
+    <!--
         <div class="right">
             <input type="file" id="csvInput" accept=".csv">
             <label for="csvInput">Click me to import data!</label>
@@ -91,7 +99,7 @@
         </div>
 
     </div>
---> 
+-->
 
 </body>
 
