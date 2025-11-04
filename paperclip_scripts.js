@@ -5,7 +5,14 @@ mgr_cost_element = document.getElementById("mgr_cost");
 per_sec_element = document.getElementById("per_second");*/
 
 let ppc = 0;
+
 let mgr = 0;
+let mgr2 = 0;
+let mgr3 = 0;
+let mgr4 = 0;
+let mgr5 = 0;
+let mgr6 = 0;
+
 let cost = 10;
 let per_sec = 0;
 
@@ -47,6 +54,10 @@ function manager() {
         mgr_cost_element.innerHTML = cost;
         update()
     }
+}
+
+function manage() {
+    
 }
 
 setInterval(function autoclips() {
