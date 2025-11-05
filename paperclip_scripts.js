@@ -1,7 +1,8 @@
 
 ppc_element = document.getElementById("paperclip");
-mgr1_element = document.getElementById("manager1count");
-upgr1_element = document.getElementById("upgrade1count");
+mgr1_element_count = document.getElementById("manager1count");
+upgr1_element_count = document.getElementById("upgrade1count");
+upgr1_element_price = document.getElementById("upgrade1price");
 /*mgr_element = document.getElementById("manager");
 mgr_cost_element = document.getElementById("mgr_cost");
 per_sec_element = document.getElementById("per_second");*/
@@ -9,26 +10,30 @@ per_sec_element = document.getElementById("per_second");*/
 let ppc = 0;
 
 let mgr = 0;
-let mgr2 = 0;
-let mgr3 = 0;
-let mgr4 = 0;
-let mgr5 = 0;
-let mgr6 = 0;
 
-let upgr1 = 0;
+let upgr1_count = 0;
+let upgr1_price = 0;
 
 let cost = 10;
 let per_sec = 0;
-
+/*
 const export_button = document.getElementById("csvInput");
 export_button.addEventListener("input", (import_data));
-
+*/
 
 function update() {
-    /*mgr_element.innerHTML = mgr;*/
+    /*mgr_element.innerHTML = mgr;
+    */
+    price_update()
     ppc_element.innerHTML = ppc;
-    mgr1_element.innerHTML = mgr;
-    upgr1_element.innerHTML = upgr1;
+    mgr1_element_count.innerHTML = mgr;
+    upgr1_element_count.innerHTML = upgr1_count;
+    upgr1_element_price.innerHTML = upgr1_price;
+
+}
+
+function price_update() {
+    upgr1_price = upgr1_count * 1.5;
 }
 
 function update_per_sec() {
@@ -47,29 +52,22 @@ function mgr_increase() {
     update()
 }
 
-function upgr_increase() {
-    upgr1++;
+function upgr_count_increase() {
+    upgr1_count++;
     update();
 }
 
-function manager() {
-    if (ppc >= cost) {
-        ppc -= cost;
-        mgr++;
-        cost = 10 + mgr;
-        mgr_cost_element.innerHTML = cost;
+function buy_upgrade() {
+    if (ppc >= upgr1_price) {
+        ppc -= upgr1_price;
+        upgr1_count++;
+        price_update();
         update()
     }
 }
 
-
-setInterval(function autoclips() {
-    ppc = ppc + mgr;
-    update_per_sec()
-    update()
-}, 1000);
-
-
+function auto_bits() {
+}
 
 
 

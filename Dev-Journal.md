@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 5 PM - 
+Made good progress. I got the buttons working with the price of the upgrades (which'll easily translate to managers too). I also made it so that you could only buy an upgrade if you had enough bits, which can also translate very easily to the managers. Tomorrow I think I'll work on implementing managers and having them contribute to the total amount of bits every second or so. That'll be more JavaScript. But I'm proud of my work with the CSS - it certainly wasn't easy but I used some flex-wrap stuff I learned. Very fun. Good progress today! I'm sure tomorrow will be great too!
+
 Nov. 4 PM - 
 Made good progress. I met with Mori this afternoon and he explained a lot of ideas to me, which helped greatly. He didn't write all my code though; important distinction. I also did a few more freeCodeCamp lessons on flexbox so you could say I'm starting to get the hang of it. Like I said before, once this basic skeleton is done, I imagine it'll be smoother sailing. I'll just have to learn more about styling, which seems a lot more fun! I can't wait for the animations and dropdown menus...
 
