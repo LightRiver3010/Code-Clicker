@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 6 PM -
+Made some pretty cool progress. I got both buttons working in the sense that you can't buy them unless you have enough bits. The manager increases the bits per seconds (bps) by 1, and the upgrade increases clicking power by 2x. Basic stuff, but it's essential for a clicker game. The problem I'm now facing is aligning the price of each upgrade/manager. It's stuck in the bottom left of my box, and I'm not sure why. I mean, I know it's because I used span to add "Price:" before the actual variable, but it shouldn't be giving me this much trouble. Whatever, it's cool. After I figure that out, I'll add a few more managers and a bps button somewhere on the screen. Then I'll go for a few more upgrades, then I'll work on having each upgrade be linked to somewhere on the skill/binary tree. Sounds good! I'm really enjoying this project for sure, even if CSS is confusing sometimes.
+
 Nov. 5 PM - 
 Made good progress. I got the buttons working with the price of the upgrades (which'll easily translate to managers too). I also made it so that you could only buy an upgrade if you had enough bits, which can also translate very easily to the managers. Tomorrow I think I'll work on implementing managers and having them contribute to the total amount of bits every second or so. That'll be more JavaScript. But I'm proud of my work with the CSS - it certainly wasn't easy but I used some flex-wrap stuff I learned. Very fun. Good progress today! I'm sure tomorrow will be great too!
 
