@@ -41,26 +41,29 @@
     <div class="mainGame">
         <div class="clicker">
             <div class="clicking-square">
-                <h1>Score: <p id="paperclip">0</p>
+                <h1>Score: <p><span id="paperclip"></span> bits</p>
                 </h1>
                 <img src="https://cdn3.iconfinder.com/data/icons/flat-pro-basic-set-1-1/32/number-1-1024.png" ,
-                    alt="click me!" , onclick="increase()">
+                    alt="click me!" , onclick="code_click()">
             </div>
         </div>
         <div class="upgrades">
-            <button type="button" class="upgrade-button" onclick="buy_upgrade()">
-                <div>Upgrade - </div>
+            <button type="button" class="upgrade-button" onclick="buy_upgrade1()">
+                <div>2x Click Power</div>
                 <div class="upgrade-count" id="upgrade1count">0</div>
-                <div class="upgrade-price" id="upgrade1price">1</div>
+                <div class="upgrade-price">
+                    <p>Price: <span id="upgrade1price">50</span></p>
+                </div>
             </button>
         </div>
         <div class="upgrade_tree">
             <div class="upgrade_item"><h1>1</h1></div>
         </div>
         <div class="managers">
-            <button type="button" class="manage-button" onclick="mgr_increase()">
-                <div>Manager - </div>
+            <button type="button" class="manage-button" onclick="buy_manager1()">
+                <div>Manager</div>
                 <div class="manage-count" id="manager1count">0</div>
+                <div class="manage-price" id="manager1price">10</div>
             </button>
         </div>
     </div>
