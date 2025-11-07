@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 7 PM - 
+Made some necessary progress. Didn't do a ton of fun stuff today, but fixed the prices so they actually look and work well. That was pretty much it. I added some new bonus boxes for future upgrades just to ensure they work properly; I'll have to come up with actual upgrades in the future (perhaps taking inspiration from Cookie Clicker...). Overall, not an amazingly fun day but a necessary one to refine the game. 
+
 Nov. 6 PM -
 Made some pretty cool progress. I got both buttons working in the sense that you can't buy them unless you have enough bits. The manager increases the bits per seconds (bps) by 1, and the upgrade increases clicking power by 2x. Basic stuff, but it's essential for a clicker game. The problem I'm now facing is aligning the price of each upgrade/manager. It's stuck in the bottom left of my box, and I'm not sure why. I mean, I know it's because I used span to add "Price:" before the actual variable, but it shouldn't be giving me this much trouble. Whatever, it's cool. After I figure that out, I'll add a few more managers and a bps button somewhere on the screen. Then I'll go for a few more upgrades, then I'll work on having each upgrade be linked to somewhere on the skill/binary tree. Sounds good! I'm really enjoying this project for sure, even if CSS is confusing sometimes.
 

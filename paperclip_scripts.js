@@ -4,6 +4,10 @@ ppc_element = document.getElementById("paperclip");
 upgr1_element_count = document.getElementById("upgrade1count");
 upgr1_element_price = document.getElementById("upgrade1price");
 
+upgr2_element_count = document.getElementById("upgrade2count");
+upgr2_element_price = document.getElementById("upgrade2price");
+
+
 manager1_element_price = document.getElementById("manager1price");
 manager1_element_count = document.getElementById("manager1count");
 /*mgr_element = document.getElementById("manager");
@@ -15,7 +19,10 @@ let ppc = 0;
 let mgr = 0;
 
 let upgr1_count = 1;
-let upgr1_price = 20;
+let upgr1_price = 50;
+
+let upgr2_count = 1;
+let upgr2_price = 1;
 
 let mgr1_count = 0;
 let mgr1_price = 10;
@@ -38,6 +45,9 @@ function update() {
     upgr1_element_count.innerHTML = upgr1_count;
     upgr1_element_price.innerHTML = upgr1_price;
 
+    upgr2_element_count.innerHTML = upgr2_count;
+    upgr2_element_price.innerHTML = upgr2_price;
+
     manager1_element_price.innerHTML = mgr1_price;
     manager1_element_count.innerHTML = mgr1_count;
 
@@ -47,9 +57,14 @@ function upgrade1_price_update() {
     upgr1_price = upgr1_count * 50;
 }
 
+function upgrade2_price_update() {
+    upgr2_price = upgr2_price + 3;
+}
+
 function manager1_price_update() {
     mgr1_price = mgr1_count * 10;
 }
+
 
 function update_per_sec() {
     per_sec = mgr; //Add more onto this as more managers are added
@@ -71,9 +86,13 @@ function buy_manager1() {
     }
 }
 
-function upgr_count_increase() {
-    upgr1_count++;
-    update();
+function buy_upgrade2() {
+    if (ppc >= upgr2_price) {
+        ppc -= upgr2_price;
+        upgr2_count++;
+        upgrade2_price_update();
+        update();
+    }
 }
 
 function buy_upgrade1() {
@@ -87,6 +106,7 @@ function buy_upgrade1() {
 
 setInterval(function auto_bits() {
     ppc = ppc + mgr1_count;
+    ppc = ppc + upgr2_count;
     update();
 }, 1000);
 
