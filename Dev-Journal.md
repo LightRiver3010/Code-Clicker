@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 8 PM - 
+Made some cool progress. Finally implemented some managers with interesting names (and have them work). However, as is obvious from the current state of my .js file, I need to learn how to make classes in JavaScript. Right now the code is a mess of a ton of different functions that basically do the same thing. So, in the future (the coming few days) my learning time will be spent learning how JavaScript classes work. How fun! Made some good progress today, though. Made it more like an actual click game - you can actually play and progress now!
+
 Nov. 7 PM - 
 Made some necessary progress. Didn't do a ton of fun stuff today, but fixed the prices so they actually look and work well. That was pretty much it. I added some new bonus boxes for future upgrades just to ensure they work properly; I'll have to come up with actual upgrades in the future (perhaps taking inspiration from Cookie Clicker...). Overall, not an amazingly fun day but a necessary one to refine the game. 
 
