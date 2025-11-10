@@ -95,6 +95,7 @@ h1 {
 
 .upgrade-button {
     display: flex;
+    position: relative;
     border: 3px solid black;
     cursor: pointer;
     font-size: 18px;
@@ -225,6 +226,42 @@ h1 {
     overflow: hidden;
     padding-right: 10px;
     border: 5px dotted red;
+}
+
+/*HOVERING BOXES*/
+.upgrade-hover-textbox {
+    color: white;
+    display:flex;
+    flex-direction: column;
+    font-style: italic;
+    background-color: grey;
+    border: 3px solid aquamarine;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.25s;
+    padding: 5px;
+    width: 300px;
+    right: 106%;
+    top: -1px;
+    border-radius: 5px;
+}
+
+.upgrade-hover-textbox :first-child {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 15px;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.upgrade-hover-textbox p {
+    font-size: 12px;
+}
+
+
+
+.upgrade-button:hover .upgrade-hover-textbox {
+    opacity: 1;
 }
 
 /*FOOTER*/

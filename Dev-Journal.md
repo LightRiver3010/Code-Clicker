@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 10 PM - 
+Made some really cool progress. I looked up how to add tooltips, and implemented them. I won't lie, this is probably the smoothest looking part of the project right now. I only have it applied to 2 of the upgrades, but it'll be simple enough to add them to all purchaseables. If there's one thing I learned today, it's that CSS isn't too difficult (at least not all the time). Meaning, it isn't super mentally-demanding to add some clean animations and a good look to the game, which is great! I just have to get the baseplate down, and it'll be fun fun fun decorating everything. I'm looking forward to that for sure!
+
 Nov. 8 PM - 
 Made some cool progress. Finally implemented some managers with interesting names (and have them work). However, as is obvious from the current state of my .js file, I need to learn how to make classes in JavaScript. Right now the code is a mess of a ton of different functions that basically do the same thing. So, in the future (the coming few days) my learning time will be spent learning how JavaScript classes work. How fun! Made some good progress today, though. Made it more like an actual click game - you can actually play and progress now!
 
