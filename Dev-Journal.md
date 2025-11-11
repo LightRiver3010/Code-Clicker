@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 11 PM -
+Made some interesting progress. Using what I learned yesterday, I implemented a super simple settings menu. I'll add more to it in the future, but I figured that it was something that would be necessary eventually. I still have a few bugs to fix, but the project isn't looking too bad right now. It's as if each day I add another cool thing to it. It's fun! 
+
 Nov. 10 PM - 
 Made some really cool progress. I looked up how to add tooltips, and implemented them. I won't lie, this is probably the smoothest looking part of the project right now. I only have it applied to 2 of the upgrades, but it'll be simple enough to add them to all purchaseables. If there's one thing I learned today, it's that CSS isn't too difficult (at least not all the time). Meaning, it isn't super mentally-demanding to add some clean animations and a good look to the game, which is great! I just have to get the baseplate down, and it'll be fun fun fun decorating everything. I'm looking forward to that for sure!
 

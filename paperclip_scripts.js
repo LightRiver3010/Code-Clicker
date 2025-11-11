@@ -221,3 +221,11 @@ function export_data() {
     link.click();
     document.body.removeChild(link);
 }
+
+
+let cog = document.getElementById("settings-cog");
+let settings_menu = document.getElementById("settings-menu")
+cog.addEventListener('click', function() {
+    this.classList.toggle('clicked');
+    settings_menu.classList.toggle('hidden');
+});

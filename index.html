@@ -9,34 +9,43 @@
 
 <body>
     <div class="topBar">
-        <section>
-            <article class="link">
-                <p>Code Clicker, 2025 - Jimmy Savaryn -</p>
-            </article>
-            <article class="link">
-                <p><a href="paperclip_about" target="_blank" class="right"> About</a> -</p>
-            </article>
-            <article class="link">
-                <p><a href="https://github.com/LightRiver3010" target="_blank">Github</a> - </p>
-            </article>
-            <article class="link">
-                <p><a href="https://github.com/LightRiver3010/Clicker-Game" target="_blank">(Repo for this game)</a> -
-                </p>
-            </article>
-            <article class="link">
-                <p><a href="https://www.linkedin.com/in/jsavaryn/" target="_blank">LinkedIn</a> - </p>
-            </article>
-            <article class="link">
-                <p><a href="mailto:james.savaryn@gmail.com">Email Me!</a> - </p>
-            </article>
-        </section>
-        <!--
-            <section>
-                <article class="setting">
-                    <p> Settings</p>
-                </article>
-            </section>
-        -->
+        <article class="link">
+            <p>Code Clicker, 2025 - Jimmy Savaryn -</p>
+        </article>
+        <article class="link">
+            <p><a href="paperclip_about" target="_blank" class="right"> About</a> -</p>
+        </article>
+        <article class="link">
+            <p><a href="https://github.com/LightRiver3010" target="_blank">Github</a> - </p>
+        </article>
+        <article class="link">
+            <p><a href="https://github.com/LightRiver3010/Clicker-Game" target="_blank">(Repo for this game)</a> -
+            </p>
+        </article>
+        <article class="link">
+            <p><a href="https://www.linkedin.com/in/jsavaryn/" target="_blank">LinkedIn</a> - </p>
+        </article>
+        <article class="link">
+            <p><a href="mailto:james.savaryn@gmail.com">Email Me!</a> - </p>
+        </article>
+        <div class="setting">
+             <button id="settings-cog"><img id = cog-pic src="assets\settings.png"></button>
+             <div id = "settings-menu" class="settings-menu hidden">
+                <div id = "settings-title">
+                    <h3>Settings:</h3>
+                </div>
+                <div id="settings-body">
+<!--                      Body of the settings (where all the functions will be)-->
+                      <div class="settings-button" id = "gif-off">
+                        <div>
+<!--                              Break this button up into text and actual clickable button--> 
+                        </div>
+<!--                          Example setting (to be toggled on and off; will be inline with other settings)-->
+                      </div>
+                </div>
+             </div>
+
+        </div>
     </div>
     <div class="mainGame">
         <div class="clicker">
@@ -79,7 +88,9 @@
             </button>
         </div>
         <div class="upgrade_tree">
-            <div class="upgrade_item"><h1>1</h1></div>
+            <div class="upgrade_item">
+                <h1>1</h1>
+            </div>
         </div>
         <div class="managers">
             <button type="button" class="manage-button" onclick="buy_manager1()">

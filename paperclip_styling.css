@@ -5,23 +5,58 @@
 
 /*HEADER*/
 .topBar {
-    height: 40px;
+    height: 50px;
     width: auto;
     background-color: darkslategray;
     padding-left: 10px;
     display: flex;
+    border: 3px dashed blue;
 
 }
 
 .link {
-    display: inline-block;
     font-size: 18px;
     margin-top: -6px;
 }
 
 .setting {
-    display: inline-block;
+    display:flex;
+    margin-left: auto;
+    background-color: grey;
     font-size: 18px;
+    align-items: center;
+    max-width: 3%;
+    max-height: 100%;
+}
+
+.setting button img {
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+}
+
+.setting button.clicked {
+    background-color: green;
+    color: white;
+}
+
+.settings-menu {
+    position: absolute;
+    opacity: 1;
+    left: 15%;
+    top: 15%;
+    height: 70%;
+    width: 70%;
+    background-color: white;
+    border:5px dotted blue;
+    transition: opacity 0.15s;
+    z-index: 90;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.hidden {
+    opacity: 0;
 }
 
 .link a {
@@ -235,7 +270,7 @@ h1 {
     flex-direction: column;
     font-style: italic;
     background-color: grey;
-    border: 3px solid aquamarine;
+    border: 3px solid lime;
     position: absolute;
     opacity: 0;
     transition: opacity 0.25s;
@@ -257,8 +292,6 @@ h1 {
 .upgrade-hover-textbox p {
     font-size: 12px;
 }
-
-
 
 .upgrade-button:hover .upgrade-hover-textbox {
     opacity: 1;
