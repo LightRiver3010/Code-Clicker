@@ -57,6 +57,7 @@
 
 .hidden {
     opacity: 0;
+    z-index: 0;
 }
 
 .link a {
@@ -104,18 +105,19 @@ h1 {
     padding: 20px;
     text-align: center;
     display: flex;
-
 }
 
 .clicker img {
     max-width: 35%;
     cursor: pointer;
+    z-index: 9;
 }
 
 .clicking-square {
     padding: 30px;
     background-image: url(https://wallpaper-house.com/data/out/7/wallpaper2you_205177.gif);
     border-radius: 30px;
+    z-index: 7;
 }
 
 /*UPGRADES*/
@@ -125,7 +127,7 @@ h1 {
     text-align: center;
     height: 100%;
     width: 10%;
-    flex: 1.5;
+    flex: 2;
 }
 
 .upgrade-button {
@@ -212,7 +214,7 @@ h1 {
     text-align: center;
     height: 100%;
     width: 35%;
-    flex: 2; 
+    flex: 2.5; 
 }
 
 .manage-button {
@@ -279,6 +281,7 @@ h1 {
     right: 106%;
     top: -1px;
     border-radius: 5px;
+    z-index: 8;
 }
 
 .upgrade-hover-textbox :first-child {
@@ -298,6 +301,22 @@ h1 {
 }
 
 /*FOOTER*/
+
+footer {
+    height: 7%;
+    font-size: 20px;
+    display: flex;
+}
+
+#export {
+    height: 100%;
+    width: auto;
+}
+
+#import {
+    height: 100%;
+    width: auto;
+}
 
 /*ABOUT*/
 

@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 14 PM -
+Made some functional progress. I sucessfully (mostly) implemented the improt and export of game data. The only problem is, I did it in a very hard-coded way, so that each file is exported and read-in individually. Obviously, this is not the way to go. Instead, I will take time tomorrow to learn how to use dictionaries (are they still called dictionaries??) in JavaScript and use those instead for importing/exporting data. It turns out that you have to actually know how to use JavaScript when creating a browser game. Who would've thunk it??
+
 Nov. 11 PM -
 Made some interesting progress. Using what I learned yesterday, I implemented a super simple settings menu. I'll add more to it in the future, but I figured that it was something that would be necessary eventually. I still have a few bugs to fix, but the project isn't looking too bad right now. It's as if each day I add another cool thing to it. It's fun! 
 
