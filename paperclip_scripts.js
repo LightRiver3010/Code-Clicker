@@ -30,12 +30,10 @@ per_sec_element = document.getElementById("per_second");*/
 
 let ppc = 0;
 
-let mgr = 0;
-
-let upgr1_count = 1;
+let upgr1_count = 0;
 let upgr1_price = 5000;
 
-let upgr2_count = 1;
+let upgr2_count = 0;
 let upgr2_price = 1;
 
 let upgr3_count = 0;
@@ -67,7 +65,11 @@ export_button.addEventListener("input", (import_data));
 
 function update() {
     
-    multiplier = upgr1_count;
+    if (upgr1_count === 0) {
+        multiplier = 1;
+    } else {
+        multiplier = upgr1_count + 1
+    }
 
     ppc_element.innerHTML = ppc;
 
@@ -124,8 +126,6 @@ function manager4_price_update() {
 function manager5_price_update() {
     mgr5_price = mgr5_price * 2;
 }
-
-
 
 function code_click() {
     ppc = ppc + (1 * multiplier);
@@ -210,18 +210,50 @@ setInterval(function auto_bits() {
     update();
 }, 1000);
 
-
-function export_data() {
-    const datas = [ppc, mgr];
-    const data = datas.join('\n');
-    const link = document.createElement("a");
-    link.href = "data:text/csv;charset=utf-8," + encodeURIComponent(data);
-    link.download = "PaperClip_data.csv";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+function exporting() {
+    // Seleting the data to export
+    let datas = [ppc, mgr1_count, mgr2_count, mgr3_count, mgr4_count, mgr5_count, upgr1_count, upgr2_count, upgr3_count];
+    const data = datas.join('\n'); //Join each element together with a newline (each value on its own line)
+    const link = document.createElement('a'); //Create a new anchor element on the page called 'link'
+    link.href = "data:text/csv;charset=utf-8," + encodeURI(data); //Link is now referencing an actual link (encoded by URI)
+    link.download = "Clicker-Game_data.csv"; //Set the download function of the link to be called the string
+    document.body.appendChild(link); //Add the newly-made link to the HTML page
+    link.click(); //Click the anchor element (activating it & downloading the file)
+    document.body.removeChild(link); //Remove the newly-made link from the HTML page
 }
 
+function parseCSV(csv) {
+    return csv.trim().split("\n");
+}
+
+document.getElementById('import-btn').addEventListener('click', function() { //Add a listener on our import button
+    const inp = document.getElementById('import'); //Set up an element containing the info from the input element
+    const file = inp.files[0] //Select the first file from the input element
+    if (!file) {
+        alert('Select a CSV file, please!');
+        return; //If no file is chosen, raise an alert and end the function
+    }
+    const reader = new FileReader() //Declare a new FileReader object
+    //The below .onload function is like a helper function; it runs once the file has actually been processed (happening below)
+    reader.onload = function(e) { //onload = when FileReader is done reading the file. The 'e' is an object containing information on the file being read
+        const csv = e.target.result; //csv is now equal to the target (the csv file)'s result (which is the information)
+        const data = parseCSV(csv); //Parse the data (turn it into a readable format; an array)
+        read_data(data); //Call another function that reads the data into the game's format (see below)
+    }
+    reader.readAsText(file); //Actually start reading the file (calling the above function)
+})
+
+function read_data(data) {
+    ppc = parseInt(data[0]);
+    mgr1_count = parseInt(data[1]);
+    mgr2_count = parseInt(data[2]);
+    mgr3_count = parseInt(data[3]);
+    mgr4_count = parseInt(data[4]);
+    mgr5_count = parseInt(data[5]);
+    upgr1_count = parseInt(data[6]);
+    upgr2_count = parseInt(data[7]);
+    upgr3_count = parseInt(data[8]);
+}
 
 let cog = document.getElementById("settings-cog");
 let settings_menu = document.getElementById("settings-menu")
