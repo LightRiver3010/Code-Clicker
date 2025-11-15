@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 15 PM -
+Made some smart progress. Rather than declaring a million variables, I'm now learning about JavaScript Objects. I know classes also exist, but the W3 Schools course uses Objects and object method instead of classes, so that's what we're rolling with for now. It doesn't work fully yet, but I'm starting to implement it. And once I do, the game will be so much easier to develop. I mean, really, I don't have to do this. It's a pain to write out functions for upgrading and increasing the count of each manager/upgrade, but there's only so many. It would be doable to be lazy. But I'm not lazy. I'm an eager learner. So I WILL be implementing the objects instead of random variables. Because that's what I do.
+
 Nov. 14 PM -
 Made some functional progress. I sucessfully (mostly) implemented the improt and export of game data. The only problem is, I did it in a very hard-coded way, so that each file is exported and read-in individually. Obviously, this is not the way to go. Instead, I will take time tomorrow to learn how to use dictionaries (are they still called dictionaries??) in JavaScript and use those instead for importing/exporting data. It turns out that you have to actually know how to use JavaScript when creating a browser game. Who would've thunk it??
 
