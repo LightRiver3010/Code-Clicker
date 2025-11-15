@@ -25,6 +25,40 @@ manager4_element_count = document.getElementById("manager4count");
 manager5_element_price = document.getElementById("manager5price");
 manager5_element_count = document.getElementById("manager5count");
 
+function Manager(price) {
+    this.price = price;
+    this.count = 0;
+    this.buy = function(total) {
+        if (total >= this.price) {
+            total -= this.price;
+            this.count += 1;
+            this.price *= 1.15;
+            return total
+        }
+    }
+}
+
+function Upgrade(price) {
+    this.price = price;
+    this.count = 0;
+    this.buy = function(total) {
+        if (total >= this.price) {
+            total -= this.price;
+            this.count += 1;
+            this.price *= 1.15;
+            return total
+        } else {
+            return total
+        }
+    }
+}
+
+const mgr1 = new Manager(10)
+
+document.getElementById('manager1btn').addEventListener('click', function() {
+    ppc = mgr1.buy(ppc);
+})
+
 /*
 per_sec_element = document.getElementById("per_second");*/
 
