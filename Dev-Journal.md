@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 16 PM - 
+Made some amazing progress. Not only did I turn all the upgrades/managers into class objects (yep, not using constructor functions anymore), but I also updated the bits per second and added a display to show the score in bits/bytes/kb/mb/etc. I also also improved the importing and exporting of game files, so that it actually works properly now. I won't lie, today was pretty productive. Funny how when working with the JavaScript logic it get so much easier to get stuff done...But still we love CSS and HTML. The game is starting to actually come together now, and it feels amazing. Soon I want to make a Canva whiteboard drawing of how I want it to actually look like. I'm thinking I'll go back on some of the details and make it a bit simpler, like the Classic version of Cookie Clicker (did I mention that I'm heavily inspired??). Anyways, good progress today; I'm happy for sure.
+
 Nov. 15 PM -
 Made some smart progress. Rather than declaring a million variables, I'm now learning about JavaScript Objects. I know classes also exist, but the W3 Schools course uses Objects and object method instead of classes, so that's what we're rolling with for now. It doesn't work fully yet, but I'm starting to implement it. And once I do, the game will be so much easier to develop. I mean, really, I don't have to do this. It's a pain to write out functions for upgrading and increasing the count of each manager/upgrade, but there's only so many. It would be doable to be lazy. But I'm not lazy. I'm an eager learner. So I WILL be implementing the objects instead of random variables. Because that's what I do.
 

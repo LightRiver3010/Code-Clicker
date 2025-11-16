@@ -50,14 +50,20 @@
     <div class="mainGame">
         <div class="clicker">
             <div class="clicking-square">
-                <h1>Score: <p><span id="paperclip">0</span> bits</p>
-                </h1>
+                <div class="score">
+                    <span id="paperclip">0</span><span id="bits">  bits</span>
+                    <br>
+                    <span id="alt-score">0</span><span id="bytes">  bits (b)</span>
+                </div>
+                <div class="bps">
+                    <p>Bits per second (BPS): <span id="per_sec">0</span><span id="">  bits</span></p>
+                </div>
                 <img src="https://cdn3.iconfinder.com/data/icons/flat-pro-basic-set-1-1/32/number-1-1024.png" ,
                     alt="click me!" , onclick="code_click()">
             </div>
         </div>
         <div class="upgrades">
-            <button type="button" class="upgrade-button" onclick="buy_upgrade1()">
+            <button type="button" id="upgrade1btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
                     <h6>Double the power of your click and earn <strong>2x as many bits!</strong></h6>
                     <p>"Double double, toil and trouble..."</p>
@@ -68,14 +74,14 @@
                     <p>Price: <span id="upgrade1price">50</span></p>
                 </div>
             </button>
-            <button type="button" class="upgrade-button" onclick="buy_upgrade2()">
+            <button type="button" id="upgrade2btn" class="upgrade-button">
                 <div id="upgrade-title">Fibbonacci Bonus</div>
                 <div class="upgrade-count" id="upgrade2count">0</div>
                 <div class="upgrade-price">
                     <p>Price: <span id="upgrade2price">1</span></p>
                 </div>
             </button>
-            <button type="button" class="upgrade-button" onclick="buy_upgrade3()">
+            <button type="button" id="upgrade3btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
                     <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
                     <p>Test</p>
@@ -93,35 +99,36 @@
             </div>
         </div>
         <div class="managers">
+            <!-- ADD CAT BEFORE BABY -->
             <button type="button" id="manager1btn" class="manage-button">
-                <div id="manager1_title">Baby</div>
+                <div id="manager1_title">Cat</div>
                 <div class="manage-count" id="manager1count">0</div>
                 <div class="manage-price">
                     <p>Price: <span id="manager1price">10</span></p>
                 </div>
             </button>
-            <button type="button" class="manage-button" onclick="buy_manager2()">
-                <div id="manager2_title">Middle-Schooler</div>
+            <button type="button" id="manager2btn" class="manage-button">
+                <div id="manager2_title">Baby</div>
                 <div class="manage-count" id="manager2count">0</div>
                 <div class="manage-price">
                     <p>Price: <span id="manager2price">10</span></p>
                 </div>
             </button>
-            <button type="button" class="manage-button" onclick="buy_manager3()">
+            <button type="button" id="manager3btn" class="manage-button">
                 <div id="manager3_title">High-Schooler</div>
                 <div class="manage-count" id="manager3count">0</div>
                 <div class="manage-price">
                     <p>Price: <span id="manager3price">10</span></p>
                 </div>
             </button>
-            <button type="button" class="manage-button" onclick="buy_manager4()">
+            <button type="button" id="manager4btn" class="manage-button">
                 <div id="manager4_title">Code Monkey</div>
                 <div class="manage-count" id="manager4count">0</div>
                 <div class="manage-price">
                     <p>Price: <span id="manager4price">10</span></p>
                 </div>
             </button>
-            <button type="button" class="manage-button" onclick="buy_manager5()">
+            <button type="button" id="manager5btn" class="manage-button">
                 <div id="manager5_title">CEO</div>
                 <div class="manage-count" id="manager5count">0</div>
                 <div class="manage-price">

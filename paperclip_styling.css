@@ -95,10 +95,6 @@ body {
 
 /*CLICKER*/
 
-h1 {
-    color: white;
-}
-
 .clicker {
     width: 55%;
     border: 4px solid white;
@@ -118,6 +114,29 @@ h1 {
     background-image: url(https://wallpaper-house.com/data/out/7/wallpaper2you_205177.gif);
     border-radius: 30px;
     z-index: 7;
+}
+
+.score {
+    display: inline-block;
+    font-size: 60px;
+    color: white;
+    font-weight: 900;
+    border: 5px solid white;
+}
+
+.score-alt {
+    display: inline-block;
+    font-size: 30px;
+    color: white;
+    border: 5px solid white;
+}
+
+.bps {
+    font-size: 20px;
+    color: white;
+    border: 5px solid white;
+    padding: 0px;
+    font-style: italic;
 }
 
 /*UPGRADES*/

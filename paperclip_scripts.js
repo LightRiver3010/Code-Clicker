@@ -1,6 +1,11 @@
 
 ppc_element = document.getElementById("paperclip");
 
+alt_score_element = document.getElementById("alt-score");
+alt_text_element = document.getElementById("bytes");
+
+per_sec_element = document.getElementById("per_sec");
+
 upgr1_element_count = document.getElementById("upgrade1count");
 upgr1_element_price = document.getElementById("upgrade1price");
 
@@ -25,228 +30,193 @@ manager4_element_count = document.getElementById("manager4count");
 manager5_element_price = document.getElementById("manager5price");
 manager5_element_count = document.getElementById("manager5count");
 
-function Manager(price) {
-    this.price = price;
-    this.count = 0;
-    this.buy = function(total) {
-        if (total >= this.price) {
-            total -= this.price;
-            this.count += 1;
-            this.price *= 1.15;
-            return total
-        }
-    }
-}
 
-function Upgrade(price) {
-    this.price = price;
-    this.count = 0;
-    this.buy = function(total) {
+class Manager {
+    constructor(price) {
+        this.price = price;
+        this.count = 0;
+    }
+    buy(total) {
         if (total >= this.price) {
             total -= this.price;
             this.count += 1;
-            this.price *= 1.15;
+            if (this.price < 3) {
+                this.price += 1;
+            } else {
+                this.price *= 1.25;
+                this.price = Math.round(this.price);
+            }
             return total
         } else {
             return total
         }
-    }
+}
 }
 
-const mgr1 = new Manager(10)
+class Upgrade {
+    constructor(price) {
+        this.price = price;
+        this.count = 0;
+    }
+    buy(total) {
+        if (total >= this.price) {
+            total -= this.price;
+            this.count += 1;
+            if (this.price < 3) {
+                this.price += (1 * this.count);
+            } else {
+                this.price *= 1.25;
+                this.price = Math.round(this.price);
+            }
+            return total
+        } else {
+            return total
+        }
+}
+}
+
+const mgr1 = new Manager(10);
+const mgr2 = new Manager(100);
+const mgr3 = new Manager(1000);
+const mgr4 = new Manager(10000);
+const mgr5 = new Manager(100000);
+
+const upgr1 = new Upgrade(50);
+const upgr2 = new Upgrade(1);
+const upgr3 = new Upgrade(100);
 
 document.getElementById('manager1btn').addEventListener('click', function() {
     ppc = mgr1.buy(ppc);
+    update();
 })
 
-/*
-per_sec_element = document.getElementById("per_second");*/
+document.getElementById('manager2btn').addEventListener('click', function() {
+    ppc = mgr2.buy(ppc);
+    update();
+})
+
+document.getElementById('manager3btn').addEventListener('click', function() {
+    ppc = mgr3.buy(ppc);
+    update();
+})
+
+document.getElementById('manager4btn').addEventListener('click', function() {
+    ppc = mgr4.buy(ppc);
+    update();
+})
+
+document.getElementById('manager5btn').addEventListener('click', function() {
+    ppc = mgr5.buy(ppc);
+    update();
+})
+
+
+document.getElementById('upgrade1btn').addEventListener('click', function() {
+    ppc = upgr1.buy(ppc);
+    update();
+})
+document.getElementById('upgrade2btn').addEventListener('click', function() {
+    ppc = upgr2.buy(ppc);
+    update();
+})
+document.getElementById('upgrade3btn').addEventListener('click', function() {
+    ppc = upgr3.buy(ppc);
+    update();
+})
+
+
 
 let ppc = 0;
-
-let upgr1_count = 0;
-let upgr1_price = 5000;
-
-let upgr2_count = 0;
-let upgr2_price = 1;
-
-let upgr3_count = 0;
-let upgr3_price = 10;
-
-let mgr1_count = 0;
-let mgr1_price = 10;
-
-let mgr2_count = 0;
-let mgr2_price = 100;
-
-let mgr3_count = 0;
-let mgr3_price = 1000;
-
-let mgr4_count = 0;
-let mgr4_price = 50000;
-
-let mgr5_count = 0;
-let mgr5_price = 100000;
-
 let multiplier = 1;
-
-let cost = 10;
 let per_sec = 0;
-/*
-const export_button = document.getElementById("csvInput");
-export_button.addEventListener("input", (import_data));
-*/
+
+let altWords = "bits";
+let altScore = 0;
+
 
 function update() {
     
-    if (upgr1_count === 0) {
+    if (upgr1.count === 0) {
         multiplier = 1;
     } else {
-        multiplier = upgr1_count + 1
+        multiplier = upgr1.count + 1
+    }
+    if (ppc == 1) {
+        altWords = " bit (b)";
+        altScore = ppc;
+    } else if (ppc < 8) {
+        altWords = " bits (b)";
+        altScore = ppc;
+    } else if (ppc == 8) {
+        altWords = " Byte (B)";
+        altScore = Math.round(ppc / 8);
+    } else if (ppc >= 8 && ppc < 8000) {
+        altWords = " Bytes (B)";
+        altScore = Math.round(ppc / 8);
+    } else if (ppc >= 8000 && ppc <= 8000000) {
+        altWords = " KiloBytes (KB)";
+        altScore = Math.round(ppc / 8000);
+    } else {
+        altWords = " MegaBytes (MB)";
+        altScore = Math.round(ppc / 8000000);
     }
 
     ppc_element.innerHTML = ppc;
 
-    upgr1_element_count.innerHTML = upgr1_count;
-    upgr1_element_price.innerHTML = upgr1_price;
+    per_sec_element.innerHTML = per_sec;
 
-    upgr2_element_count.innerHTML = upgr2_count;
-    upgr2_element_price.innerHTML = upgr2_price;
+    alt_score_element.innerHTML = altScore;
+    alt_text_element.innerHTML = altWords;
+    
+    upgr1_element_count.innerHTML = upgr1.count;
+    upgr1_element_price.innerHTML = upgr1.price;
 
-    upgr3_element_count.innerHTML = upgr3_count;
-    upgr3_element_price.innerHTML = upgr3_price;
+    upgr2_element_count.innerHTML = upgr2.count;
+    upgr2_element_price.innerHTML = upgr2.price;
 
-    manager1_element_price.innerHTML = mgr1_price;
-    manager1_element_count.innerHTML = mgr1_count;
+    upgr3_element_count.innerHTML = upgr3.count;
+    upgr3_element_price.innerHTML = upgr3.price;
 
-    manager2_element_price.innerHTML = mgr2_price;
-    manager2_element_count.innerHTML = mgr2_count;
+    manager1_element_price.innerHTML = mgr1.price;
+    manager1_element_count.innerHTML = mgr1.count;
 
-    manager3_element_price.innerHTML = mgr3_price;
-    manager3_element_count.innerHTML = mgr3_count;
+    manager2_element_price.innerHTML = mgr2.price;
+    manager2_element_count.innerHTML = mgr2.count;
 
-    manager4_element_price.innerHTML = mgr4_price;
-    manager4_element_count.innerHTML = mgr4_count;
+    manager3_element_price.innerHTML = mgr3.price;
+    manager3_element_count.innerHTML = mgr3.count;
 
-    manager5_element_price.innerHTML = mgr5_price;
-    manager5_element_count.innerHTML = mgr5_count;
+    manager4_element_price.innerHTML = mgr4.price;
+    manager4_element_count.innerHTML = mgr4.count;
+
+    manager5_element_price.innerHTML = mgr5.price;
+    manager5_element_count.innerHTML = mgr5.count;
 
 }
 
-function upgrade1_price_update() {
-    upgr1_price = upgr1_count * 50;
-}
-
-function upgrade2_price_update() {
-    upgr2_price = upgr2_price + 3;
-}
-
-function upgrade3_price_update() {
-    upgr3_price = upgr3_price * 100;
-}
-
-function manager1_price_update() {
-    mgr1_price = mgr1_price * 2;
-}
-function manager2_price_update() {
-    mgr2_price = mgr2_price * 2;
-}
-function manager3_price_update() {
-    mgr3_price = mgr3_price * 2;
-}
-function manager4_price_update() {
-    mgr4_price = mgr4_price * 2;
-}
-function manager5_price_update() {
-    mgr5_price = mgr5_price * 2;
-}
 
 function code_click() {
     ppc = ppc + (1 * multiplier);
     update()
 }
 
-function buy_manager1() {
-    if (ppc >= mgr1_price) {
-        ppc -= mgr1_price;
-        mgr1_count++;
-        manager1_price_update();
-        update();
-    }
-}
-
-function buy_manager2() {
-    if (ppc >= mgr2_price) {
-        ppc -= mgr2_price;
-        mgr2_count++;
-        manager2_price_update();
-        update();
-    }
-}
-function buy_manager3() {
-    if (ppc >= mgr3_price) {
-        ppc -= mgr3_price;
-        mgr3_count++;
-        manager3_price_update();
-        update();
-    }
-}
-function buy_manager4() {
-    if (ppc >= mgr4_price) {
-        ppc -= mgr4_price;
-        mgr4_count++;
-        manager4_price_update();
-        update();
-    }
-}
-function buy_manager5() {
-    if (ppc >= mgr5_price) {
-        ppc -= mgr5_price;
-        mgr5_count++;
-        manager5_price_update();
-        update();
-    }
-}
-function buy_upgrade1() {
-    if (ppc >= upgr1_price) {
-        ppc -= upgr1_price;
-        upgr1_count++;
-        upgrade1_price_update();
-        update();
-    }
-}
-
-function buy_upgrade2() {
-    if (ppc >= upgr2_price) {
-        ppc -= upgr2_price;
-        upgr2_count++;
-        upgrade2_price_update();
-        update();
-    }
-}
-
-function buy_upgrade3() {
-    if (ppc >= upgr3_price) {
-        ppc -= upgr3_price;
-        upgr3_count++;
-        upgrade3_price_update();
-        update();
-    }
-}
-
 setInterval(function auto_bits() {
-    ppc = ppc + mgr1_count;
-    ppc = ppc + (mgr2_count * 2);
-    ppc = ppc + (mgr3_count * 10);
-    ppc = ppc + (mgr4_count * 25);
-    ppc = ppc + (mgr5_count * 10000);
-    ppc = ppc + (upgr3_count * 1 * multiplier)
+    per_sec = (mgr1.count) + (mgr2.count * 2) + (mgr3.count * 10) + (mgr4.count * 25) + (mgr5.count * 10000) + (upgr3.count * 1 * multiplier);
+    ppc = ppc + mgr1.count;
+    ppc = ppc + (mgr2.count * 2);
+    ppc = ppc + (mgr3.count * 10);
+    ppc = ppc + (mgr4.count * 25);
+    ppc = ppc + (mgr5.count * 10000);
+    ppc = ppc + (upgr3.count * 1 * multiplier);
     update();
 }, 1000);
 
 function exporting() {
     // Seleting the data to export
-    let datas = [ppc, mgr1_count, mgr2_count, mgr3_count, mgr4_count, mgr5_count, upgr1_count, upgr2_count, upgr3_count];
+    let datas = [ppc, multiplier,
+        mgr1.count, mgr1.price, mgr2.count, mgr2.price, mgr3.count, 
+        mgr3.price, mgr4.count, mgr4.price, mgr5.count, mgr5.price,
+        upgr1.count, upgr1.price, upgr2.count, upgr2.price, upgr3.count, upgr3.price];
     const data = datas.join('\n'); //Join each element together with a newline (each value on its own line)
     const link = document.createElement('a'); //Create a new anchor element on the page called 'link'
     link.href = "data:text/csv;charset=utf-8," + encodeURI(data); //Link is now referencing an actual link (encoded by URI)
@@ -279,14 +249,23 @@ document.getElementById('import-btn').addEventListener('click', function() { //A
 
 function read_data(data) {
     ppc = parseInt(data[0]);
-    mgr1_count = parseInt(data[1]);
-    mgr2_count = parseInt(data[2]);
-    mgr3_count = parseInt(data[3]);
-    mgr4_count = parseInt(data[4]);
-    mgr5_count = parseInt(data[5]);
-    upgr1_count = parseInt(data[6]);
-    upgr2_count = parseInt(data[7]);
-    upgr3_count = parseInt(data[8]);
+    multiplier = parseInt(data[1]);
+    mgr1.count = parseInt(data[2]);
+    mgr1.price = parseInt(data[3]);
+    mgr2.count = parseInt(data[4]);
+    mgr2.price = parseInt(data[5]);
+    mgr3.count = parseInt(data[6]);
+    mgr3.price = parseInt(data[7]);
+    mgr4.count = parseInt(data[8]);
+    mgr4.price = parseInt(data[9]);
+    mgr5.count = parseInt(data[10]);
+    mgr5.price = parseInt(data[11]);
+    upgr1.count = parseInt(data[12]);
+    upgr1.price = parseInt(data[13]);
+    upgr2.count = parseInt(data[14]);
+    upgr2.price = parseInt(data[15]);
+    upgr3.count = parseInt(data[16]);
+    upgr3.price = parseInt(data[17]);
 }
 
 let cog = document.getElementById("settings-cog");
