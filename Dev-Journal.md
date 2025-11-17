@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 17 PM - 
+Made some really cool progress. I started implementing the upgrade buttons. They'll correlate with the upgrades you purchase on the left, sort of like a progression. You won't be able to unlock certain upgrades until you buy others, and the "skill tree" will show you which upgrades to buy before getting others. Plus, it's a tree! Get it? Like a binary tree? Ha ha! Ha. Anyways, made some really cool progress and I'm happy with how the game's coming along. See ya!
+
 Nov. 16 PM - 
 Made some amazing progress. Not only did I turn all the upgrades/managers into class objects (yep, not using constructor functions anymore), but I also updated the bits per second and added a display to show the score in bits/bytes/kb/mb/etc. I also also improved the importing and exporting of game files, so that it actually works properly now. I won't lie, today was pretty productive. Funny how when working with the JavaScript logic it get so much easier to get stuff done...But still we love CSS and HTML. The game is starting to actually come together now, and it feels amazing. Soon I want to make a Canva whiteboard drawing of how I want it to actually look like. I'm thinking I'll go back on some of the details and make it a bit simpler, like the Classic version of Cookie Clicker (did I mention that I'm heavily inspired??). Anyways, good progress today; I'm happy for sure.
 

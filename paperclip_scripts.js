@@ -54,20 +54,17 @@ class Manager {
 }
 
 class Upgrade {
-    constructor(price) {
+    constructor(price, mult) {
         this.price = price;
         this.count = 0;
+        this.mult = mult;
     }
     buy(total) {
         if (total >= this.price) {
             total -= this.price;
             this.count += 1;
-            if (this.price < 3) {
-                this.price += (1 * this.count);
-            } else {
-                this.price *= 1.25;
-                this.price = Math.round(this.price);
-            }
+            this.price *= this.mult;
+            this.price = Math.round(this.price);
             return total
         } else {
             return total
@@ -81,9 +78,9 @@ const mgr3 = new Manager(1000);
 const mgr4 = new Manager(10000);
 const mgr5 = new Manager(100000);
 
-const upgr1 = new Upgrade(50);
-const upgr2 = new Upgrade(1);
-const upgr3 = new Upgrade(100);
+const upgr1 = new Upgrade(50, 10);
+const upgr2 = new Upgrade(1, 3);
+const upgr3 = new Upgrade(100, 5);
 
 document.getElementById('manager1btn').addEventListener('click', function() {
     ppc = mgr1.buy(ppc);
@@ -147,10 +144,10 @@ function update() {
     } else if (ppc < 8) {
         altWords = " bits (b)";
         altScore = ppc;
-    } else if (ppc == 8) {
+    } else if (ppc >=8 && ppc < 16) {
         altWords = " Byte (B)";
         altScore = Math.round(ppc / 8);
-    } else if (ppc >= 8 && ppc < 8000) {
+    } else if (ppc >= 16 && ppc < 8000) {
         altWords = " Bytes (B)";
         altScore = Math.round(ppc / 8);
     } else if (ppc >= 8000 && ppc <= 8000000) {
