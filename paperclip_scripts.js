@@ -8,9 +8,13 @@ per_sec_element = document.getElementById("per_sec");
 
 upgr1_element_count = document.getElementById("upgrade1count");
 upgr1_element_price = document.getElementById("upgrade1price");
+upgr1_desc = document.getElementById("upgr1desc");
+upgr1_quote = document.getElementById("upgr1quote");
 
 upgr2_element_count = document.getElementById("upgrade2count");
 upgr2_element_price = document.getElementById("upgrade2price");
+upgr2_desc = document.getElementById("upgr2desc");
+upgr2_quote = document.getElementById("upgr2quote");
 
 upgr3_element_count = document.getElementById("upgrade3count");
 upgr3_element_price = document.getElementById("upgrade3price");
@@ -29,6 +33,10 @@ manager4_element_count = document.getElementById("manager4count");
 
 manager5_element_price = document.getElementById("manager5price");
 manager5_element_count = document.getElementById("manager5count");
+
+upgrade1_element_circle = document.getElementById("fresh_fish");
+upgrade2_element_circle = document.getElementById("2x_click_power");
+
 
 
 class Manager {
@@ -54,10 +62,12 @@ class Manager {
 }
 
 class Upgrade {
-    constructor(price, mult) {
+    constructor(price, mult, desc, quote) {
         this.price = price;
         this.count = 0;
         this.mult = mult;
+        this.desc = desc;
+        this.quote = quote;
     }
     buy(total) {
         if (total >= this.price) {
@@ -78,9 +88,13 @@ const mgr3 = new Manager(1000);
 const mgr4 = new Manager(10000);
 const mgr5 = new Manager(100000);
 
-const upgr1 = new Upgrade(50, 10);
-const upgr2 = new Upgrade(1, 3);
-const upgr3 = new Upgrade(100, 5);
+const upgr1 = new Upgrade(10, 3, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
+const upgr2 = new Upgrade(50, 10, "Double the power of your click and earn 2x as many bits!", "Double double, toil and trouble...");
+const upgr3 = new Upgrade(100, 5, "filler", "filler");
+
+let one_total = 0;
+let two_total = 0;
+let three_total = 0;
 
 document.getElementById('manager1btn').addEventListener('click', function() {
     ppc = mgr1.buy(ppc);
@@ -113,8 +127,14 @@ document.getElementById('upgrade1btn').addEventListener('click', function() {
     update();
 })
 document.getElementById('upgrade2btn').addEventListener('click', function() {
+    if (upgr1.count < 1) {
+        upgr2.desc = "You must buy the previous upgrade first!";
+        upgr2.quote= "";
+    } else {
     ppc = upgr2.buy(ppc);
     update();
+    }
+    // REVERSE THIS LOGIC SO THAT THE MESSAGE SHOWS ALL THE TIME UNLESS YOU CAN BUY IT
 })
 document.getElementById('upgrade3btn').addEventListener('click', function() {
     ppc = upgr3.buy(ppc);
@@ -133,10 +153,10 @@ let altScore = 0;
 
 function update() {
     
-    if (upgr1.count === 0) {
+    if (upgr2.count === 0) {
         multiplier = 1;
     } else {
-        multiplier = upgr1.count + 1
+        multiplier = upgr2.count + 1
     }
     if (ppc == 1) {
         altWords = " bit (b)";
@@ -164,30 +184,31 @@ function update() {
 
     alt_score_element.innerHTML = altScore;
     alt_text_element.innerHTML = altWords;
-    
+
     upgr1_element_count.innerHTML = upgr1.count;
     upgr1_element_price.innerHTML = upgr1.price;
-
+    upgr1_desc.innerHTML = upgr1.desc;
+    upgr1_quote.innerHTML = upgr1.quote;
     upgr2_element_count.innerHTML = upgr2.count;
     upgr2_element_price.innerHTML = upgr2.price;
-
+    upgr2_quote.innerHTML = upgr2.quote;
+    upgr2_desc.innerHTML = upgr2.desc;
     upgr3_element_count.innerHTML = upgr3.count;
     upgr3_element_price.innerHTML = upgr3.price;
-
     manager1_element_price.innerHTML = mgr1.price;
     manager1_element_count.innerHTML = mgr1.count;
-
     manager2_element_price.innerHTML = mgr2.price;
     manager2_element_count.innerHTML = mgr2.count;
-
     manager3_element_price.innerHTML = mgr3.price;
     manager3_element_count.innerHTML = mgr3.count;
-
     manager4_element_price.innerHTML = mgr4.price;
     manager4_element_count.innerHTML = mgr4.count;
-
     manager5_element_price.innerHTML = mgr5.price;
     manager5_element_count.innerHTML = mgr5.count;
+
+    if (upgr1.count > 0) {
+        upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    }
 
 }
 
@@ -198,13 +219,15 @@ function code_click() {
 }
 
 setInterval(function auto_bits() {
-    per_sec = (mgr1.count) + (mgr2.count * 2) + (mgr3.count * 10) + (mgr4.count * 25) + (mgr5.count * 10000) + (upgr3.count * 1 * multiplier);
-    ppc = ppc + mgr1.count;
+
+    one_total = (upgr1.count > 0) && (mgr1.count > 0) ? (mgr1.count * upgr1.count+1) : mgr1.count;
     ppc = ppc + (mgr2.count * 2);
     ppc = ppc + (mgr3.count * 10);
     ppc = ppc + (mgr4.count * 25);
     ppc = ppc + (mgr5.count * 10000);
     ppc = ppc + (upgr3.count * 1 * multiplier);
+    ppc += one_total + two_total + three_total;
+    per_sec = (one_total) + (mgr2.count * 2) + (mgr3.count * 10) + (mgr4.count * 25) + (mgr5.count * 10000) + (upgr3.count * 1 * multiplier);
     update();
 }, 1000);
 

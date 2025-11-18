@@ -239,6 +239,22 @@ body {
     aspect-ratio: 1/1;
     background-color: black;
     color: white;
+    position: relative;
+    z-index: 9;
+}
+
+.upgrade_item_locked {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    background-color: grey;
+    color: white;
 }
 
 .invisible_upgrade_item_med {
@@ -350,6 +366,24 @@ body {
 
 .upgrade-button:hover .upgrade-hover-textbox {
     opacity: 1;
+}
+
+.upgrade-hover-textbox-locked{
+    color: white;
+    display:flex;
+    flex-direction: column;
+    font-style: italic;
+    background-color: black;
+    border: 3px solid greenyellow;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.25s;
+    padding: 5px;
+    width: 300px;
+    right: 106%;
+    top: -1px;
+    border-radius: 5px;
+    z-index: 8;
 }
 
 /*FOOTER*/
