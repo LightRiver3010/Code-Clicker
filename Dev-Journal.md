@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 18 PM - 
+Made some chill progress. I got some basic implementation of the upgrade skill tree changing colors depending on what upgrades you have - I'll just have to add a lot more repetitive logic to check it all later. I also started on making it so that you can only buy upgrades if you've bought the previous ones. It's not super complicated, just lots of variables going everywhere. Still fun though! Game's looking good now.
+
 Nov. 17 PM - 
 Made some really cool progress. I started implementing the upgrade buttons. They'll correlate with the upgrades you purchase on the left, sort of like a progression. You won't be able to unlock certain upgrades until you buy others, and the "skill tree" will show you which upgrades to buy before getting others. Plus, it's a tree! Get it? Like a binary tree? Ha ha! Ha. Anyways, made some really cool progress and I'm happy with how the game's coming along. See ya!
 
