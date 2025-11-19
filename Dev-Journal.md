@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 19 PM - 
+Made some mid progress. I implemented autosaving as well as some helper functions to assist with that. I also started developing the settings menu, adding the first setting button to toggle the background GIF. Like with most HTML/CSS stuff, once I have the first instance of it down, it'll be easy to copy it for the rest. At that point, it'll just be a matter of writing the JavaScript logic. But still, necessary progress. Not super glamarous, but necessary. Still loving my game!
+
 Nov. 18 PM - 
 Made some chill progress. I got some basic implementation of the upgrade skill tree changing colors depending on what upgrades you have - I'll just have to add a lot more repetitive logic to check it all later. I also started on making it so that you can only buy upgrades if you've bought the previous ones. It's not super complicated, just lots of variables going everywhere. Still fun though! Game's looking good now.
 

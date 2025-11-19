@@ -127,12 +127,11 @@ document.getElementById('upgrade1btn').addEventListener('click', function() {
     update();
 })
 document.getElementById('upgrade2btn').addEventListener('click', function() {
-    if (upgr1.count < 1) {
-        upgr2.desc = "You must buy the previous upgrade first!";
-        upgr2.quote= "";
+    if (upgr1.count > 1) {
+        ppc = upgr2.buy(ppc);
+        update();
     } else {
-    ppc = upgr2.buy(ppc);
-    update();
+        ppc = ppc;
     }
     // REVERSE THIS LOGIC SO THAT THE MESSAGE SHOWS ALL THE TIME UNLESS YOU CAN BUY IT
 })
@@ -150,6 +149,10 @@ let per_sec = 0;
 let altWords = "bits";
 let altScore = 0;
 
+let default_desc = "You must buy the previous upgrade first!";
+let default_quote = '"..."'
+
+let lastSaved = Date.now();
 
 function update() {
     
@@ -176,6 +179,14 @@ function update() {
     } else {
         altWords = " MegaBytes (MB)";
         altScore = Math.round(ppc / 8000000);
+    }
+
+    if (upgr1.count > 0) {
+        upgr2.desc = "Double the power of your click and earn 2x as many bits!";
+        upgr2.quote= "Double double, toil and trouble...";
+    } else {
+        upgr2.desc = default_desc;
+        upgr2.quote = default_quote;
     }
 
     ppc_element.innerHTML = ppc;
@@ -206,12 +217,18 @@ function update() {
     manager5_element_price.innerHTML = mgr5.price;
     manager5_element_count.innerHTML = mgr5.count;
 
+    lastSaved = Date.now();
+
     if (upgr1.count > 0) {
         upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
     }
 
 }
 
+window.addEventListener('DOMContentLoaded', function() {
+    loadGame();
+    update();
+})
 
 function code_click() {
     ppc = ppc + (1 * multiplier);
@@ -219,7 +236,6 @@ function code_click() {
 }
 
 setInterval(function auto_bits() {
-
     one_total = (upgr1.count > 0) && (mgr1.count > 0) ? (mgr1.count * upgr1.count+1) : mgr1.count;
     ppc = ppc + (mgr2.count * 2);
     ppc = ppc + (mgr3.count * 10);
@@ -231,12 +247,32 @@ setInterval(function auto_bits() {
     update();
 }, 1000);
 
-function exporting() {
-    // Seleting the data to export
+setInterval(function auto_save() {
+    data = get_data();
+    localStorage.setItem('clickerData', JSON.stringify(data));
+    console.log("Data Saved!")
+}, 1000);
+
+function loadGame() {
+    const data = localStorage.getItem('clickerData');
+    if (!data) {
+        return false;
+    }
+    const gameData = JSON.parse(data);
+    read_data(gameData);
+}
+
+function get_data() {
     let datas = [ppc, multiplier,
         mgr1.count, mgr1.price, mgr2.count, mgr2.price, mgr3.count, 
         mgr3.price, mgr4.count, mgr4.price, mgr5.count, mgr5.price,
         upgr1.count, upgr1.price, upgr2.count, upgr2.price, upgr3.count, upgr3.price];
+    return datas;
+}
+
+function exporting() {
+    // Seleting the data to export
+    datas = get_data();
     const data = datas.join('\n'); //Join each element together with a newline (each value on its own line)
     const link = document.createElement('a'); //Create a new anchor element on the page called 'link'
     link.href = "data:text/csv;charset=utf-8," + encodeURI(data); //Link is now referencing an actual link (encoded by URI)
@@ -286,6 +322,23 @@ function read_data(data) {
     upgr2.price = parseInt(data[15]);
     upgr3.count = parseInt(data[16]);
     upgr3.price = parseInt(data[17]);
+}
+
+function reset_data() {
+    ppc, multiplier,
+        mgr1.count, mgr1.price, mgr2.count, mgr2.price, mgr3.count, 
+        mgr3.price, mgr4.count, mgr4.price, mgr5.count, mgr5.price,
+        upgr1.count, upgr1.price, upgr2.count, upgr2.price, upgr3.count, upgr3.price = 0;
+}
+
+// SETTINGS TOGGLES
+function gif_toggle() {
+    to_change = document.getElementById("gaming-square");
+    if (to_change.classList.contains('clicking-square-solid')) {
+        to_change.classList.replace("clicking-square-solid", "clicking-square");
+    } else {
+    to_change.classList.replace("clicking-square", "clicking-square-solid");
+    }
 }
 
 let cog = document.getElementById("settings-cog");
