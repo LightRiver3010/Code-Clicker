@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 21 PM -
+Made some alright progress. Yesterday, although I didn't write it here, I did some REAL important work. I finally made a Canva whiteboard with the final design, so now I know what I want the game to actually look like in its finalized state. Now, the only trouble is getting it all to look that way. I struggled a bit with aligning the upgrade boxes so that they were equally spread out. I'll have to do the same with the managers eventually too, but hopefully that won't be as challenging since I have an idea of how it works now. Anyways, the deadline of Nov. 30th is fast approaching, and I need to LOCK IN to get this game cleaned up. Still having fun working on it though!
+
 Nov. 19 PM - 
 Made some mid progress. I implemented autosaving as well as some helper functions to assist with that. I also started developing the settings menu, adding the first setting button to toggle the background GIF. Like with most HTML/CSS stuff, once I have the first instance of it down, it'll be easy to copy it for the rest. At that point, it'll just be a matter of writing the JavaScript logic. But still, necessary progress. Not super glamarous, but necessary. Still loving my game!
 

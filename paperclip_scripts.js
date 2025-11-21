@@ -34,10 +34,15 @@ manager4_element_count = document.getElementById("manager4count");
 manager5_element_price = document.getElementById("manager5price");
 manager5_element_count = document.getElementById("manager5count");
 
-upgrade1_element_circle = document.getElementById("fresh_fish");
-upgrade2_element_circle = document.getElementById("2x_click_power");
-
-
+upgrade1_element_circle = document.getElementById("auto_clicker");
+upgrade2_element_circle = document.getElementById("fresh_fish");
+upgrade3_element_circle = document.getElementById("raiser_mouze");
+upgrade4_element_circle = document.getElementById("bit_bananas");
+upgrade5_element_circle = document.getElementById("cool_hats");
+upgrade6_element_circle = document.getElementById("neatcode_practice");
+upgrade7_element_circle = document.getElementById("energy_drinks");
+upgrade8_element_circle = document.getElementById("btx_4090");
+upgrade9_element_circle = document.getElementById("deep_reasoning");
 
 class Manager {
     constructor(price) {
@@ -88,8 +93,8 @@ const mgr3 = new Manager(1000);
 const mgr4 = new Manager(10000);
 const mgr5 = new Manager(100000);
 
-const upgr1 = new Upgrade(10, 3, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
-const upgr2 = new Upgrade(50, 10, "Double the power of your click and earn 2x as many bits!", "Double double, toil and trouble...");
+const upgr1 = new Upgrade(50, 10, "Double the power of your click and earn 2x as many bits!", "Double double, toil and trouble...");
+const upgr2 = new Upgrade(10, 3, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
 const upgr3 = new Upgrade(100, 5, "filler", "filler");
 
 let one_total = 0;
