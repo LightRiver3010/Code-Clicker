@@ -60,6 +60,11 @@
                 <img src="https://cdn3.iconfinder.com/data/icons/flat-pro-basic-set-1-1/32/number-1-1024.png" ,
                     alt="click me!" , onclick="code_click()">
             </div>
+            <div class="game-bottom">
+                <button id = "export" onclick="exporting()">Export Data</button>
+                <input type="file" id="import" accept=".csv">
+                <button id = "import-btn">Import Data</button>
+            </div>
         </div>
         <div class="upgrades">
             <button type="button" id="upgrade1btn" class="upgrade-button">
@@ -67,10 +72,14 @@
                     <h6 id="upgr1desc">Make Cats work <strong>twice as hard </strong>with some fresh fish!</h6>
                     <p id="upgr1quote">"Meow meow...meow"</p>
                 </div>
-                <div id="upgrade-title">Fresh Fish</div>
-                <div class="upgrade-count" id="upgrade1count">0</div>
-                <div class="upgrade-price">
-                    <p>Price: <span id="upgrade1price">10</span></p>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">Auto-Clicker</div>
+                    <div class="upgrade-count" id="upgrade1count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade1price">10</span></p>
+                    </div>
                 </div>
             </button>
             <button type="button" id="upgrade2btn" class="upgrade-button">
@@ -78,11 +87,30 @@
                     <h6 id="upgr2desc">You must buy the previous upgrade first!</h6>
                     <p id="upgr2quote">"..."</p>
                 </div>
-                <div id="upgrade-title">2x Click Power</div>
-                
-                <div class="upgrade-count" id="upgrade2count">0</div>
-                <div class="upgrade-price">
-                    <p>Price: <span id="upgrade2price">50</span></p>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">Fresh Fish</div>
+                    <div class="upgrade-count" id="upgrade2count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade2price">50</span></p>
+                    </div>
+                </div>
+
+            </button>
+            <button type="button" id="upgrade3btn" class="upgrade-button">
+                <div class="upgrade-hover-textbox">
+                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
+                    <p>Test</p>
+                </div>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">Raiser Mouze V3</div>
+                    <div class="upgrade-count" id="upgrade3count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade3price">100</span></p>
+                    </div>
                 </div>
             </button>
             <button type="button" id="upgrade3btn" class="upgrade-button">
@@ -90,48 +118,155 @@
                     <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
                     <p>Test</p>
                 </div>
-                <div id="upgrade-title">Auto-clicker</div>
-                <div class="upgrade-count" id="upgrade3count">0</div>
-                <div class="upgrade-price">
-                    <p>Price: <span id="upgrade3price">100</span></p>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">Bit Bananas</div>
+                    <div class="upgrade-count" id="upgrade3count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade3price">100</span></p>
+                    </div>
                 </div>
             </button>
+            <button type="button" id="upgrade3btn" class="upgrade-button">
+                <div class="upgrade-hover-textbox">
+                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
+                    <p>Test</p>
+                </div>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">Cool Hats</div>
+                    <div class="upgrade-count" id="upgrade3count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade3price">100</span></p>
+                    </div>
+                </div>
+            </button>
+            <button type="button" id="upgrade3btn" class="upgrade-button">
+                <div class="upgrade-hover-textbox">
+                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
+                    <p>Test</p>
+                </div>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">NeatCode Practice</div>
+                    <div class="upgrade-count" id="upgrade3count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade3price">100</span></p>
+                    </div>
+                </div>
+            </button>
+            <button type="button" id="upgrade3btn" class="upgrade-button">
+                <div class="upgrade-hover-textbox">
+                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
+                    <p>Test</p>
+                </div>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">Energy Drinks</div>
+                    <div class="upgrade-count" id="upgrade3count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade3price">100</span></p>
+                    </div>
+                </div>
+            </button>
+            <button type="button" id="upgrade3btn" class="upgrade-button">
+                <div class="upgrade-hover-textbox">
+                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
+                    <p>Test</p>
+                </div>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">BTX 4090</div>
+                    <div class="upgrade-count" id="upgrade3count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade3price">100</span></p>
+                    </div>
+                </div>
+            </button>
+            <button type="button" id="upgrade3btn" class="upgrade-button">
+                <div class="upgrade-hover-textbox">
+                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
+                    <p>Test</p>
+                </div>
+                <div class="upgrade-top">
+                    <div class="upgrade-title">Deep Reasoning</div>
+                    <div class="upgrade-count" id="upgrade3count">0</div>
+                </div>
+                <div class="upgrade-below">
+                    <div class="upgrade-price">
+                        <p>Price: <span id="upgrade3price">100</span></p>
+                    </div>
+                </div>
+            </button>
+            
         </div>
         <div class="upgrade_tree">
 
             <!-- LEFT -->
             <div class="upgrade_left">
-                <div class="upgrade_item_locked">
-                    Buy Me 2
+                <div class="upgrade_item_locked" id="fresh_fish">
+                    Fresh Fish
                 </div>
-                <div class="upgrade_item_locked">
-                    No buy me
+                <div class="invisible_upgrade_item_big">
+                    
+                </div>
+                <div class="upgrade_item_locked" id= "cool_hats">
+                    Cool Hats
+                </div>
+                <div class="invisible_upgrade_item_med">
+                    
+                </div>
+                <div class="upgrade_item_locked" id="btx_4090">
+                    BTX 4090
                 </div>
             </div>
 
             <!-- MIDDLE -->
             <div class="upgrade_mid">
-                <div class="upgrade_item" id="fresh_fish">
-                    Fresh Fish
+                <div class="upgrade_item" id="auto_clicker">
+                    Auto-Clicker
                 </div>
-                <div class="upgrade_item_locked" id="2x_click_power">
-                    2x Click Power
+                <div class="invisible_upgrade_item_big">
+                    
+                </div>
+                <div class="upgrade_item_locked" id="bit_bananas">
+                    Bit Bananas
+                </div>
+                <div class="invisible_upgrade_item_big">
+                    
+                </div>
+                <div class="upgrade_item_locked" id="neatcode_practice">
+                    NeatCode Practice
                 </div>
                 <div class="invisible_upgrade_item_med">
-                    <span></span>
+                    
                 </div>
-                <div class="upgrade_item_locked">
-                    I jumped a bit
+                <div class="upgrade_item_locked" id="deep_reasoning">
+                    Deep Reasoning
                 </div>
             </div>
 
             <!-- RIGHT -->
             <div class="upgrade_right">
-                <div class="upgrade_item_locked">
-                    Pls don't buy me
+                <div class="upgrade_item_locked" id="raiser_mouze">
+                    Raiser Mouze V3
                 </div>
-                <div class="upgrade_item_locked">
-                    Sell me
+                <div class="invisible_upgrade_item_big">
+                    
+                </div>
+                <div class="invisible_upgrade_item_big">
+                    
+                </div>
+                <div class="invisible_upgrade_item_big">
+                    
+                </div>
+                <div class="upgrade_item_locked" id="energy_drinks">
+                    Energy Drinks
                 </div>
             </div>
         </div>
@@ -174,13 +309,5 @@
             </button>
         </div>
     </div>
-    <footer>
-        <div>
-            <button id = "export" onclick="exporting()">Export Data</button>
-            <input type="file" id="import" accept=".csv">
-            <button id = "import-btn">Import Data</button>
-        </div>
-    </footer>
 </body>
-
 </html>
