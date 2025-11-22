@@ -3,6 +3,123 @@
     font-family: Arial;
 }
 
+/*INTRO*/
+.intro {
+    background-color: black;
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+@keyframes introSpeech1 {
+    0% {top: 0%; opacity: 0%;}
+    100% {top: 10%; opacity: 100%;}
+}
+
+@keyframes introSpeech2 {
+    0% {top: 10%; opacity: 0%;}
+    100% {top: 30%; opacity: 100%;}
+}
+
+@keyframes introSpeech3 {
+    0% {top: 30%; opacity: 0%;}
+    100% {top: 50%; opacity: 100%;}
+}
+
+@keyframes playNow {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+.speech_other {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 30px;
+    font-size: 25px;
+    border: 5px solid greenyellow;
+    color: white;
+    padding-left: 10px;
+    height: 150px;
+    width: 400px;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0%;
+}
+
+.speech1 {
+    left: 25%;
+    animation-name: introSpeech1;
+}
+
+.speech2 {
+    left: 50%;
+    animation-name: introSpeech2;
+    animation-delay: 2s;
+}
+
+.speech3 {
+    left: 25%;
+    animation-name: introSpeech3;
+    animation-delay: 4s;
+}
+
+.other_username {
+    position: absolute;
+    color: white;
+}
+
+.play_button {
+    opacity: 0%;
+    cursor: pointer;
+    position: absolute;
+    height: 15%;
+    width: 20%;
+    left: 40%;
+    top: 75%;
+    font-size: 60px;
+    background-color: yellowgreen;
+    color: black;
+    border: 3px solid yellowgreen;
+    border-radius: 30px;
+    animation-name: playNow;
+    animation-delay: 6s;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+.play_button:hover {
+    background-color: greenyellow;
+    border: 3px solid greenyellow;
+}
+
+.start_over {
+    opacity: 0%;
+    z-index: -1;
+}
+
+/*END CUTSCENE*/
+
+@keyframes ending {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+.outro {
+    background-color: black;
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    animation-name: ending;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+
 /*HEADER*/
 .topBar {
     height: 5%;
