@@ -4,6 +4,9 @@ ppc_element = document.getElementById("paperclip");
 alt_score_element = document.getElementById("alt-score");
 alt_text_element = document.getElementById("bytes");
 
+play_button_element = document.getElementById("startplay");
+intro_element = document.getElementById("intro-scene");
+
 per_sec_element = document.getElementById("per_sec");
 
 upgr1_element_count = document.getElementById("upgrade1count");
@@ -145,9 +148,11 @@ document.getElementById('upgrade3btn').addEventListener('click', function() {
     update();
 })
 
+play_button_element.addEventListener('click', function() {
+    intro_element.classList.add("start_over");
+})
 
-
-let ppc = 0;
+let ppc = 1;
 let multiplier = 1;
 let per_sec = 0;
 
@@ -181,9 +186,15 @@ function update() {
     } else if (ppc >= 8000 && ppc <= 8000000) {
         altWords = " KiloBytes (KB)";
         altScore = Math.round(ppc / 8000);
-    } else {
+    } else if (ppc > 8000000 && ppc <= 8000000000){
         altWords = " MegaBytes (MB)";
         altScore = Math.round(ppc / 8000000);
+    } else if (ppc > 8000000000 && ppc <= 8000000000000){
+        altWords = " Gigabytes (GB)";
+        altScore = Math.round(ppc / 8000000000)
+    } else {
+        altWords = " Terabytes (TB)";
+        altScore = Math.round(ppc / 8000000000000);
     }
 
     if (upgr1.count > 0) {
@@ -224,6 +235,9 @@ function update() {
 
     lastSaved = Date.now();
 
+    if (ppc >= 8000000000000) {
+
+    }
     if (upgr1.count > 0) {
         upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
     }

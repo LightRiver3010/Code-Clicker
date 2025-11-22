@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 22 PM -
+Made some interesting progress. I made a super basic intro cutscene that plays each time you load into the game, which I think is important. I've been doing all this work on making sure the game actually works, but we still need an interesting story! I could make it so that the cutscene doesn't play each time you load the game, but I like it. It's like a reminder of what the end goal of the game is. I'll definitely update the cutscene some more to add profile pictures and maybe some emojis or something. But for now it's good. Using CSS animations isn't really that hard but it actually looks really clean. Maybe I'll find somewhere else to use them...?
+
 Nov. 21 PM -
 Made some alright progress. Yesterday, although I didn't write it here, I did some REAL important work. I finally made a Canva whiteboard with the final design, so now I know what I want the game to actually look like in its finalized state. Now, the only trouble is getting it all to look that way. I struggled a bit with aligning the upgrade boxes so that they were equally spread out. I'll have to do the same with the managers eventually too, but hopefully that won't be as challenging since I have an idea of how it works now. Anyways, the deadline of Nov. 30th is fast approaching, and I need to LOCK IN to get this game cleaned up. Still having fun working on it though!
 
