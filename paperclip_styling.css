@@ -1,3 +1,8 @@
+:root {
+    font-size: 14px;
+    --padding: 1rem;
+}
+
 * {
     box-sizing: border-box;
     font-family: Arial;
@@ -72,6 +77,8 @@
 }
 
 .play_button {
+    display: flex;
+    align-items: center;
     opacity: 0%;
     cursor: pointer;
     position: absolute;
@@ -79,7 +86,7 @@
     width: 20%;
     left: 40%;
     top: 75%;
-    font-size: 60px;
+    font-size: 50px;
     background-color: yellowgreen;
     color: black;
     border: 3px solid yellowgreen;
@@ -233,7 +240,7 @@ body {
 .mainGame {
     display: flex;
     border: 4px solid blue;
-    height: 100%;
+    height: 95%;
 }
 
 /*CLICKER*/
@@ -269,7 +276,7 @@ body {
 
 .score {
     display: inline-block;
-    font-size: 60px;
+    font-size: clamp(50px, 4vw, 70px);
     color: white;
     font-weight: 900;
     border: 5px solid white;
@@ -304,21 +311,21 @@ body {
     display: flex;
     text-align: center;
     flex-direction: column;
-    flex: 2;
+    flex: 1.5;
+    margin: 0px;
 }
 
 .upgrade-button {
     display: flex;
     background-color: black;
     color: greenyellow;
-    border: 5px solid greenyellow;
+    border: 2.5px solid greenyellow;
     position: relative;
     cursor: pointer;
     font-size: 38px;
-    margin-bottom: -5px;
-    width: 100%;
     flex-direction: column;
     flex: 1;
+    height: 10%;
 }
 
 .upgrade-top {
@@ -326,12 +333,13 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 65%;
 }
 
 .upgrade-title {
     display: flex;
     flex-wrap: wrap;
-    font-size: 30px;
+    font-size: clamp(20px, 2vw, 50px);
     justify-content: flex-start;
 }
 
@@ -339,24 +347,40 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
-
+    font-size: clamp(20px, 2vw, 40px);
 }
 
 .upgrade-below {
     display: flex;
+    align-items: flex-end;
     justify-content: flex-end;
-    width: 100%;
-    margin-top: -10px;
-    margin-bottom: -20px;
+    margin-top: 10px;
+    height: 20%;
+}
 
+.upgrade-below-rest {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.upgrade-below-img {
+    height: .8em;
+    aspect-ratio: 1;
+}
+
+.upgrade-below-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .upgrade-price {
     display: flex;
     justify-content: flex-end;
-    height: 70%;
-    font-size: 15px;
+    align-items: flex-end;
+    font-size: clamp(10px, 1vw, 20px);
     overflow: hidden;
 }
 
@@ -369,7 +393,7 @@ body {
     justify-content: center;
     border: 3px solid greenyellow;
     background-color:black;
-    flex: 2;
+    flex: 1.5;
 }
 
 .upgrade_left {
@@ -441,59 +465,101 @@ body {
 /*MANAGERS*/
 
 .managers {
-    border: 5px, solid, violet;
     text-align: center;
-    height: 100%;
-    width: 35%;
-    flex: 2.5; 
+    flex: 2.5;
+    display: flex;
+    flex-direction: column;
 }
 
 .manage-button {
     display: flex;
-    border: 3px solid black;
+    flex: 1;
+    position: relative;
+    color: greenyellow;
+    background-color: black;
+    border: 3px solid greenyellow;
     cursor: pointer;
-    padding: 10px;
-    font-size: 30px;
+    font-size: 35px;
+    height: 10%;
+    align-items: center;
+}
+
+.mgr-img {
+    height: 100%;
+    border: 4px solid white;
+    aspect-ratio: 1;
+}
+
+.mgr-img img {
     width: 100%;
-    height: 15%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mgr-price-rest {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.mgr-rest {
+    width: 100%;
+    height: 100%;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+}
+
+.mgr-top {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
-#manager_title {
+.mgr-bottom {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    font-size: 30px;
-    height: 60%;
-    width: 70%;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.manager_title {
+    display: flex;
+    font-size: 60px;
+    width: 50%;
     align-items: center;
     justify-content: center;
-    border: 3px dotted white;
 }
 
 .manage-count {
     display: flex;
     flex-wrap: wrap;
-    height: 60%;
-    width: 30%;
     align-items: center;
     justify-content: right;
-    border: 3px dotted red;
+    font-size: 60px;
+    width: 20%;
 }
 
 .manage-price {
     display: flex;
     align-items: center;
-    justify-content: right;
-    font-size: 20px;
-    width: 100%;
-    height: 35%;
+    font-size: 25px;
     text-align: right;
     overflow: hidden;
-    padding-right: 10px;
-    border: 5px dotted red;
+    flex-direction: row;
+    margin-right: 10px;
+}
+
+.manage-price-img {
+    height: 1em;
+    aspect-ratio: 1;
+}
+
+.manage-price-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 /*HOVERING BOXES*/

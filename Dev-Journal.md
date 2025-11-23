@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 23 PM -
+Made some flexible progress. I added the lovely graphic created by my best friend WomboCombo for the price icons, which took a bit of thinking to organize. I also added images for each upgrade, which was a similar type of organization problem. I must say, I am getting lots of experience with putting together assortments of HTML elements. At the end, I also discovered clamp(), which seems amazing! I'll definitely have a session soon where I just go through and update all my pixel defined measurements into clamp() to make it better to view on different screen sizes. That'll remove a lot of the hard-coding headache I've been getting from switching window sizes. Anyways, the game should be done relatively soon, and I can't wait for the first release!
+
 Nov. 22 PM -
 Made some interesting progress. I made a super basic intro cutscene that plays each time you load into the game, which I think is important. I've been doing all this work on making sure the game actually works, but we still need an interesting story! I could make it so that the cutscene doesn't play each time you load the game, but I like it. It's like a reminder of what the end goal of the game is. I'll definitely update the cutscene some more to add profile pictures and maybe some emojis or something. But for now it's good. Using CSS animations isn't really that hard but it actually looks really clean. Maybe I'll find somewhere else to use them...?
 

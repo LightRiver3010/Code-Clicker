@@ -21,6 +21,38 @@ upgr2_quote = document.getElementById("upgr2quote");
 
 upgr3_element_count = document.getElementById("upgrade3count");
 upgr3_element_price = document.getElementById("upgrade3price");
+upgr3_desc = document.getElementById("upgr3desc");
+upgr3_quote = document.getElementById("upgr3quote");
+
+upgr4_element_count = document.getElementById("upgrade4count");
+upgr4_element_price = document.getElementById("upgrade4price");
+upgr4_desc = document.getElementById("upgr4desc");
+upgr4_quote = document.getElementById("upgr4quote");
+
+upgr5_element_count = document.getElementById("upgrade5count");
+upgr5_element_price = document.getElementById("upgrade5price");
+upgr5_desc = document.getElementById("upgr5desc");
+upgr5_quote = document.getElementById("upgr5quote");
+
+upgr6_element_count = document.getElementById("upgrade6count");
+upgr6_element_price = document.getElementById("upgrade6price");
+upgr6_desc = document.getElementById("upgr6desc");
+upgr6_quote = document.getElementById("upgr6quote");
+
+upgr7_element_count = document.getElementById("upgrade7count");
+upgr7_element_price = document.getElementById("upgrade7price");
+upgr7_desc = document.getElementById("upgr7desc");
+upgr7_quote = document.getElementById("upgr7quote");
+
+upgr8_element_count = document.getElementById("upgrade8count");
+upgr8_element_price = document.getElementById("upgrade8price");
+upgr8_desc = document.getElementById("upgr8desc");
+upgr8_quote = document.getElementById("upgr8quote");
+
+upgr9_element_count = document.getElementById("upgrade9count");
+upgr9_element_price = document.getElementById("upgrade9price");
+upgr9_desc = document.getElementById("upgr9desc");
+upgr9_quote = document.getElementById("upgr9quote");
 
 manager1_element_price = document.getElementById("manager1price");
 manager1_element_count = document.getElementById("manager1count");
@@ -95,10 +127,20 @@ const mgr2 = new Manager(100);
 const mgr3 = new Manager(1000);
 const mgr4 = new Manager(10000);
 const mgr5 = new Manager(100000);
+const mgr6 = new Manager(1000000);
+const mgr7 = new Manager(10000000);
 
-const upgr1 = new Upgrade(50, 10, "Double the power of your click and earn 2x as many bits!", "Double double, toil and trouble...");
+
+const upgr1 = new Upgrade(50, 10, "Buy an auto-clicker to click for you every second!", "Pretty sure this this is banned...");
 const upgr2 = new Upgrade(10, 3, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
 const upgr3 = new Upgrade(100, 5, "filler", "filler");
+const upgr4 = new Upgrade(100, 5, "filler", "filler");
+const upgr5 = new Upgrade(100, 5, "filler", "filler");
+const upgr6 = new Upgrade(100, 5, "filler", "filler");
+const upgr7 = new Upgrade(100, 5, "filler", "filler");
+const upgr8 = new Upgrade(100, 5, "filler", "filler");
+const upgr9 = new Upgrade(100, 5, "filler", "filler");
+
 
 let one_total = 0;
 let two_total = 0;
@@ -126,6 +168,16 @@ document.getElementById('manager4btn').addEventListener('click', function() {
 
 document.getElementById('manager5btn').addEventListener('click', function() {
     ppc = mgr5.buy(ppc);
+    update();
+})
+
+document.getElementById('manager6btn').addEventListener('click', function() {
+    ppc = mgr6.buy(ppc);
+    update();
+})
+
+document.getElementById('manager7btn').addEventListener('click', function() {
+    ppc = mgr7.buy(ppc);
     update();
 })
 

@@ -5,6 +5,9 @@
     <meta title="Paper Clip Knockoff Game">
     <script src="paperclip_scripts.js" defer></script>
     <link rel="stylesheet" type="text/css" href="paperclip_styling.css">
+    <link rel="icon" type="image/x-icon" href="assets/no_border.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Clicker</title>
 </head>
 
 <body>
@@ -72,7 +75,7 @@
                     <span id="alt-score">0</span><span id="bytes">  bits (b)</span>
                 </div>
                 <div class="bps">
-                    <p>Bits per second (BPS): <span id="per_sec">0</span><span id="">  bits</span></p>
+                    <p>Bits per second (BPS): <span id="per_sec">0</span><span id="">  bits<span></span>
                 </div>
                 <img src="https://cdn3.iconfinder.com/data/icons/flat-pro-basic-set-1-1/32/number-1-1024.png" ,
                     alt="click me!" , onclick="code_click()">
@@ -94,8 +97,13 @@
                     <div class="upgrade-count" id="upgrade1count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade1price">10</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade1price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
@@ -109,114 +117,153 @@
                     <div class="upgrade-count" id="upgrade2count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade2price">50</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade2price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
-
             </button>
             <button type="button" id="upgrade3btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
-                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
-                    <p>Test</p>
+                    <h6 id="upgr3desc">You must buy the previous upgrade first!</h6>
+                    <p id="upgr3quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Raiser Mouze V3</div>
+                    <div class="upgrade-title">Raiser Mouze</div>
                     <div class="upgrade-count" id="upgrade3count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade3price">100</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade3price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
-            <button type="button" id="upgrade3btn" class="upgrade-button">
+            <button type="button" id="upgrade4btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
-                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
-                    <p>Test</p>
+                    <h6 id="upgr4desc">You must buy the previous upgrade first!</h6>
+                    <p id="upgr4quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
                     <div class="upgrade-title">Bit Bananas</div>
-                    <div class="upgrade-count" id="upgrade3count">0</div>
+                    <div class="upgrade-count" id="upgrade4count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade3price">100</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade4price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
-            <button type="button" id="upgrade3btn" class="upgrade-button">
+            <button type="button" id="upgrade5btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
-                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
-                    <p>Test</p>
+                    <h6 id="upgr5desc">You must buy the previous upgrade first!</h6>
+                    <p id="upgr5quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
                     <div class="upgrade-title">Cool Hats</div>
-                    <div class="upgrade-count" id="upgrade3count">0</div>
+                    <div class="upgrade-count" id="upgrade5count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade3price">100</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade5price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
-            <button type="button" id="upgrade3btn" class="upgrade-button">
+            <button type="button" id="upgrade6btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
-                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
-                    <p>Test</p>
+                    <h6 id="upgr6desc">You must buy the previous upgrade first!</h6>
+                    <p id="upgr6quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">NeatCode Practice</div>
-                    <div class="upgrade-count" id="upgrade3count">0</div>
+                    <div class="upgrade-title">NeatCode</div>
+                    <div class="upgrade-count" id="upgrade6count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade3price">100</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade6price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
-            <button type="button" id="upgrade3btn" class="upgrade-button">
+            <button type="button" id="upgrade7btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
-                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
-                    <p>Test</p>
+                    <h6 id="upgr7desc">You must buy the previous upgrade first!</h6>
+                    <p id="upgr7quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
                     <div class="upgrade-title">Energy Drinks</div>
-                    <div class="upgrade-count" id="upgrade3count">0</div>
+                    <div class="upgrade-count" id="upgrade7count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade3price">100</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade7price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
-            <button type="button" id="upgrade3btn" class="upgrade-button">
+            <button type="button" id="upgrade8btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
-                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
-                    <p>Test</p>
+                    <h6 id="upgr8desc">You must buy the previous upgrade first!</h6>
+                    <p id="upgr8quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
                     <div class="upgrade-title">BTX 4090</div>
-                    <div class="upgrade-count" id="upgrade3count">0</div>
+                    <div class="upgrade-count" id="upgrade8count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade3price">100</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade8price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
-            <button type="button" id="upgrade3btn" class="upgrade-button">
+            <button type="button" id="upgrade9btn" class="upgrade-button">
                 <div class="upgrade-hover-textbox">
-                    <h6>Buy an autoclicker to <strong>click for you once per second!</strong></h6>
-                    <p>Test</p>
+                    <h6 id="upgr9desc">You must buy the previous upgrade first!</h6>
+                    <p id="upgr9quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Deep Reasoning</div>
-                    <div class="upgrade-count" id="upgrade3count">0</div>
+                    <div class="upgrade-title">Reasoning</div>
+                    <div class="upgrade-count" id="upgrade9count">0</div>
                 </div>
                 <div class="upgrade-below">
-                    <div class="upgrade-price">
-                        <p>Price: <span id="upgrade3price">100</span></p>
+                    <div class="upgrade-below-rest">
+                        <div class="upgrade-price">
+                            <span>Price: <span id="upgrade9price">10</span></span>
+                        </div>
+                    </div>
+                    <div class="upgrade-below-img">
+                        <img src="assets/no_border.jpg">
                     </div>
                 </div>
             </button>
@@ -288,40 +335,151 @@
             </div>
         </div>
         <div class="managers">
-            <!-- ADD CAT BEFORE BABY -->
             <button type="button" id="manager1btn" class="manage-button">
-                <div id="manager1_title">Cat</div>
-                <div class="manage-count" id="manager1count">0</div>
-                <div class="manage-price">
-                    <p>Price: <span id="manager1price">10</span></p>
+                <div class="mgr-img">
+                    <img src="assets\big_poo_cat.png">
+                </div>
+                <div class="mgr-rest">
+                    <div class="mgr-top">
+                        <div id="manager1_title" class="manager_title">Cat</div>
+                        <div class="manage-count" id="manager1count">0</div>
+                    </div>
+                    <div class="mgr-bottom">
+                        <div class="mgr-price-rest">
+                            <div class="manage-price">
+                                <span>Price: <span id="manager1price">10</span></span>
+                            </div>
+                            <div class="manage-price-img">
+                                <img src="assets/no_border.jpg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </button>
             <button type="button" id="manager2btn" class="manage-button">
-                <div id="manager2_title">Baby</div>
-                <div class="manage-count" id="manager2count">0</div>
-                <div class="manage-price">
-                    <p>Price: <span id="manager2price">100</span></p>
+                <div class="mgr-img">
+                    <img src="assets\big_poo_cat.png">
+                </div>
+                <div class="mgr-rest">
+                    <div class="mgr-top">
+                        <div id="manager2_title" class="manager_title">Baby</div>
+                        <div class="manage-count" id="manager2count">0</div>
+                    </div>
+                    <div class="mgr-bottom">
+                        <div class="mgr-price-rest">
+                            <div class="manage-price">
+                                <span>Price: <span id="manager2price">10</span></span>
+                            </div>
+                            <div class="manage-price-img">
+                                <img src="assets/no_border.jpg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </button>
             <button type="button" id="manager3btn" class="manage-button">
-                <div id="manager3_title">High-Schooler</div>
-                <div class="manage-count" id="manager3count">0</div>
-                <div class="manage-price">
-                    <p>Price: <span id="manager3price">1000</span></p>
+                <div class="mgr-img">
+                    <img src="assets\big_poo_cat.png">
+                </div>
+                <div class="mgr-rest">
+                    <div class="mgr-top">
+                        <div id="manager3_title" class="manager_title">Monkey</div>
+                        <div class="manage-count" id="manager3count">0</div>
+                    </div>
+                    <div class="mgr-bottom">
+                        <div class="mgr-price-rest">
+                            <div class="manage-price">
+                                <span>Price: <span id="manager3price">10</span></span>
+                            </div>
+                            <div class="manage-price-img">
+                                <img src="assets/no_border.jpg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </button>
             <button type="button" id="manager4btn" class="manage-button">
-                <div id="manager4_title">Code Monkey</div>
-                <div class="manage-count" id="manager4count">0</div>
-                <div class="manage-price">
-                    <p>Price: <span id="manager4price">10000</span></p>
+                <div class="mgr-img">
+                    <img src="assets\big_poo_cat.png">
+                </div>
+                <div class="mgr-rest">
+                    <div class="mgr-top">
+                        <div id="manager4_title" class="manager_title">Hacker</div>
+                        <div class="manage-count" id="manager4count">0</div>
+                    </div>
+                    <div class="mgr-bottom">
+                        <div class="mgr-price-rest">
+                            <div class="manage-price">
+                                <span>Price: <span id="manager4price">10</span></span>
+                            </div>
+                            <div class="manage-price-img">
+                                <img src="assets/no_border.jpg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </button>
             <button type="button" id="manager5btn" class="manage-button">
-                <div id="manager5_title">CEO</div>
-                <div class="manage-count" id="manager5count">0</div>
-                <div class="manage-price">
-                    <p>Price: <span id="manager5price">100000</span></p>
+                <div class="mgr-img">
+                    <img src="assets\big_poo_cat.png">
+                </div>
+                <div class="mgr-rest">
+                    <div class="mgr-top">
+                        <div id="manager5_title" class="manager_title">Bitz.io</div>
+                        <div class="manage-count" id="manager5count">0</div>
+                    </div>
+                    <div class="mgr-bottom">
+                        <div class="mgr-price-rest">
+                            <div class="manage-price">
+                                <span>Price: <span id="manager5price">10</span></span>
+                            </div>
+                            <div class="manage-price-img">
+                                <img src="assets/no_border.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </button>
+            <button type="button" id="manager6btn" class="manage-button">
+                <div class="mgr-img">
+                    <img src="assets\big_poo_cat.png">
+                </div>
+                <div class="mgr-rest">
+                    <div class="mgr-top">
+                        <div id="manager6_title" class="manager_title">Tech Firm</div>
+                        <div class="manage-count" id="manager6count">0</div>
+                    </div>
+                    <div class="mgr-bottom">
+                        <div class="mgr-price-rest">
+                            <div class="manage-price">
+                                <span>Price: <span id="manager6price">10</span></span>
+                            </div>
+                            <div class="manage-price-img">
+                                <img src="assets/no_border.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </button>
+            <button type="button" id="manager7btn" class="manage-button">
+                <div class="mgr-img">
+                    <img src="assets\big_poo_cat.png">
+                </div>
+                <div class="mgr-rest">
+                    <div class="mgr-top">
+                        <div id="manager7_title" class="manager_title">BitGPT</div>
+                        <div class="manage-count" id="manager7count">0</div>
+                    </div>
+                    <div class="mgr-bottom">
+                        <div class="mgr-price-rest">
+                            <div class="manage-price">
+                                <span>Price: <span id="manager7price">10</span></span>
+                            </div>
+                            <div class="manage-price-img">
+                                <img src="assets/no_border.jpg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </button>
         </div>
