@@ -51,7 +51,9 @@
         <div class="setting">
              <button id="settings-cog"><img id = "cog-pic" src="assets\settings.png"></button>
              <div id = "settings-menu" class="settings-menu hidden">
-                <span id="settings-title">Settings:</span>
+                <div class="settings-title">
+                    SETTINGS
+                </div>
                 <div class="settings-body">
                     <div class="button-side">
                         <button class="settings-button" onclick="gif_toggle()">
@@ -73,18 +75,36 @@
         <div class="clicker">
             <div class="clicking-square" id="gaming-square">
                 <div class="score">
-                    <span id="paperclip">0</span><span id="bits">  bits</span>
-                    <br>
-                    <span id="alt-score">0</span><span id="bytes">  bits (b)</span>
+                    <div>
+                        <span id="paperclip" class="highlight">0</span>
+                    </div>
+                    <div>
+                         <span id="bits" class="highlight">bits</span>
+                    </div>
+                    <div>
+                        <span id="alt-score" class="score-alt highlight">0</span>
+                        <span id="bytes", class="score-alt highlight">bits (b)</span>
+                    </div>
                 </div>
                 <div class="bps">
-                    <p>Bits per second (BPS): <span id="per_sec">0</span><span id="">  bits<span></span>
+                    <span class="highlight">Bits per second (BPS): <span id="per_sec" class="highlight">0</span> bits</span>
                 </div>
                 <img src="https://cdn3.iconfinder.com/data/icons/flat-pro-basic-set-1-1/32/number-1-1024.png" ,
                     alt="click me!" , onclick="code_click()">
             </div>
             <div class="game-bottom">
+                <div class="bottom-instructions">
+                    <div class="import_export_title">
+                        HOW TO IMPORT/EXPORT DATA:
+                    </div>
+                    <div class="import_export_instructions">
+                        EXPORT: Click the export button.
+                        <br>
+                        IMPORT: Click "Choose File", choose a previous save file, then hit "Import Data"
+                    </div>
+                </div>
                 <button id = "export" onclick="exporting()">Export Data</button>
+                <label for="import" class="import-label">Choose a File</label>
                 <input type="file" id="import" accept=".csv">
                 <button id = "import-btn">Import Data</button>
             </div>
@@ -339,6 +359,10 @@
         </div>
         <div class="managers">
             <button type="button" id="manager1btn" class="manage-button">
+                <div class="manager-hover-textbox">
+                    <h6 id="mgr1desc">A Cat, willing to click for bits every once in a while...</h6>
+                    <p id="mgr1quote">"Oh he can click all right. But does he want to do it for YOU?"</p>
+                </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
                 </div>
@@ -360,6 +384,10 @@
                 </div>
             </button>
             <button type="button" id="manager2btn" class="manage-button">
+                <div class="manager-hover-textbox">
+                    <h6 id="mgr2desc">A Baby, just learning how to click.</h6>
+                    <p id="mgr2quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
                 </div>
@@ -381,6 +409,10 @@
                 </div>
             </button>
             <button type="button" id="manager3btn" class="manage-button">
+                <div class="manager-hover-textbox">
+                    <h6 id="mgr3desc">A Baby, just learning how to click.</h6>
+                    <p id="mgr3quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
                 </div>
@@ -402,6 +434,10 @@
                 </div>
             </button>
             <button type="button" id="manager4btn" class="manage-button">
+                <div class="manager-hover-textbox">
+                    <h6 id="mgr4desc">A Baby, just learning how to click.</h6>
+                    <p id="mgr4quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
                 </div>
@@ -423,6 +459,10 @@
                 </div>
             </button>
             <button type="button" id="manager5btn" class="manage-button">
+                <div class="manager-hover-textbox">
+                    <h6 id="mgr5desc">A Baby, just learning how to click.</h6>
+                    <p id="mgr5quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
                 </div>
@@ -444,6 +484,10 @@
                 </div>
             </button>
             <button type="button" id="manager6btn" class="manage-button">
+                <div class="manager-hover-textbox">
+                    <h6 id="mgr6desc">A Baby, just learning how to click.</h6>
+                    <p id="mgr6quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
                 </div>
@@ -465,6 +509,10 @@
                 </div>
             </button>
             <button type="button" id="manager7btn" class="manage-button">
+                <div class="manager-hover-textbox">
+                    <h6 id="mgr7desc">A Baby, just learning how to click.</h6>
+                    <p id="mgr7quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
                 </div>

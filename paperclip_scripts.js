@@ -56,6 +56,9 @@ upgr9_quote = document.getElementById("upgr9quote");
 
 manager1_element_price = document.getElementById("manager1price");
 manager1_element_count = document.getElementById("manager1count");
+manager1_element_desc = document.getElementById("mgr1desc");
+manager1_element_quote = document.getElementById("mgr1quote");
+
 
 manager2_element_price = document.getElementById("manager2price");
 manager2_element_count = document.getElementById("manager2count");
@@ -100,9 +103,9 @@ class Manager {
                 this.price *= 1.15;
                 this.price = Math.round(this.price);
             }
-            return total
+            return total;
         } else {
-            return total
+            return total;
         }
 }
 }
@@ -123,7 +126,7 @@ class Upgrade {
             this.price = Math.round(this.price);
             return total
         } else {
-            return total
+            return total;
         }
 }
 }
@@ -154,10 +157,24 @@ let three_total = 0;
 let four_total = 0;
 let five_total = 0;
 let six_total = 0;
-let_seven_total = 0;
+let seven_total = 0;
 let auto_click = 0;
 let human_total = 0;
 let corp_total = 0;
+
+let ppc = 0;
+let multiplier = 1;
+let per_sec = 0;
+
+let altWords = "bits";
+let altScore = 0;
+
+let default_desc = "You must buy the previous upgrade first!";
+let default_quote = '"..."'
+
+let lastSaved = Date.now();
+
+
 
 document.getElementById('manager1btn').addEventListener('click', function() {
     ppc = mgr1.buy(ppc);
@@ -165,33 +182,57 @@ document.getElementById('manager1btn').addEventListener('click', function() {
 })
 
 document.getElementById('manager2btn').addEventListener('click', function() {
-    ppc = mgr2.buy(ppc);
-    update();
+    if (mgr1.count > 1) {
+        ppc = mgr2.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 
 document.getElementById('manager3btn').addEventListener('click', function() {
-    ppc = mgr3.buy(ppc);
-    update();
+    if (mgr2.count > 1) {
+        ppc = mgr3.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 
 document.getElementById('manager4btn').addEventListener('click', function() {
-    ppc = mgr4.buy(ppc);
-    update();
+    if (mgr3.count > 1) {
+        ppc = mgr4.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 
 document.getElementById('manager5btn').addEventListener('click', function() {
-    ppc = mgr5.buy(ppc);
-    update();
+    if (mgr4.count > 1) {
+        ppc = mgr5.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 
 document.getElementById('manager6btn').addEventListener('click', function() {
-    ppc = mgr6.buy(ppc);
-    update();
+    if (mgr5.count > 1) {
+        ppc = mgr6.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 
 document.getElementById('manager7btn').addEventListener('click', function() {
-    ppc = mgr7.buy(ppc);
-    update();
+    if (mgr6.count > 1) {
+        ppc = mgr7.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 
 
@@ -208,49 +249,66 @@ document.getElementById('upgrade2btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade3btn').addEventListener('click', function() {
-    ppc = upgr3.buy(ppc);
-    update();
+    if (upgr2.count > 1) {
+        ppc = upgr3.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 document.getElementById('upgrade4btn').addEventListener('click', function() {
-    ppc = upgr4.buy(ppc);
-    update();
+    if (upgr3.count > 1) {
+        ppc = upgr4.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 document.getElementById('upgrade5btn').addEventListener('click', function() {
-    ppc = upgr5.buy(ppc);
-    update();
+    if (upgr4.count > 1) {
+        ppc = upgr5.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 document.getElementById('upgrade6btn').addEventListener('click', function() {
-    ppc = upgr6.buy(ppc);
-    update();
+    if (upgr5.count > 1) {
+        ppc = upgr6.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 document.getElementById('upgrade7btn').addEventListener('click', function() {
-    ppc = upgr7.buy(ppc);
-    update();
+    if (upgr6.count > 1) {
+        ppc = upgr7.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 document.getElementById('upgrade8btn').addEventListener('click', function() {
-    ppc = upgr8.buy(ppc);
-    update();
+    if (upgr7.count > 1) {
+        ppc = upgr8.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 document.getElementById('upgrade9btn').addEventListener('click', function() {
-    ppc = upgr9.buy(ppc);
-    update();
+    if (upgr8.count > 1) {
+        ppc = upgr9.buy(ppc);
+        update();
+    } else {
+        ppc = ppc;
+    }
 })
 
 play_button_element.addEventListener('click', function() {
     intro_element.classList.add("start_over");
 })
 
-let ppc = 1;
-let multiplier = 1;
-let per_sec = 0;
-
-let altWords = "bits";
-let altScore = 0;
-
-let default_desc = "You must buy the previous upgrade first!";
-let default_quote = '"..."'
-
-let lastSaved = Date.now();
 
 function update() {
     
@@ -532,7 +590,7 @@ function read_data(data) {
 
 function reset_data() {
     window.localStorage.clear();
-    update();
+    location.reload();
 }
 
 // SETTINGS TOGGLES
@@ -540,6 +598,7 @@ function gif_toggle() {
     to_change = document.getElementById("gaming-square");
     if (to_change.classList.contains('clicking-square-solid')) {
         to_change.classList.replace("clicking-square-solid", "clicking-square");
+
     } else {
     to_change.classList.replace("clicking-square", "clicking-square-solid");
     }

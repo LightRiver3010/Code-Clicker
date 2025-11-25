@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 25 PM -
+Made some various progress. Meaning, I made progress on a various amount of issues. I cleaned up the UI a bit, made the reset button actually work (located in the settings), cleaned up how importing and exporting data looked, and added some other visual changes. I did a lot of stuff today, but most of it was making things look nice. Tomorrow I should have a good chunk of time to make some other small fixes and visibility adjustments. But the day after that I want to really fix the issue with scaling on different devices - that's my main concern right now. But still, good progress today.
+
 Nov. 24 PM - 
 Made some playable progress. That is, I made the game more playable. With the deadline (Nov. 30) fast-approaching, I realized that I'd been focusing so much on making the game look good with fancy graphics but the game itself still isn't playable! I started working on changing that today. Mostly by adding counts and prices to all the upgrades and managers. It's mostly working now, just with a few fixes that I will get to tomorrow. I think that hardest part might be deciding how much each upgrade should cost and how much each manager should give...
 
