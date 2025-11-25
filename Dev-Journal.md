@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 24 PM - 
+Made some playable progress. That is, I made the game more playable. With the deadline (Nov. 30) fast-approaching, I realized that I'd been focusing so much on making the game look good with fancy graphics but the game itself still isn't playable! I started working on changing that today. Mostly by adding counts and prices to all the upgrades and managers. It's mostly working now, just with a few fixes that I will get to tomorrow. I think that hardest part might be deciding how much each upgrade should cost and how much each manager should give...
+
 Nov. 23 PM -
 Made some flexible progress. I added the lovely graphic created by my best friend WomboCombo for the price icons, which took a bit of thinking to organize. I also added images for each upgrade, which was a similar type of organization problem. I must say, I am getting lots of experience with putting together assortments of HTML elements. At the end, I also discovered clamp(), which seems amazing! I'll definitely have a session soon where I just go through and update all my pixel defined measurements into clamp() to make it better to view on different screen sizes. That'll remove a lot of the hard-coding headache I've been getting from switching window sizes. Anyways, the game should be done relatively soon, and I can't wait for the first release!
 
