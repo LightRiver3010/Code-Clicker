@@ -69,6 +69,12 @@ manager4_element_count = document.getElementById("manager4count");
 manager5_element_price = document.getElementById("manager5price");
 manager5_element_count = document.getElementById("manager5count");
 
+manager6_element_price = document.getElementById("manager6price");
+manager6_element_count = document.getElementById("manager6count");
+
+manager7_element_price = document.getElementById("manager7price");
+manager7_element_count = document.getElementById("manager7count");
+
 upgrade1_element_circle = document.getElementById("auto_clicker");
 upgrade2_element_circle = document.getElementById("fresh_fish");
 upgrade3_element_circle = document.getElementById("raiser_mouze");
@@ -91,7 +97,7 @@ class Manager {
             if (this.price < 3) {
                 this.price += 1;
             } else {
-                this.price *= 1.25;
+                this.price *= 1.15;
                 this.price = Math.round(this.price);
             }
             return total
@@ -133,18 +139,25 @@ const mgr7 = new Manager(10000000);
 
 const upgr1 = new Upgrade(50, 10, "Buy an auto-clicker to click for you every second!", "Pretty sure this this is banned...");
 const upgr2 = new Upgrade(10, 3, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
-const upgr3 = new Upgrade(100, 5, "filler", "filler");
-const upgr4 = new Upgrade(100, 5, "filler", "filler");
-const upgr5 = new Upgrade(100, 5, "filler", "filler");
-const upgr6 = new Upgrade(100, 5, "filler", "filler");
-const upgr7 = new Upgrade(100, 5, "filler", "filler");
-const upgr8 = new Upgrade(100, 5, "filler", "filler");
-const upgr9 = new Upgrade(100, 5, "filler", "filler");
+const upgr3 = new Upgrade(1000, 5, "filler", "filler");
+const upgr4 = new Upgrade(10000, 5, "filler", "filler");
+const upgr5 = new Upgrade(10000, 5, "filler", "filler");
+const upgr6 = new Upgrade(100000, 5, "filler", "filler");
+const upgr7 = new Upgrade(1000000, 5, "filler", "filler");
+const upgr8 = new Upgrade(10000000, 5, "filler", "filler");
+const upgr9 = new Upgrade(100000000, 5, "filler", "filler");
 
 
 let one_total = 0;
 let two_total = 0;
 let three_total = 0;
+let four_total = 0;
+let five_total = 0;
+let six_total = 0;
+let_seven_total = 0;
+let auto_click = 0;
+let human_total = 0;
+let corp_total = 0;
 
 document.getElementById('manager1btn').addEventListener('click', function() {
     ppc = mgr1.buy(ppc);
@@ -193,10 +206,33 @@ document.getElementById('upgrade2btn').addEventListener('click', function() {
     } else {
         ppc = ppc;
     }
-    // REVERSE THIS LOGIC SO THAT THE MESSAGE SHOWS ALL THE TIME UNLESS YOU CAN BUY IT
 })
 document.getElementById('upgrade3btn').addEventListener('click', function() {
     ppc = upgr3.buy(ppc);
+    update();
+})
+document.getElementById('upgrade4btn').addEventListener('click', function() {
+    ppc = upgr4.buy(ppc);
+    update();
+})
+document.getElementById('upgrade5btn').addEventListener('click', function() {
+    ppc = upgr5.buy(ppc);
+    update();
+})
+document.getElementById('upgrade6btn').addEventListener('click', function() {
+    ppc = upgr6.buy(ppc);
+    update();
+})
+document.getElementById('upgrade7btn').addEventListener('click', function() {
+    ppc = upgr7.buy(ppc);
+    update();
+})
+document.getElementById('upgrade8btn').addEventListener('click', function() {
+    ppc = upgr8.buy(ppc);
+    update();
+})
+document.getElementById('upgrade9btn').addEventListener('click', function() {
+    ppc = upgr9.buy(ppc);
     update();
 })
 
@@ -250,11 +286,56 @@ function update() {
     }
 
     if (upgr1.count > 0) {
-        upgr2.desc = "Double the power of your click and earn 2x as many bits!";
-        upgr2.quote= "Double double, toil and trouble...";
+        upgr2.desc = "Make all Cats twice as efficient with some fresh fish!";
+        upgr2.quote= "Meow meow...meow.";
     } else {
         upgr2.desc = default_desc;
         upgr2.quote = default_quote;
+    }
+    if (upgr2.count > 0) {
+        upgr3.desc = "Make autoclicker click with 3x the power!";
+        upgr3.quote = "Warning: banned in various competitive games...";
+    } else {
+        upgr3.desc = default_desc;
+        upgr3.quote = default_quote;
+    }
+    if (upgr3.count > 0) {
+        upgr4.desc = "Make Monkeys work twice as hard with some Bit Bananas!";
+        upgr4.quote = "What even are Bit Bananas? Are they digital? Are they real?";
+    } else {
+        upgr4.desc = default_desc;
+        upgr4.quote = default_quote;
+    }
+    if (upgr4.count > 0) {
+        upgr5.desc = "Make hackers work three times as hard with some Cool Hats!";
+        upgr5.quote = "White hats, black hats, red hats - hackers just love hats!";
+    } else {
+        upgr5.desc = default_desc;
+        upgr5.quote = default_quote;
+    }
+    if (upgr5.count > 0) {
+        upgr6.desc = "Code a better mouse for ten times stronger autoclicker!";
+        upgr6.quote = "Heavily recommended for Computer Science Internships...";
+    } else {
+        upgr6.desc = default_desc;
+        upgr6.quote = default_quote;
+    }
+    if (upgr6.count > 0) {
+        upgr7.desc = "Make all human workers 25% more efficient and click 5x as powerful with some Energy Drinks!";
+        upgr7.quote = "Warning: May cause cancer of the head, neck, spine, lungs, throat, or death.";
+    } else {
+        upgr7.desc = default_desc;
+        upgr7.quote = default_quote;
+    }
+    if (upgr7.count > 0) {
+        upgr8.desc = "Boost all corporations by 50% with incredible new graphics cards!";
+        upgr8.quote = "Playing Snake.io while slacking off has never looked so beautiful...";
+    } else {
+        upgr8.desc = default_desc;
+        upgr8.quote = default_quote;
+    } if (upgr8.count > 0) {
+        upgr9.desc = "Boost BitGPT's production by 2x with a new deep reasoning model!";
+        upgr9.quote = "I think, therefore I click...";
     }
 
     ppc_element.innerHTML = ppc;
@@ -274,6 +355,19 @@ function update() {
     upgr2_desc.innerHTML = upgr2.desc;
     upgr3_element_count.innerHTML = upgr3.count;
     upgr3_element_price.innerHTML = upgr3.price;
+    upgr4_element_count.innerHTML = upgr4.count;
+    upgr4_element_price.innerHTML = upgr4.price;
+    upgr5_element_count.innerHTML = upgr5.count;
+    upgr5_element_price.innerHTML = upgr5.price;
+    upgr6_element_count.innerHTML = upgr6.count;
+    upgr6_element_price.innerHTML = upgr6.price;
+    upgr7_element_count.innerHTML = upgr7.count;
+    upgr7_element_price.innerHTML = upgr7.price;
+    upgr8_element_count.innerHTML = upgr8.count;
+    upgr8_element_price.innerHTML = upgr8.price;
+    upgr9_element_count.innerHTML = upgr9.count;
+    upgr9_element_price.innerHTML = upgr9.price;
+
     manager1_element_price.innerHTML = mgr1.price;
     manager1_element_count.innerHTML = mgr1.count;
     manager2_element_price.innerHTML = mgr2.price;
@@ -284,6 +378,10 @@ function update() {
     manager4_element_count.innerHTML = mgr4.count;
     manager5_element_price.innerHTML = mgr5.price;
     manager5_element_count.innerHTML = mgr5.count;
+    manager6_element_price.innerHTML = mgr6.price;
+    manager6_element_count.innerHTML = mgr6.count;
+    manager7_element_price.innerHTML = mgr7.price;
+    manager7_element_count.innerHTML = mgr7.count;
 
     lastSaved = Date.now();
 
@@ -293,28 +391,33 @@ function update() {
     if (upgr1.count > 0) {
         upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
     }
-
 }
 
-window.addEventListener('DOMContentLoaded', function() {
-    loadGame();
-    update();
-})
 
-function code_click() {
-    ppc = ppc + (1 * multiplier);
-    update()
-}
-
+// AUTO BITS & AUTO SAVE
 setInterval(function auto_bits() {
-    one_total = (upgr1.count > 0) && (mgr1.count > 0) ? (mgr1.count * upgr1.count+1) : mgr1.count;
-    ppc = ppc + (mgr2.count * 2);
-    ppc = ppc + (mgr3.count * 10);
-    ppc = ppc + (mgr4.count * 25);
-    ppc = ppc + (mgr5.count * 10000);
-    ppc = ppc + (upgr3.count * 1 * multiplier);
-    ppc += one_total + two_total + three_total;
-    per_sec = (one_total) + (mgr2.count * 2) + (mgr3.count * 10) + (mgr4.count * 25) + (mgr5.count * 10000) + (upgr3.count * 1 * multiplier);
+    auto_click = 0;
+    auto_click += (upgr1.count)
+    auto_click = (upgr3.count > 0) ? (auto_click * (upgr3.count * 3)) : auto_click;
+    auto_click = (upgr6.count > 0) ? (auto_click * (upgr6.count * 10)) : auto_click;
+    auto_click = (upgr7.count > 0) ? (auto_click * (upgr7.count * 5)) : auto_click;
+    one_total = (upgr2.count > 0) && (mgr1.count > 0) ? (mgr1.count * (upgr2.count*2)) : mgr1.count;
+    two_total = mgr2.count;
+    three_total = (upgr4.count > 0) ? (upgr4.count * 2 * mgr3.count) : mgr3.count;
+    four_total = (upgr5.count > 0) ? (upgr5.count * 3 * mgr4.count) : mgr4.count;
+    five_total = (upgr8.count > 0) ? (upgr8.count * 2 * mgr5.count) : mgr5.count;
+    six_total = (upgr8.count > 0) ? (upgr8.count * 2 * mgr6.count) : mgr6.count;
+    seven_total = (upgr9.count > 0) ? (upgr9.count * 2 * mgr7.count) : mgr7.count;
+
+    human_total = (two_total * 5) + (three_total * 10) + (four_total * 25);
+    human_total = (upgr7.count > 0) ? (human_total * 1.25) : human_total;
+    corp_total = (five_total * 100) + (six_total * 1000);
+    corp_total = (upgr8.count > 0) ? (corp_total * 2) : corp_total;
+    ppc += (one_total)
+    ppc += (seven_total * 5000);
+    ppc += human_total + corp_total;
+    ppc += auto_click;
+    per_sec = (one_total) + human_total + corp_total + (seven_total * 5000);
     update();
 }, 1000);
 
@@ -323,6 +426,18 @@ setInterval(function auto_save() {
     localStorage.setItem('clickerData', JSON.stringify(data));
     console.log("Data Saved!")
 }, 1000);
+
+function code_click() {
+    ppc = ppc + (1 * multiplier);
+    update()
+}
+
+
+// GAME SAVING AND LOADING
+window.addEventListener('DOMContentLoaded', function() {
+    loadGame();
+    update();
+})
 
 function loadGame() {
     const data = localStorage.getItem('clickerData');
@@ -337,7 +452,10 @@ function get_data() {
     let datas = [ppc, multiplier,
         mgr1.count, mgr1.price, mgr2.count, mgr2.price, mgr3.count, 
         mgr3.price, mgr4.count, mgr4.price, mgr5.count, mgr5.price,
-        upgr1.count, upgr1.price, upgr2.count, upgr2.price, upgr3.count, upgr3.price];
+        mgr6.count, mgr6.price, mgr7.count, mgr7.price, upgr1.count, upgr1.price, 
+        upgr2.count, upgr2.price, upgr3.count, upgr3.price, upgr4.count, upgr4.price,
+        upgr5.count, upgr5.price, upgr6.count, upgr6.price, upgr7.count, upgr7.price,
+        upgr8.count, upgr8.price, upgr9.count, upgr9.price];
     return datas;
 }
 
@@ -387,19 +505,34 @@ function read_data(data) {
     mgr4.price = parseInt(data[9]);
     mgr5.count = parseInt(data[10]);
     mgr5.price = parseInt(data[11]);
-    upgr1.count = parseInt(data[12]);
-    upgr1.price = parseInt(data[13]);
-    upgr2.count = parseInt(data[14]);
-    upgr2.price = parseInt(data[15]);
-    upgr3.count = parseInt(data[16]);
-    upgr3.price = parseInt(data[17]);
+    mgr6.count = parseInt(data[12]);
+    mgr6.price = parseInt(data[13]);
+    mgr7.count = parseInt(data[14]);
+    mgr7.price = parseInt(data[15]);
+    
+    upgr1.count = parseInt(data[16]);
+    upgr1.price = parseInt(data[17]);
+    upgr2.count = parseInt(data[18]);
+    upgr2.price = parseInt(data[19]);
+    upgr3.count = parseInt(data[20]);
+    upgr3.price = parseInt(data[21]);
+    upgr4.count = parseInt(data[22]);
+    upgr4.price = parseInt(data[23]);
+    upgr5.count = parseInt(data[24]);
+    upgr5.price = parseInt(data[25]);
+    upgr6.count = parseInt(data[26]);
+    upgr6.price = parseInt(data[27]);
+    upgr7.count = parseInt(data[28]);
+    upgr7.price = parseInt(data[29]);
+    upgr8.count = parseInt(data[30]);
+    upgr8.price = parseInt(data[31]);
+    upgr9.count = parseInt(data[32]);
+    upgr9.price = parseInt(data[33]);
 }
 
 function reset_data() {
-    ppc, multiplier,
-        mgr1.count, mgr1.price, mgr2.count, mgr2.price, mgr3.count, 
-        mgr3.price, mgr4.count, mgr4.price, mgr5.count, mgr5.price,
-        upgr1.count, upgr1.price, upgr2.count, upgr2.price, upgr3.count, upgr3.price = 0;
+    window.localStorage.clear();
+    update();
 }
 
 // SETTINGS TOGGLES
