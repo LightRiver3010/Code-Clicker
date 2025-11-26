@@ -7,6 +7,8 @@ alt_text_element = document.getElementById("bytes");
 play_button_element = document.getElementById("startplay");
 intro_element = document.getElementById("intro-scene");
 
+outro_element = document.getElementById("outro_me");
+
 per_sec_element = document.getElementById("per_sec");
 
 upgr1_element_count = document.getElementById("upgrade1count");
@@ -62,21 +64,34 @@ manager1_element_quote = document.getElementById("mgr1quote");
 
 manager2_element_price = document.getElementById("manager2price");
 manager2_element_count = document.getElementById("manager2count");
+manager2_element_desc = document.getElementById("mgr2desc");
+manager2_element_quote = document.getElementById("mgr2quote");
+
 
 manager3_element_price = document.getElementById("manager3price");
 manager3_element_count = document.getElementById("manager3count");
+manager3_element_desc = document.getElementById("mgr3desc");
+manager3_element_quote = document.getElementById("mgr3quote");
 
 manager4_element_price = document.getElementById("manager4price");
 manager4_element_count = document.getElementById("manager4count");
+manager4_element_desc = document.getElementById("mgr4desc");
+manager4_element_quote = document.getElementById("mgr4quote");
 
 manager5_element_price = document.getElementById("manager5price");
 manager5_element_count = document.getElementById("manager5count");
+manager5_element_desc = document.getElementById("mgr5desc");
+manager5_element_quote = document.getElementById("mgr5quote");
 
 manager6_element_price = document.getElementById("manager6price");
 manager6_element_count = document.getElementById("manager6count");
+manager6_element_desc = document.getElementById("mgr6desc");
+manager6_element_quote = document.getElementById("mgr6quote");
 
 manager7_element_price = document.getElementById("manager7price");
 manager7_element_count = document.getElementById("manager7count");
+manager7_element_desc = document.getElementById("mgr7desc");
+manager7_element_quote = document.getElementById("mgr7quote");
 
 upgrade1_element_circle = document.getElementById("auto_clicker");
 upgrade2_element_circle = document.getElementById("fresh_fish");
@@ -169,8 +184,9 @@ let per_sec = 0;
 let altWords = "bits";
 let altScore = 0;
 
-let default_desc = "You must buy the previous upgrade first!";
+let default_desc = "You must buy the previous upgrade(s) first!";
 let default_quote = '"..."'
+let default_desc_m = "You must buy the previous manager(s) first!";
 
 let lastSaved = Date.now();
 
@@ -182,7 +198,7 @@ document.getElementById('manager1btn').addEventListener('click', function() {
 })
 
 document.getElementById('manager2btn').addEventListener('click', function() {
-    if (mgr1.count > 1) {
+    if (mgr1.count >= 1) {
         ppc = mgr2.buy(ppc);
         update();
     } else {
@@ -191,7 +207,7 @@ document.getElementById('manager2btn').addEventListener('click', function() {
 })
 
 document.getElementById('manager3btn').addEventListener('click', function() {
-    if (mgr2.count > 1) {
+    if (mgr2.count >= 1) {
         ppc = mgr3.buy(ppc);
         update();
     } else {
@@ -200,7 +216,7 @@ document.getElementById('manager3btn').addEventListener('click', function() {
 })
 
 document.getElementById('manager4btn').addEventListener('click', function() {
-    if (mgr3.count > 1) {
+    if (mgr3.count >= 1) {
         ppc = mgr4.buy(ppc);
         update();
     } else {
@@ -209,7 +225,7 @@ document.getElementById('manager4btn').addEventListener('click', function() {
 })
 
 document.getElementById('manager5btn').addEventListener('click', function() {
-    if (mgr4.count > 1) {
+    if (mgr4.count >= 1) {
         ppc = mgr5.buy(ppc);
         update();
     } else {
@@ -218,7 +234,7 @@ document.getElementById('manager5btn').addEventListener('click', function() {
 })
 
 document.getElementById('manager6btn').addEventListener('click', function() {
-    if (mgr5.count > 1) {
+    if (mgr5.count >= 1) {
         ppc = mgr6.buy(ppc);
         update();
     } else {
@@ -227,7 +243,7 @@ document.getElementById('manager6btn').addEventListener('click', function() {
 })
 
 document.getElementById('manager7btn').addEventListener('click', function() {
-    if (mgr6.count > 1) {
+    if (mgr6.count >= 1) {
         ppc = mgr7.buy(ppc);
         update();
     } else {
@@ -241,7 +257,7 @@ document.getElementById('upgrade1btn').addEventListener('click', function() {
     update();
 })
 document.getElementById('upgrade2btn').addEventListener('click', function() {
-    if (upgr1.count > 1) {
+    if (upgr1.count >= 1) {
         ppc = upgr2.buy(ppc);
         update();
     } else {
@@ -249,7 +265,7 @@ document.getElementById('upgrade2btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade3btn').addEventListener('click', function() {
-    if (upgr2.count > 1) {
+    if (upgr1.count >= 1) {
         ppc = upgr3.buy(ppc);
         update();
     } else {
@@ -257,7 +273,7 @@ document.getElementById('upgrade3btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade4btn').addEventListener('click', function() {
-    if (upgr3.count > 1) {
+    if (upgr3.count >= 1 && upgr2.count >= 1) {
         ppc = upgr4.buy(ppc);
         update();
     } else {
@@ -265,7 +281,7 @@ document.getElementById('upgrade4btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade5btn').addEventListener('click', function() {
-    if (upgr4.count > 1) {
+    if (upgr4.count >= 1) {
         ppc = upgr5.buy(ppc);
         update();
     } else {
@@ -273,7 +289,7 @@ document.getElementById('upgrade5btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade6btn').addEventListener('click', function() {
-    if (upgr5.count > 1) {
+    if (upgr5.count >= 1) {
         ppc = upgr6.buy(ppc);
         update();
     } else {
@@ -281,7 +297,7 @@ document.getElementById('upgrade6btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade7btn').addEventListener('click', function() {
-    if (upgr6.count > 1) {
+    if (upgr6.count >= 1) {
         ppc = upgr7.buy(ppc);
         update();
     } else {
@@ -289,7 +305,7 @@ document.getElementById('upgrade7btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade8btn').addEventListener('click', function() {
-    if (upgr7.count > 1) {
+    if (upgr6.count >= 1) {
         ppc = upgr8.buy(ppc);
         update();
     } else {
@@ -297,7 +313,7 @@ document.getElementById('upgrade8btn').addEventListener('click', function() {
     }
 })
 document.getElementById('upgrade9btn').addEventListener('click', function() {
-    if (upgr8.count > 1) {
+    if (upgr8.count >= 1 && upgr7.count >= 1) {
         ppc = upgr9.buy(ppc);
         update();
     } else {
@@ -346,18 +362,16 @@ function update() {
     if (upgr1.count > 0) {
         upgr2.desc = "Make all Cats twice as efficient with some fresh fish!";
         upgr2.quote= "Meow meow...meow.";
+        upgr3.desc = "Make autoclicker click with 3x the power!";
+        upgr3.quote = "Warning: banned in various competitive games...";
+
     } else {
         upgr2.desc = default_desc;
         upgr2.quote = default_quote;
-    }
-    if (upgr2.count > 0) {
-        upgr3.desc = "Make autoclicker click with 3x the power!";
-        upgr3.quote = "Warning: banned in various competitive games...";
-    } else {
         upgr3.desc = default_desc;
         upgr3.quote = default_quote;
     }
-    if (upgr3.count > 0) {
+    if (upgr3.count > 0 && upgr2.count > 0) {
         upgr4.desc = "Make Monkeys work twice as hard with some Bit Bananas!";
         upgr4.quote = "What even are Bit Bananas? Are they digital? Are they real?";
     } else {
@@ -380,76 +394,185 @@ function update() {
     }
     if (upgr6.count > 0) {
         upgr7.desc = "Make all human workers 25% more efficient and click 5x as powerful with some Energy Drinks!";
-        upgr7.quote = "Warning: May cause cancer of the head, neck, spine, lungs, throat, or death.";
-    } else {
-        upgr7.desc = default_desc;
-        upgr7.quote = default_quote;
-    }
-    if (upgr7.count > 0) {
+        upgr7.quote = "Warning: May cause cancer of the head, neck, spine, lungs, throat, and/or death.";
         upgr8.desc = "Boost all corporations by 50% with incredible new graphics cards!";
         upgr8.quote = "Playing Snake.io while slacking off has never looked so beautiful...";
     } else {
+        upgr7.desc = default_desc;
+        upgr7.quote = default_quote;
         upgr8.desc = default_desc;
         upgr8.quote = default_quote;
-    } if (upgr8.count > 0) {
+    }
+    if (upgr8.count > 0 && upgr7.count > 0) {
         upgr9.desc = "Boost BitGPT's production by 2x with a new deep reasoning model!";
         upgr9.quote = "I think, therefore I click...";
+    } else {
+        upgr9.desc = default_desc;
+        upgr9.quote = default_quote;
     }
 
-    ppc_element.innerHTML = ppc;
 
-    per_sec_element.innerHTML = per_sec;
+    mgr1.desc = "A Cat, willing to click for bits every once in a while..."
+    mgr1.quote = '"Oh he can click all right. But does he want to do it for YOU?"'
+
+    if (mgr1.count > 0) {
+        mgr2.desc = 'A Baby, just learning how to click.';
+        mgr2.quote = '"Let me put this in a language you can understand...Go go ga ga."';
+    } else {
+        mgr2.desc = default_desc_m;
+        mgr2.quote = default_quote;
+    }
+    if (mgr2.count > 0) {
+        mgr3.desc = 'A Monkey, happy to mindlessly click away';
+        mgr3.quote = '"Why bother with code monkeys when you can have regular monkeys?"';
+    } else {
+        mgr3.desc = default_desc_m;
+        mgr3.quote = default_quote;
+    }
+    if (mgr3.count > 0) {
+        mgr4.desc = 'A dark-web Hacker, willing to cheat in some bits...for a price.';
+        mgr4.quote = '"He browses using DuckDuckGo, in Ingonito Mode, with a VPN...untraceable."';
+    } else {
+        mgr4.desc = default_desc_m;
+        mgr4.quote = default_quote;
+    }
+    if (mgr4.count > 0) {
+        mgr5.desc = 'Invest in a new startup Bitz.io specializing in bit-mining.';
+        mgr5.quote = '"Have you heard about Light-coin? It\'s the next big thing, trust me."';
+    } else {
+        mgr5.desc = default_desc_m;
+        mgr5.quote = default_quote;
+    }
+    if (mgr5.count > 0) {
+        mgr6.desc = 'Invest in a well-respected Tech Firm specializing in bit-production.';
+        mgr6.quote = '"I think they said their HQ is in Ice-cream Cone Valley?"';
+    } else {
+        mgr6.desc = default_desc_m;
+        mgr6.quote = default_quote;
+    }
+    if (mgr6.count > 0) {
+        mgr7.desc = 'Buy a share of BitGPT, a revolutionary new bit-producing ML AI LLM (TM).';
+        mgr7.quote = '"You\'ve been warned not to ask it how many t\'s the word \'bit\' has."';
+    } else {
+        mgr7.desc = default_desc_m;
+        mgr7.quote = default_quote;
+    }
+    
+
+    ppc_element.innerHTML = ppc.toLocaleString();
+
+    per_sec_element.innerHTML = per_sec.toLocaleString();
 
     alt_score_element.innerHTML = altScore;
     alt_text_element.innerHTML = altWords;
 
     upgr1_element_count.innerHTML = upgr1.count;
-    upgr1_element_price.innerHTML = upgr1.price;
+    upgr1_element_price.innerHTML = upgr1.price.toLocaleString();
     upgr1_desc.innerHTML = upgr1.desc;
     upgr1_quote.innerHTML = upgr1.quote;
     upgr2_element_count.innerHTML = upgr2.count;
-    upgr2_element_price.innerHTML = upgr2.price;
+    upgr2_element_price.innerHTML = upgr2.price.toLocaleString();
     upgr2_quote.innerHTML = upgr2.quote;
     upgr2_desc.innerHTML = upgr2.desc;
     upgr3_element_count.innerHTML = upgr3.count;
-    upgr3_element_price.innerHTML = upgr3.price;
+    upgr3_element_price.innerHTML = upgr3.price.toLocaleString();
+    upgr3_quote.innerHTML = upgr3.quote;
+    upgr3_desc.innerHTML = upgr3.desc;
     upgr4_element_count.innerHTML = upgr4.count;
-    upgr4_element_price.innerHTML = upgr4.price;
+    upgr4_element_price.innerHTML = upgr4.price.toLocaleString();
+    upgr4_quote.innerHTML = upgr4.quote;
+    upgr4_desc.innerHTML = upgr4.desc;
     upgr5_element_count.innerHTML = upgr5.count;
-    upgr5_element_price.innerHTML = upgr5.price;
+    upgr5_element_price.innerHTML = upgr5.price.toLocaleString();
+    upgr5_quote.innerHTML = upgr5.quote;
+    upgr5_desc.innerHTML = upgr5.desc;
     upgr6_element_count.innerHTML = upgr6.count;
-    upgr6_element_price.innerHTML = upgr6.price;
+    upgr6_element_price.innerHTML = upgr6.price.toLocaleString();
+    upgr6_quote.innerHTML = upgr6.quote;
+    upgr6_desc.innerHTML = upgr6.desc;
     upgr7_element_count.innerHTML = upgr7.count;
-    upgr7_element_price.innerHTML = upgr7.price;
+    upgr7_element_price.innerHTML = upgr7.price.toLocaleString();
+    upgr7_quote.innerHTML = upgr7.quote;
+    upgr7_desc.innerHTML = upgr7.desc;
     upgr8_element_count.innerHTML = upgr8.count;
-    upgr8_element_price.innerHTML = upgr8.price;
+    upgr8_element_price.innerHTML = upgr8.price.toLocaleString();
+    upgr8_quote.innerHTML = upgr8.quote;
+    upgr8_desc.innerHTML = upgr8.desc;
     upgr9_element_count.innerHTML = upgr9.count;
-    upgr9_element_price.innerHTML = upgr9.price;
+    upgr9_element_price.innerHTML = upgr9.price.toLocaleString();
+    upgr9_quote.innerHTML = upgr9.quote;
+    upgr9_desc.innerHTML = upgr9.desc;
 
-    manager1_element_price.innerHTML = mgr1.price;
+
+    manager1_element_price.innerHTML = mgr1.price.toLocaleString();
     manager1_element_count.innerHTML = mgr1.count;
-    manager2_element_price.innerHTML = mgr2.price;
+    manager1_element_desc.innerHTML = mgr1.desc;
+    manager1_element_quote.innerHTML = mgr1.quote
+    manager2_element_price.innerHTML = mgr2.price.toLocaleString();
     manager2_element_count.innerHTML = mgr2.count;
-    manager3_element_price.innerHTML = mgr3.price;
+    manager2_element_desc.innerHTML = mgr2.desc;
+    manager2_element_quote.innerHTML = mgr2.quote;
+    manager3_element_price.innerHTML = mgr3.price.toLocaleString();
     manager3_element_count.innerHTML = mgr3.count;
-    manager4_element_price.innerHTML = mgr4.price;
+    manager3_element_desc.innerHTML = mgr3.desc;
+    manager3_element_quote.innerHTML = mgr3.quote;
+    manager4_element_price.innerHTML = mgr4.price.toLocaleString();
     manager4_element_count.innerHTML = mgr4.count;
-    manager5_element_price.innerHTML = mgr5.price;
+    manager4_element_desc.innerHTML = mgr4.desc;
+    manager4_element_quote.innerHTML = mgr4.quote;
+    manager5_element_price.innerHTML = mgr5.price.toLocaleString();
     manager5_element_count.innerHTML = mgr5.count;
-    manager6_element_price.innerHTML = mgr6.price;
+    manager5_element_desc.innerHTML = mgr5.desc;
+    manager5_element_quote.innerHTML = mgr5.quote;
+    manager6_element_price.innerHTML = mgr6.price.toLocaleString();
     manager6_element_count.innerHTML = mgr6.count;
-    manager7_element_price.innerHTML = mgr7.price;
+    manager6_element_desc.innerHTML = mgr6.desc;
+    manager6_element_quote.innerHTML = mgr6.quote;
+    manager7_element_price.innerHTML = mgr7.price.toLocaleString();
     manager7_element_count.innerHTML = mgr7.count;
+    manager7_element_desc.innerHTML = mgr7.desc;
+    manager7_element_quote.innerHTML = mgr7.quote;
 
     lastSaved = Date.now();
 
     if (ppc >= 8000000000000) {
-
+        outro_element.classList.add("outro");
+    } else {
+        outro_element.classList.remove("outro");
     }
     if (upgr1.count > 0) {
         upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+        upgrade3_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    }
+    if (upgr2.count > 0 && upgr3.count > 0) {
+        upgrade4_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    }
+    if (upgr4.count > 0) {
+        upgrade5_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    }
+    if (upgr5.count > 0) {
+        upgrade6_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    }
+    if (upgr6.count > 0) {
+        upgrade7_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+        upgrade8_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    }
+    if (upgr7.count > 0 && upgr8.count > 0) {
+        upgrade9_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    }
+
+}
+
+
+//  CHECK FOR RED TEXT (IF NOT ENOUGH DOUGH)
+function red_check(element, price, total) {
+    if (total >= price) {
+        element.classList.remove("red_price");
+    } else {
+        element.classList.add("red_price");
     }
 }
+
 
 
 // AUTO BITS & AUTO SAVE
@@ -469,14 +592,33 @@ setInterval(function auto_bits() {
 
     human_total = (two_total * 5) + (three_total * 10) + (four_total * 25);
     human_total = (upgr7.count > 0) ? (human_total * 1.25) : human_total;
+    human_total = Math.round(human_total);
     corp_total = (five_total * 100) + (six_total * 1000);
     corp_total = (upgr8.count > 0) ? (corp_total * 2) : corp_total;
     ppc += (one_total)
     ppc += (seven_total * 5000);
     ppc += human_total + corp_total;
     ppc += auto_click;
-    per_sec = (one_total) + human_total + corp_total + (seven_total * 5000);
+    per_sec = (one_total) + human_total + corp_total + (seven_total * 5000) + auto_click;
     update();
+
+    red_check(manager1_element_price, mgr1.price, ppc);
+    red_check(mgr2, ppc);
+    red_check(mgr3, ppc);
+    red_check(mgr4, ppc);
+    red_check(mgr5, ppc);
+    red_check(mgr6, ppc);
+    red_check(mgr7, ppc);
+
+    red_check(upgr1, ppc);
+    red_check(upgr2, ppc);
+    red_check(upgr3, ppc);
+    red_check(upgr4, ppc);
+    red_check(upgr5, ppc);
+    red_check(upgr6, ppc);
+    red_check(upgr7, ppc);
+    red_check(upgr8, ppc);
+    red_check(upgr9, ppc);
 }, 1000);
 
 setInterval(function auto_save() {

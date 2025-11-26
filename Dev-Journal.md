@@ -1,5 +1,8 @@
 *DEV JOURNAL*
 
+Nov. 26 AM/PM -
+Made some amazing progress. I took my laptop with me on a long bus ride. Turns out bus rides are amazing for getting stuff done! (That and I had like 5 hours...) I added vw or vh to pretty much everything, making the game look good on any type of desktop resolution. I added pfps to the intro cutscene. I started working on the outro cutscene. I tried to implement red text for if you aren't able to buy items, but couldn't get that to work. Basically, I did a lot of little stuff today. Still, it was essential to making the game playable, and I'd say it made it feel a lot nicer, too! The game is getting to a point where it can actually be played and enjoyed - how cool is that?
+
 Nov. 25 PM -
 Made some various progress. Meaning, I made progress on a various amount of issues. I cleaned up the UI a bit, made the reset button actually work (located in the settings), cleaned up how importing and exporting data looked, and added some other visual changes. I did a lot of stuff today, but most of it was making things look nice. Tomorrow I should have a good chunk of time to make some other small fixes and visibility adjustments. But the day after that I want to really fix the issue with scaling on different devices - that's my main concern right now. But still, good progress today.
 

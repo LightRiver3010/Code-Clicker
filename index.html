@@ -12,13 +12,22 @@
 
 <body>
     <div class="intro" id="intro-scene">
+        <div class="pfp speech1_pfp this_pfp">
+            <img src="assets/big_poo_cat.png">
+        </div>
         <div class="speech_other speech1">
             man i really wanna download this cool game but
             i just don't have enough storage...can u help??
         </div>
+        <div class="pfp speech2_pfp this_pfp">
+            <img src="assets/no_border.jpg">
+        </div>
         <div class="speech_other speech2">
             yeah no problem, i can probably lend you some bits.
             how much space are you gonna need?
+        </div>
+        <div class="pfp speech3_pfp this_pfp">
+            <img src="assets/big_poo_cat.png">
         </div>
         <div class="speech_other speech3">
             ok awesome. i think i only need like...
@@ -28,31 +37,39 @@
             BEGIN GAME
         </button>
     </div>
+    <div id="outro_me">
+
+    </div>
     <div class="topBar">
-        <article class="link">
-            <p>Code Clicker, 2025 - Jimmy Savaryn - </p>
-        </article>
-        <article class="link">
-            <p><a href="paperclip_about" target="_blank" class="right"> About</a> - </p>
-        </article>
-        <article class="link">
+        <div class="link">
+            <p>Code Clicker, 2025 - <a href="https://savaryn.me" target="_blank">Jimmy Savaryn</a> - </p>
+        </div>
+        <div class="link">
+            <p><a href="paperclip_about" target="_blank" class="right">About</a> - </p>
+        </div>
+        <div class="link">
             <p><a href="https://github.com/LightRiver3010" target="_blank"> Github </a> - </p>
-        </article>
-        <article class="link">
+        </div>
+        <div class="link">
             <p><a href="https://github.com/LightRiver3010/Clicker-Game" target="_blank"> (Repo for this game) </a> -
             </p>
-        </article>
-        <article class="link">
+        </div>
+        <div class="link">
             <p><a href="https://www.linkedin.com/in/jsavaryn/" target="_blank"> LinkedIn </a> - </p>
-        </article>
-        <article class="link">
+        </div>
+        <div class="link">
             <p><a href="mailto:james.savaryn@gmail.com" >Email Me! </a> - </p>
-        </article>
+        </div>
         <div class="setting">
              <button id="settings-cog"><img id = "cog-pic" src="assets\settings.png"></button>
              <div id = "settings-menu" class="settings-menu hidden">
-                <div class="settings-title">
-                    SETTINGS
+                <div class="settings-titles">
+                    <div class="settings-title">
+                        SETTINGS
+                    </div>
+                    <div class="thanks-title">
+                        THANKS
+                    </div>
                 </div>
                 <div class="settings-body">
                     <div class="button-side">
@@ -62,9 +79,34 @@
                         <button class="settings-button" onclick="reset_data()">
                             Reset Data
                         </button>
+                        <button class="settings-button" onclick="">
+                            Toggle Audio
+                        </button>
                     </div>
-                    <div class="desc-side">
-
+                    <div class="button-desc-side">
+                        <div class="button-desc">
+                            - Turn the background GIF into a static PNG
+                        </div>
+                        <div class="button-desc">
+                            - Reset All Data. WARNING: CANNOT BE UNDONE!
+                        </div>
+                        <div class="button-desc">
+                            - Turns audio on or off
+                        </div>
+                    </div>
+                    <div class="thanks-side">
+                        <div class="thank">
+                            <span id="bold">Tyler</span> - For the amazing bit currency icon
+                        </div>
+                        <div class="thank">
+                            <span id="bold">Sam</span> - For her amazing manager art
+                        </div>
+                        <div class="thank">
+                            <span id="bold">Mori</span> - For his amazing webdev teaching skills
+                        </div>
+                        <div class="thank">
+                            <span id="bold">W3 Schools</span> - For their amazing (and free) resources
+                        </div>
                     </div>
                 </div>
              </div>
@@ -121,7 +163,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade1price">10</span></span>
                         </div>
                     </div>
@@ -141,7 +183,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade2price">10</span></span>
                         </div>
                     </div>
@@ -161,7 +203,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade3price">10</span></span>
                         </div>
                     </div>
@@ -181,7 +223,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade4price">10</span></span>
                         </div>
                     </div>
@@ -201,7 +243,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade5price">10</span></span>
                         </div>
                     </div>
@@ -221,7 +263,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade6price">10</span></span>
                         </div>
                     </div>
@@ -241,7 +283,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade7price">10</span></span>
                         </div>
                     </div>
@@ -261,7 +303,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade8price">10</span></span>
                         </div>
                     </div>
@@ -281,7 +323,7 @@
                 </div>
                 <div class="upgrade-below">
                     <div class="upgrade-below-rest">
-                        <div class="upgrade-price">
+                        <div class="upgrade-price red_price">
                             <span>Price: <span id="upgrade9price">10</span></span>
                         </div>
                     </div>
@@ -293,67 +335,45 @@
             
         </div>
         <div class="upgrade_tree">
-
-            <!-- LEFT -->
-            <div class="upgrade_left">
+            <div class="upgrade_row" id="row1">
+                <div class="upgrade_item" id="auto_clicker">
+                    Auto-Clicker
+                </div>
+            </div>
+            <div class="upgrade_row" id="row2">
                 <div class="upgrade_item_locked" id="fresh_fish">
                     Fresh Fish
                 </div>
-                <div class="invisible_upgrade_item_big">
-                    
+                <div class="upgrade_item_locked" id="raiser_mouze">
+                    Raiser Mouze
                 </div>
-                <div class="upgrade_item_locked" id= "cool_hats">
+            </div>
+            <div class="upgrade_row" id="row3">
+                <div class="upgrade_item_locked" id="bit_bananas">
+                    Bit Bananas
+                </div>
+            </div>
+            <div class="upgrade_row" id="row4">
+                <div class="upgrade_item_locked" id="cool_hats">
                     Cool Hats
                 </div>
-                <div class="invisible_upgrade_item_med">
-                    
+            </div>
+            <div class="upgrade_row" id="row5">
+                <div class="upgrade_item_locked" id="neatcode_practice">
+                    NeatCode
+                </div>
+            </div>
+            <div class="upgrade_row" id="row6">
+                <div class="upgrade_item_locked" id="energy_drinks">
+                    Energy Drinks
                 </div>
                 <div class="upgrade_item_locked" id="btx_4090">
                     BTX 4090
                 </div>
             </div>
-
-            <!-- MIDDLE -->
-            <div class="upgrade_mid">
-                <div class="upgrade_item" id="auto_clicker">
-                    Auto-Clicker
-                </div>
-                <div class="invisible_upgrade_item_big">
-                    
-                </div>
-                <div class="upgrade_item_locked" id="bit_bananas">
-                    Bit Bananas
-                </div>
-                <div class="invisible_upgrade_item_big">
-                    
-                </div>
-                <div class="upgrade_item_locked" id="neatcode_practice">
-                    NeatCode Practice
-                </div>
-                <div class="invisible_upgrade_item_med">
-                    
-                </div>
+            <div class="upgrade_row" id="row7">
                 <div class="upgrade_item_locked" id="deep_reasoning">
-                    Deep Reasoning
-                </div>
-            </div>
-
-            <!-- RIGHT -->
-            <div class="upgrade_right">
-                <div class="upgrade_item_locked" id="raiser_mouze">
-                    Raiser Mouze V3
-                </div>
-                <div class="invisible_upgrade_item_big">
-                    
-                </div>
-                <div class="invisible_upgrade_item_big">
-                    
-                </div>
-                <div class="invisible_upgrade_item_big">
-                    
-                </div>
-                <div class="upgrade_item_locked" id="energy_drinks">
-                    Energy Drinks
+                    Reasoning
                 </div>
             </div>
         </div>
@@ -373,7 +393,7 @@
                     </div>
                     <div class="mgr-bottom">
                         <div class="mgr-price-rest">
-                            <div class="manage-price">
+                            <div class="manage-price red_price">
                                 <span>Price: <span id="manager1price">10</span></span>
                             </div>
                             <div class="manage-price-img">
@@ -385,8 +405,8 @@
             </button>
             <button type="button" id="manager2btn" class="manage-button">
                 <div class="manager-hover-textbox">
-                    <h6 id="mgr2desc">A Baby, just learning how to click.</h6>
-                    <p id="mgr2quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                    <h6 id="mgr2desc">You must buy the previous manager(s) first!</h6>
+                    <p id="mgr2quote">"..."</p>
                 </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
@@ -398,7 +418,7 @@
                     </div>
                     <div class="mgr-bottom">
                         <div class="mgr-price-rest">
-                            <div class="manage-price">
+                            <div class="manage-price red_price">
                                 <span>Price: <span id="manager2price">10</span></span>
                             </div>
                             <div class="manage-price-img">
@@ -410,8 +430,8 @@
             </button>
             <button type="button" id="manager3btn" class="manage-button">
                 <div class="manager-hover-textbox">
-                    <h6 id="mgr3desc">A Baby, just learning how to click.</h6>
-                    <p id="mgr3quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                    <h6 id="mgr3desc">You must buy the previous manager(s) first!</h6>
+                    <p id="mgr3quote">"..."</p>
                 </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
@@ -423,7 +443,7 @@
                     </div>
                     <div class="mgr-bottom">
                         <div class="mgr-price-rest">
-                            <div class="manage-price">
+                            <div class="manage-price red_price">
                                 <span>Price: <span id="manager3price">10</span></span>
                             </div>
                             <div class="manage-price-img">
@@ -435,8 +455,8 @@
             </button>
             <button type="button" id="manager4btn" class="manage-button">
                 <div class="manager-hover-textbox">
-                    <h6 id="mgr4desc">A Baby, just learning how to click.</h6>
-                    <p id="mgr4quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                    <h6 id="mgr4desc">You must buy the previous manager(s) first!</h6>
+                    <p id="mgr4quote">"..."</p>
                 </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
@@ -448,7 +468,7 @@
                     </div>
                     <div class="mgr-bottom">
                         <div class="mgr-price-rest">
-                            <div class="manage-price">
+                            <div class="manage-price red_price">
                                 <span>Price: <span id="manager4price">10</span></span>
                             </div>
                             <div class="manage-price-img">
@@ -460,8 +480,8 @@
             </button>
             <button type="button" id="manager5btn" class="manage-button">
                 <div class="manager-hover-textbox">
-                    <h6 id="mgr5desc">A Baby, just learning how to click.</h6>
-                    <p id="mgr5quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                    <h6 id="mgr5desc">You must buy the previous manager(s) first!</h6>
+                    <p id="mgr5quote">"..."</p>
                 </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
@@ -473,7 +493,7 @@
                     </div>
                     <div class="mgr-bottom">
                         <div class="mgr-price-rest">
-                            <div class="manage-price">
+                            <div class="manage-price red_price">
                                 <span>Price: <span id="manager5price">10</span></span>
                             </div>
                             <div class="manage-price-img">
@@ -485,8 +505,8 @@
             </button>
             <button type="button" id="manager6btn" class="manage-button">
                 <div class="manager-hover-textbox">
-                    <h6 id="mgr6desc">A Baby, just learning how to click.</h6>
-                    <p id="mgr6quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                    <h6 id="mgr6desc">You must buy the previous manager(s) first!</h6>
+                    <p id="mgr6quote">"..."</p>
                 </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
@@ -498,7 +518,7 @@
                     </div>
                     <div class="mgr-bottom">
                         <div class="mgr-price-rest">
-                            <div class="manage-price">
+                            <div class="manage-price red_price">
                                 <span>Price: <span id="manager6price">10</span></span>
                             </div>
                             <div class="manage-price-img">
@@ -510,8 +530,8 @@
             </button>
             <button type="button" id="manager7btn" class="manage-button">
                 <div class="manager-hover-textbox">
-                    <h6 id="mgr7desc">A Baby, just learning how to click.</h6>
-                    <p id="mgr7quote">"Let me put this in a language you can understand...Go go ga ga."</p>
+                    <h6 id="mgr7desc">You must buy the previous manager(s) first!</h6>
+                    <p id="mgr7quote">"..."</p>
                 </div>
                 <div class="mgr-img">
                     <img src="assets\big_poo_cat.png">
@@ -523,7 +543,7 @@
                     </div>
                     <div class="mgr-bottom">
                         <div class="mgr-price-rest">
-                            <div class="manage-price">
+                            <div class="manage-price red_price">
                                 <span>Price: <span id="manager7price">10</span></span>
                             </div>
                             <div class="manage-price-img">
