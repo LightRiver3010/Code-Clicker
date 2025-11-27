@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
 :root {
     font-size: 14px;
     --padding: 1rem;
@@ -5,7 +7,8 @@
 
 * {
     box-sizing: border-box;
-    font-family: Arial;
+    letter-spacing: -2px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 /*INTRO*/
@@ -112,11 +115,6 @@
     border-radius: 100%;
 }
 
-.other_username {
-    position: absolute;
-    color: white;
-}
-
 .play_button {
     display: flex;
     align-items: center;
@@ -135,7 +133,7 @@
     border-radius: 30px;
     animation-name: playNow;
     animation-delay: 6s;
-    animation-duration: 3s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
 }
 
@@ -168,6 +166,83 @@
     animation-fill-mode: forwards;
 }
 
+@keyframes outro_speech1 {
+    0% {top: 5vh; opacity: 0%;}
+    100% {top: 15vh; opacity: 100%;}
+}
+
+@keyframes outro_speech2 {
+    0% {top: 20vh; opacity: 0%;}
+    100% {top: 35vh; opacity: 100%;}
+}
+
+@keyframes outro_speech3 {
+    0% {top: 40vh; opacity: 0%;}
+    100% {top: 55vh; opacity: 100%;}
+}
+
+.speech4 {
+    left: 25vw;
+    animation-name: outro_speech1;
+    animation-delay: 5.5s;
+}
+
+.speech4_pfp {
+    left: 16.5vw;
+    animation-name: outro_speech1;
+    animation-delay: 5.5s;
+}
+
+.speech5 {
+    left:50vw;
+    animation-name: outro_speech2;
+    animation-delay: 7.5s;
+}
+
+.speech5_pfp {
+    left: 81vw;
+    animation-name: outro_speech2;
+    animation-delay: 7.5s;
+}
+
+.speech6 {
+    left: 25vw;
+    animation-name: outro_speech3;
+    animation-delay: 9.5s;
+}
+
+.speech6_pfp {
+    left: 16.5vw;
+    animation-name: outro_speech3;
+    animation-delay: 9.5s;
+}
+
+.play_button_outro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0%;
+    cursor: pointer;
+    position: absolute;
+    height: 8vw;
+    width: 20vw;
+    left: 40vw;
+    top: 76vh;
+    font-size: 3.5vw;
+    background-color: yellowgreen;
+    color: black;
+    border: 3px solid yellowgreen;
+    border-radius: 30px;
+    animation-name: playNow;
+    animation-delay: 11.5s;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+}
+
+.play_button_outro:hover {
+    background-color: greenyellow;
+    border: 3px solid greenyellow;
+}
 
 /*HEADER*/
 .topBar {
@@ -213,7 +288,7 @@
     opacity: 1;
     left: 15%;
     top: 15%;
-    height: auto;
+    height: 75vh;
     width: 70vw;
     background-color: greenyellow;
     border:5px solid green;
@@ -227,6 +302,7 @@
 .button-side {
     display: flex;
     flex-direction: column;
+    gap: 2vw;
     height: 100%;
     max-width: 10vw;
     width: 100%;
@@ -239,7 +315,6 @@
     height: 100%;
     max-width: 25vw;
     width: 100%;
-    background-color: grey;
 }
 
 .thanks-side {
@@ -247,7 +322,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
     max-width: 30vw;
     width: 100%;
 }
@@ -257,15 +331,35 @@
     color: black;
     height: 25%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-bottom: 3px solid black;
     text-align: center;
+    padding: 5px;
+}
+
+#thank-bottom {
+    border-bottom: none;
+}
+
+.thank-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3vw;
+}
+
+.thank-desc {
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5vw;
 }
 
 #bold {
     font-weight: bold;
 }
+
 .button-desc {
     display: flex;
     align-items: center;
@@ -275,7 +369,7 @@
 }
 
 .settings-button {
-    height: auto;
+    height: 9vw;
     width: 9vw;
     border-radius: 50%;
     cursor: pointer;
@@ -284,8 +378,12 @@
     border: 5px solid black;
     color: white;
     font-size: 1.5vw;
-
 }
+
+.settings-button:hover {
+    background-color: yellowgreen;
+}
+
 
 .settings-body {
     display: flex;
@@ -392,7 +490,7 @@ body {
 
 .score {
     display: inline-block;
-    font-size: 4vw;
+    font-size: clamp(2vw, 3vw, 3.5vw);
     color: greenyellow;
     font-weight: 900;
     height: 40%;
