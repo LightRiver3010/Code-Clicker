@@ -7,6 +7,7 @@ alt_text_element = document.getElementById("bytes");
 play_button_element = document.getElementById("startplay");
 intro_element = document.getElementById("intro-scene");
 
+continue_button_element = document.getElementById("continue");
 outro_element = document.getElementById("outro_me");
 
 per_sec_element = document.getElementById("per_sec");
@@ -165,6 +166,7 @@ const upgr7 = new Upgrade(1000000, 5, "filler", "filler");
 const upgr8 = new Upgrade(10000000, 5, "filler", "filler");
 const upgr9 = new Upgrade(100000000, 5, "filler", "filler");
 
+let won = false;
 
 let one_total = 0;
 let two_total = 0;
@@ -177,7 +179,7 @@ let auto_click = 0;
 let human_total = 0;
 let corp_total = 0;
 
-let ppc = 0;
+let ppc = 7999999999999;
 let multiplier = 1;
 let per_sec = 0;
 
@@ -323,6 +325,10 @@ document.getElementById('upgrade9btn').addEventListener('click', function() {
 
 play_button_element.addEventListener('click', function() {
     intro_element.classList.add("start_over");
+})
+
+continue_button_element.addEventListener('click', function() {
+    outro_element.classList.remove("outro");
 })
 
 
@@ -535,11 +541,6 @@ function update() {
 
     lastSaved = Date.now();
 
-    if (ppc >= 8000000000000) {
-        outro_element.classList.add("outro");
-    } else {
-        outro_element.classList.remove("outro");
-    }
     if (upgr1.count > 0) {
         upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
         upgrade3_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
@@ -560,6 +561,11 @@ function update() {
     if (upgr7.count > 0 && upgr8.count > 0) {
         upgrade9_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
     }
+
+    if (ppc >= 8000000000000 && won === false) {
+        won = true;
+        outro_element.classList.add("outro");
+    } 
 
 }
 
