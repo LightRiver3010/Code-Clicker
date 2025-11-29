@@ -162,7 +162,7 @@
     width: 100%;
     z-index: 999;
     animation-name: ending;
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-fill-mode: forwards;
 }
 
@@ -514,6 +514,24 @@ body {
     font-style: italic;
     margin-bottom: 30px;
     margin-top: 30px;
+}
+
+.star {
+    position: absolute;
+    left: 2vw;
+    top: 73vh;
+    width: 6vw;
+    height: auto;
+    fill: yellowgreen;
+
+}
+
+.star:hover {
+    fill: greenyellow
+}
+
+.invisible {
+    visibility: hidden;
 }
 
 .game-bottom {
