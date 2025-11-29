@@ -149,24 +149,23 @@ class Upgrade {
 }
 }
 
-const mgr1 = new Manager(10);
-const mgr2 = new Manager(100);
-const mgr3 = new Manager(1000);
-const mgr4 = new Manager(10000);
-const mgr5 = new Manager(100000);
-const mgr6 = new Manager(1000000);
-const mgr7 = new Manager(10000000);
+const mgr1 = new Manager(15);
+const mgr2 = new Manager(200);
+const mgr3 = new Manager(3000);
+const mgr4 = new Manager(50000);
+const mgr5 = new Manager(750000);
+const mgr6 = new Manager(1200000);
+const mgr7 = new Manager(20000000);
 
-
-const upgr1 = new Upgrade(50, 10, "Buy an auto-clicker to click for you every second!", "Pretty sure this this is banned...");
-const upgr2 = new Upgrade(10, 3, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
-const upgr3 = new Upgrade(1000, 5, "filler", "filler");
-const upgr4 = new Upgrade(10000, 5, "filler", "filler");
-const upgr5 = new Upgrade(10000, 5, "filler", "filler");
-const upgr6 = new Upgrade(100000, 5, "filler", "filler");
-const upgr7 = new Upgrade(1000000, 5, "filler", "filler");
-const upgr8 = new Upgrade(10000000, 5, "filler", "filler");
-const upgr9 = new Upgrade(100000000, 5, "filler", "filler");
+const upgr1 = new Upgrade(100, 3, "Buy an auto-clicker to click for you every second!", "Banned in most competitive settings...");
+const upgr2 = new Upgrade(500, 4, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
+const upgr3 = new Upgrade(2500, 5, "filler", "filler");
+const upgr4 = new Upgrade(25000, 5, "filler", "filler");
+const upgr5 = new Upgrade(150000, 6, "filler", "filler");
+const upgr6 = new Upgrade(1000000, 8, "filler", "filler");
+const upgr7 = new Upgrade(5000000, 6, "filler", "filler");
+const upgr8 = new Upgrade(40000000, 6, "filler", "filler");
+const upgr9 = new Upgrade(750000000, 4, "filler", "filler");
 
 let won = false;
 
@@ -181,9 +180,12 @@ let auto_click = 0;
 let human_total = 0;
 let corp_total = 0;
 
-let ppc = 7999999999999;
+let base_click = 0;
+
+let ppc = 0;
 let multiplier = 1;
 let per_sec = 0;
+let mgr_per_sec = 0;
 
 let altWords = "bits";
 let altScore = 0;
@@ -371,7 +373,7 @@ function update() {
         upgr2.desc = "Make all Cats twice as efficient with some fresh fish!";
         upgr2.quote= "Meow meow...meow.";
         upgr3.desc = "Make autoclicker click with 3x the power!";
-        upgr3.quote = "Warning: banned in various competitive games...";
+        upgr3.quote = "The newest model, complete with over 13 extra buttons!";
 
     } else {
         upgr2.desc = default_desc;
@@ -576,11 +578,12 @@ function update() {
 
 
 //  CHECK FOR RED TEXT (IF NOT ENOUGH DOUGH)
-function red_check(element, price, total) {
+function red_check(price_element, total) {
+    price = parseInt(price_element.textContent.replace(/,/g, ''));
     if (total >= price) {
-        element.classList.remove("red_price");
+        price_element.classList.remove("red_price");
     } else {
-        element.classList.add("red_price");
+        price_element.classList.add("red_price");
     }
 }
 
@@ -588,48 +591,52 @@ function red_check(element, price, total) {
 
 // AUTO BITS & AUTO SAVE
 setInterval(function auto_bits() {
-    auto_click = 0;
-    auto_click += (upgr1.count)
-    auto_click = (upgr3.count > 0) ? (auto_click * (upgr3.count * 3)) : auto_click;
-    auto_click = (upgr6.count > 0) ? (auto_click * (upgr6.count * 10)) : auto_click;
-    auto_click = (upgr7.count > 0) ? (auto_click * (upgr7.count * 5)) : auto_click;
-    one_total = (upgr2.count > 0) && (mgr1.count > 0) ? (mgr1.count * (upgr2.count*2)) : mgr1.count;
+    one_total = (upgr2.count > 0) ? (mgr1.count * (upgr2.count*2)) : mgr1.count;
     two_total = mgr2.count;
     three_total = (upgr4.count > 0) ? (upgr4.count * 2 * mgr3.count) : mgr3.count;
     four_total = (upgr5.count > 0) ? (upgr5.count * 3 * mgr4.count) : mgr4.count;
-    five_total = (upgr8.count > 0) ? (upgr8.count * 2 * mgr5.count) : mgr5.count;
-    six_total = (upgr8.count > 0) ? (upgr8.count * 2 * mgr6.count) : mgr6.count;
+    five_total = mgr5.count;
+    six_total = mgr6.count;
     seven_total = (upgr9.count > 0) ? (upgr9.count * 2 * mgr7.count) : mgr7.count;
 
-    human_total = (two_total * 5) + (three_total * 10) + (four_total * 25);
+    human_total = (two_total * 5) + (three_total * 30) + (four_total * 150);
     human_total = (upgr7.count > 0) ? (human_total * 1.25) : human_total;
     human_total = Math.round(human_total);
-    corp_total = (five_total * 100) + (six_total * 1000);
+    corp_total = (five_total * 1000) + (six_total * 8000);
     corp_total = (upgr8.count > 0) ? (corp_total * 2) : corp_total;
-    ppc += (one_total)
-    ppc += (seven_total * 5000);
-    ppc += human_total + corp_total;
-    ppc += auto_click;
-    per_sec = (one_total) + human_total + corp_total + (seven_total * 5000) + auto_click;
+
+    mgr_per_sec = (one_total) + human_total + corp_total + (seven_total * 50000);
+
+    base_click = 1 * multiplier + mgr_per_sec * 0.01;
+    auto_click = upgr1.count * base_click;
+    auto_click = (upgr3.count > 0) ? (auto_click * (upgr3.count * 3)) : auto_click;
+    auto_click = (upgr6.count > 0) ? (auto_click * (upgr6.count * 10)) : auto_click;
+    auto_click = (upgr7.count > 0) ? (auto_click * (upgr7.count * 5)) : auto_click;
+    auto_click = Math.round(auto_click)
+
+    per_sec = mgr_per_sec + auto_click;
+    ppc += per_sec;
+
     update();
 
-    red_check(manager1_element_price, mgr1.price, ppc);
-    red_check(mgr2, ppc);
-    red_check(mgr3, ppc);
-    red_check(mgr4, ppc);
-    red_check(mgr5, ppc);
-    red_check(mgr6, ppc);
-    red_check(mgr7, ppc);
+    red_check(upgr1_element_price, ppc);
+    red_check(upgr2_element_price, ppc);
+    red_check(upgr3_element_price, ppc);
+    red_check(upgr4_element_price, ppc);
+    red_check(upgr5_element_price, ppc);
+    red_check(upgr6_element_price, ppc);
+    red_check(upgr7_element_price, ppc);
+    red_check(upgr8_element_price, ppc);
+    red_check(upgr9_element_price, ppc);
 
-    red_check(upgr1, ppc);
-    red_check(upgr2, ppc);
-    red_check(upgr3, ppc);
-    red_check(upgr4, ppc);
-    red_check(upgr5, ppc);
-    red_check(upgr6, ppc);
-    red_check(upgr7, ppc);
-    red_check(upgr8, ppc);
-    red_check(upgr9, ppc);
+    red_check(manager1_element_price, ppc);
+    red_check(manager2_element_price, ppc);
+    red_check(manager3_element_price, ppc);
+    red_check(manager4_element_price, ppc);
+    red_check(manager5_element_price, ppc);
+    red_check(manager6_element_price, ppc);
+    red_check(manager7_element_price, ppc);
+
 }, 1000);
 
 setInterval(function auto_save() {
@@ -639,7 +646,9 @@ setInterval(function auto_save() {
 }, 1000);
 
 function code_click() {
-    ppc = ppc + (1 * multiplier);
+    click_bonus = 1 * multiplier;
+    click_bonus += per_sec * 0.01;
+    ppc += Math.round(click_bonus);
     update()
 }
 
