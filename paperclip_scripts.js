@@ -12,6 +12,8 @@ outro_element = document.getElementById("outro_me");
 
 per_sec_element = document.getElementById("per_sec");
 
+star_won_element = document.getElementById("won-star");
+
 upgr1_element_count = document.getElementById("upgrade1count");
 upgr1_element_price = document.getElementById("upgrade1price");
 upgr1_desc = document.getElementById("upgr1desc");
@@ -565,7 +567,10 @@ function update() {
     if (ppc >= 8000000000000 && won === false) {
         won = true;
         outro_element.classList.add("outro");
-    } 
+    }
+    if (won === true) {
+        star_won_element.classList.remove("invisible");
+    }
 
 }
 
@@ -661,7 +666,7 @@ function get_data() {
         mgr6.count, mgr6.price, mgr7.count, mgr7.price, upgr1.count, upgr1.price, 
         upgr2.count, upgr2.price, upgr3.count, upgr3.price, upgr4.count, upgr4.price,
         upgr5.count, upgr5.price, upgr6.count, upgr6.price, upgr7.count, upgr7.price,
-        upgr8.count, upgr8.price, upgr9.count, upgr9.price];
+        upgr8.count, upgr8.price, upgr9.count, upgr9.price, won];
     return datas;
 }
 
@@ -734,11 +739,8 @@ function read_data(data) {
     upgr8.price = parseInt(data[31]);
     upgr9.count = parseInt(data[32]);
     upgr9.price = parseInt(data[33]);
-}
 
-function reset_data() {
-    window.localStorage.clear();
-    location.reload();
+    won = data[34];
 }
 
 // SETTINGS TOGGLES
@@ -750,6 +752,11 @@ function gif_toggle() {
     } else {
     to_change.classList.replace("clicking-square", "clicking-square-solid");
     }
+}
+
+function reset_data() {
+    window.localStorage.clear();
+    location.reload();
 }
 
 let cog = document.getElementById("settings-cog");
