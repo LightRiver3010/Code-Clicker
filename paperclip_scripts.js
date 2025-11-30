@@ -370,9 +370,9 @@ function update() {
     }
 
     if (upgr1.count > 0) {
-        upgr2.desc = "Make all Cats twice as efficient with some fresh fish!";
+        upgr2.desc = "Make all Cats produce 2x bits with some fresh fish!";
         upgr2.quote= "Meow meow...meow.";
-        upgr3.desc = "Make autoclicker click with 3x the power!";
+        upgr3.desc = "Make each autoclicker click provide 3x as many bits!";
         upgr3.quote = "The newest model, complete with over 13 extra buttons!";
 
     } else {
@@ -382,30 +382,30 @@ function update() {
         upgr3.quote = default_quote;
     }
     if (upgr3.count > 0 && upgr2.count > 0) {
-        upgr4.desc = "Make Monkeys work twice as hard with some Bit Bananas!";
-        upgr4.quote = "What even are Bit Bananas? Are they digital? Are they real?";
+        upgr4.desc = "Make Monkeys produce 2x bits with some Bit Bananas!";
+        upgr4.quote = "Give a monkey a bit banana, and he'll soon begin farming them for profit...";
     } else {
         upgr4.desc = default_desc;
         upgr4.quote = default_quote;
     }
     if (upgr4.count > 0) {
-        upgr5.desc = "Make hackers work three times as hard with some Cool Hats!";
+        upgr5.desc = "Make hackers produce 3x bits with some Cool Hats!";
         upgr5.quote = "White hats, black hats, red hats - hackers just love hats!";
     } else {
         upgr5.desc = default_desc;
         upgr5.quote = default_quote;
     }
     if (upgr5.count > 0) {
-        upgr6.desc = "Code a better mouse for ten times stronger autoclicker!";
+        upgr6.desc = "Code each autoclicker to produce 10x the bits!";
         upgr6.quote = "Heavily recommended for Computer Science Internships...";
     } else {
         upgr6.desc = default_desc;
         upgr6.quote = default_quote;
     }
     if (upgr6.count > 0) {
-        upgr7.desc = "Make all human workers 25% more efficient and click 5x as powerful with some Energy Drinks!";
+        upgr7.desc = "Make all human workers produce 25% more bits and earn 5x more bits per click with some Energy Drinks!";
         upgr7.quote = "Warning: May cause cancer of the head, neck, spine, lungs, throat, and/or death.";
-        upgr8.desc = "Boost all corporations by 50% with incredible new graphics cards!";
+        upgr8.desc = "Boost all corporation bits by 50% with incredible new graphics cards!";
         upgr8.quote = "Playing Snake.io while slacking off has never looked so beautiful...";
     } else {
         upgr7.desc = default_desc;
@@ -414,7 +414,7 @@ function update() {
         upgr8.quote = default_quote;
     }
     if (upgr8.count > 0 && upgr7.count > 0) {
-        upgr9.desc = "Boost BitGPT's production by 2x with a new deep reasoning model!";
+        upgr9.desc = "Boost BitGPT's bit production by 2x with a new deep reasoning model!";
         upgr9.quote = "I think, therefore I click...";
     } else {
         upgr9.desc = default_desc;
@@ -422,46 +422,46 @@ function update() {
     }
 
 
-    mgr1.desc = "A Cat, willing to click for bits every once in a while..."
+    mgr1.desc = "A Cat, willing to click every once in a while... (1 bps)"
     mgr1.quote = '"Oh he can click all right. But does he want to do it for YOU?"'
 
     if (mgr1.count > 0) {
-        mgr2.desc = 'A Baby, just learning how to click.';
+        mgr2.desc = 'A Baby, just learning how to click. (5 bps)';
         mgr2.quote = '"Let me put this in a language you can understand...Go go ga ga."';
     } else {
         mgr2.desc = default_desc_m;
         mgr2.quote = default_quote;
     }
     if (mgr2.count > 0) {
-        mgr3.desc = 'A Monkey, happy to mindlessly click away';
+        mgr3.desc = 'A Monkey, happy to mindlessly click away. (30 bps)';
         mgr3.quote = '"Why bother with code monkeys when you can have regular monkeys?"';
     } else {
         mgr3.desc = default_desc_m;
         mgr3.quote = default_quote;
     }
     if (mgr3.count > 0) {
-        mgr4.desc = 'A dark-web Hacker, willing to cheat in some bits...for a price.';
+        mgr4.desc = 'A dark-web Hacker, willing to cheat in some bits...for a price. (150 bps)';
         mgr4.quote = '"He browses using DuckDuckGo, in Ingonito Mode, with a VPN...untraceable."';
     } else {
         mgr4.desc = default_desc_m;
         mgr4.quote = default_quote;
     }
     if (mgr4.count > 0) {
-        mgr5.desc = 'Invest in a new startup Bitz.io specializing in bit-mining.';
+        mgr5.desc = 'Invest in a new startup Bitz.io specializing in bit-mining. (1,000 bps)';
         mgr5.quote = '"Have you heard about Light-coin? It\'s the next big thing, trust me."';
     } else {
         mgr5.desc = default_desc_m;
         mgr5.quote = default_quote;
     }
     if (mgr5.count > 0) {
-        mgr6.desc = 'Invest in a well-respected Tech Firm specializing in bit-production.';
+        mgr6.desc = 'Invest in a well-respected Tech Firm specializing in bit-production. (8,000 bps)';
         mgr6.quote = '"I think they said their HQ is in Ice-cream Cone Valley?"';
     } else {
         mgr6.desc = default_desc_m;
         mgr6.quote = default_quote;
     }
     if (mgr6.count > 0) {
-        mgr7.desc = 'Buy a share of BitGPT, a revolutionary new bit-producing ML AI LLM (TM).';
+        mgr7.desc = 'Buy a share of BitGPT, a revolutionary new bit-producing ML AI LLM. (50,000 bps)';
         mgr7.quote = '"You\'ve been warned not to ask it how many t\'s the word \'bit\' has."';
     } else {
         mgr7.desc = default_desc_m;
