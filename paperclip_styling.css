@@ -273,17 +273,21 @@
 .setting {
     display:flex;
     margin-left: auto;
-    background-color: grey;
-    font-size: 18px;
-    align-items: center;
-    max-width: 3%;
+}
+
+.setting button {
     max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .setting button img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 2.5vw;
+    height: auto;
     cursor: pointer;
+    aspect-ratio: 1;
+    object-fit: contain;
 }
 
 .setting button.clicked {
@@ -296,9 +300,9 @@
     flex-direction: column;
     position: absolute;
     opacity: 1;
-    left: 15%;
-    top: 15%;
-    height: 75vh;
+    left: 15vw;
+    top: 10vh;
+    height: auto;
     width: 70vw;
     background-color: greenyellow;
     border:5px solid green;
@@ -322,7 +326,6 @@
 .button-desc-side {
     display: flex;
     flex-direction: column;
-    height: 100%;
     max-width: 25vw;
     width: 100%;
 }
@@ -746,6 +749,7 @@ input[type="file"] {
     position: relative;
     z-index: 9;
     font-size: 1.5vw;
+    width: 7vw;
 }
 
 .upgrade_item_locked {
@@ -761,6 +765,7 @@ input[type="file"] {
     background-color: green;
     color: white;
     font-size: 1.5vw;
+    width: 7vw;
 }
 
 #row1 {
