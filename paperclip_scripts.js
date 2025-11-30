@@ -113,6 +113,8 @@ class Manager {
     }
     buy(total) {
         if (total >= this.price) {
+            purchase_sound.sound.currentTime = 0;
+            purchase_sound.sound.play();
             total -= this.price;
             this.count += 1;
             if (this.price < 3) {
@@ -138,6 +140,8 @@ class Upgrade {
     }
     buy(total) {
         if (total >= this.price) {
+            purchase_sound.sound.currentTime = 0;
+            purchase_sound.sound.play();
             total -= this.price;
             this.count += 1;
             this.price *= this.mult;
@@ -148,6 +152,21 @@ class Upgrade {
         }
 }
 }
+
+class Sounds {
+    constructor(source) {
+        this.sound = document.createElement('audio');
+        this.sound.src = source;
+        this.sound.style.display = "none";
+        this.sound.setAttribute("preload", "auto");
+        document.body.appendChild(this.sound);
+    }
+}
+
+const bgm = new Sounds("assets/bgm.mp3");
+bgm.sound.loop = true;
+const click_sound = new Sounds ("assets/mouse_click.mp3");
+const purchase_sound = new Sounds ("assets/purchase.mp3");
 
 const mgr1 = new Manager(15);
 const mgr2 = new Manager(200);
@@ -329,6 +348,7 @@ document.getElementById('upgrade9btn').addEventListener('click', function() {
 
 play_button_element.addEventListener('click', function() {
     intro_element.classList.add("start_over");
+    bgm.sound.play();
 })
 
 continue_button_element.addEventListener('click', function() {
@@ -646,6 +666,8 @@ setInterval(function auto_save() {
 }, 1000);
 
 function code_click() {
+    click_sound.sound.currentTime = 0;
+    click_sound.sound.play();
     click_bonus = 1 * multiplier;
     click_bonus += per_sec * 0.01;
     ppc += Math.round(click_bonus);
@@ -774,3 +796,11 @@ cog.addEventListener('click', function() {
     this.classList.toggle('clicked');
     settings_menu.classList.toggle('hidden');
 });
+
+function audio_toggle() {
+    if (!bgm.sound.paused) {
+        bgm.sound.pause();
+    } else {
+        bgm.sound.play();
+    }
+}
