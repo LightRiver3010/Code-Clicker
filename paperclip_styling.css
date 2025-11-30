@@ -826,6 +826,54 @@ input[type="file"] {
     object-fit: cover;
 }
 
+#manager2btn .mgr-img img{
+    content: url("assets/question_mark.jpg")
+}
+
+#manager2btn.unlocked .mgr-img img {
+    content: url("assets/baby.png")
+}
+
+#manager3btn .mgr-img img{
+    content: url("assets/question_mark.jpg")
+}
+
+#manager3btn.unlocked .mgr-img img {
+    content: url("assets/monkey.png")
+}
+
+#manager4btn .mgr-img img{
+    content: url("assets/question_mark.jpg")
+}
+
+#manager4btn.unlocked .mgr-img img {
+    content: url("assets/hacker.png")
+}
+
+#manager5btn .mgr-img img{
+    content: url("assets/question_mark.jpg")
+}
+
+#manager5btn.unlocked .mgr-img img {
+    content: url("assets/startup.jpg")
+}
+
+#manager6btn .mgr-img img{
+    content: url("assets/question_mark.jpg")
+}
+
+#manager6btn.unlocked .mgr-img img {
+    content: url("assets/tech_firm.png")
+}
+
+#manager7btn .mgr-img img{
+    content: url("assets/question_mark.jpg")
+}
+
+#manager7btn.unlocked .mgr-img img {
+    content: url("assets/bitgpt.png")
+}
+
 .mgr-rest {
     width: 100%;
     height: 100%;

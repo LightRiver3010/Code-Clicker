@@ -61,38 +61,43 @@ upgr9_quote = document.getElementById("upgr9quote");
 
 manager1_element_price = document.getElementById("manager1price");
 manager1_element_count = document.getElementById("manager1count");
+manager1_element_title = document.getElementById("manager1_title");
 manager1_element_desc = document.getElementById("mgr1desc");
 manager1_element_quote = document.getElementById("mgr1quote");
 
-
 manager2_element_price = document.getElementById("manager2price");
 manager2_element_count = document.getElementById("manager2count");
+manager2_element_title = document.getElementById("manager2_title");
 manager2_element_desc = document.getElementById("mgr2desc");
 manager2_element_quote = document.getElementById("mgr2quote");
 
-
 manager3_element_price = document.getElementById("manager3price");
 manager3_element_count = document.getElementById("manager3count");
+manager3_element_title = document.getElementById("manager3_title");
 manager3_element_desc = document.getElementById("mgr3desc");
 manager3_element_quote = document.getElementById("mgr3quote");
 
 manager4_element_price = document.getElementById("manager4price");
 manager4_element_count = document.getElementById("manager4count");
+manager4_element_title = document.getElementById("manager4_title");
 manager4_element_desc = document.getElementById("mgr4desc");
 manager4_element_quote = document.getElementById("mgr4quote");
 
 manager5_element_price = document.getElementById("manager5price");
 manager5_element_count = document.getElementById("manager5count");
+manager5_element_title = document.getElementById("manager5_title");
 manager5_element_desc = document.getElementById("mgr5desc");
 manager5_element_quote = document.getElementById("mgr5quote");
 
 manager6_element_price = document.getElementById("manager6price");
 manager6_element_count = document.getElementById("manager6count");
+manager6_element_title = document.getElementById("manager6_title");
 manager6_element_desc = document.getElementById("mgr6desc");
 manager6_element_quote = document.getElementById("mgr6quote");
 
 manager7_element_price = document.getElementById("manager7price");
 manager7_element_count = document.getElementById("manager7count");
+manager7_element_title = document.getElementById("manager7_title");
 manager7_element_desc = document.getElementById("mgr7desc");
 manager7_element_quote = document.getElementById("mgr7quote");
 
@@ -110,6 +115,7 @@ class Manager {
     constructor(price) {
         this.price = price;
         this.count = 0;
+        this.title = "???";
     }
     buy(total) {
         if (total >= this.price) {
@@ -212,6 +218,7 @@ let altScore = 0;
 let default_desc = "You must buy the previous upgrade(s) first!";
 let default_quote = '"..."'
 let default_desc_m = "You must buy the previous manager(s) first!";
+let default_title = "???";
 
 let lastSaved = Date.now();
 
@@ -444,10 +451,13 @@ function update() {
 
     mgr1.desc = "A Cat, willing to click every once in a while... (1 bps)"
     mgr1.quote = '"Oh he can click all right. But does he want to do it for YOU?"'
+    mgr1.title = "Cat";
 
     if (mgr1.count > 0) {
         mgr2.desc = 'A Baby, just learning how to click. (5 bps)';
         mgr2.quote = '"Let me put this in a language you can understand...Go go ga ga."';
+        mgr2.title = "Baby";
+        document.getElementById("manager2btn").classList.add("unlocked");
     } else {
         mgr2.desc = default_desc_m;
         mgr2.quote = default_quote;
@@ -455,6 +465,8 @@ function update() {
     if (mgr2.count > 0) {
         mgr3.desc = 'A Monkey, happy to mindlessly click away. (30 bps)';
         mgr3.quote = '"Why bother with code monkeys when you can have regular monkeys?"';
+        mgr3.title = "Monkey";
+        document.getElementById("manager3btn").classList.add("unlocked");
     } else {
         mgr3.desc = default_desc_m;
         mgr3.quote = default_quote;
@@ -462,6 +474,8 @@ function update() {
     if (mgr3.count > 0) {
         mgr4.desc = 'A dark-web Hacker, willing to cheat in some bits...for a price. (150 bps)';
         mgr4.quote = '"He browses using DuckDuckGo, in Ingonito Mode, with a VPN...untraceable."';
+        mgr4.title = "Hacker";
+        document.getElementById("manager4btn").classList.add("unlocked");
     } else {
         mgr4.desc = default_desc_m;
         mgr4.quote = default_quote;
@@ -469,6 +483,8 @@ function update() {
     if (mgr4.count > 0) {
         mgr5.desc = 'Invest in a new startup Bitz.io specializing in bit-mining. (1,000 bps)';
         mgr5.quote = '"Have you heard about Light-coin? It\'s the next big thing, trust me."';
+        mgr5.title = "Bitz.io";
+        document.getElementById("manager5btn").classList.add("unlocked");
     } else {
         mgr5.desc = default_desc_m;
         mgr5.quote = default_quote;
@@ -476,6 +492,8 @@ function update() {
     if (mgr5.count > 0) {
         mgr6.desc = 'Invest in a well-respected Tech Firm specializing in bit-production. (8,000 bps)';
         mgr6.quote = '"I think they said their HQ is in Ice-cream Cone Valley?"';
+        mgr6.title = "Tech Firm";
+        document.getElementById("manager6btn").classList.add("unlocked");
     } else {
         mgr6.desc = default_desc_m;
         mgr6.quote = default_quote;
@@ -483,6 +501,8 @@ function update() {
     if (mgr6.count > 0) {
         mgr7.desc = 'Buy a share of BitGPT, a revolutionary new bit-producing ML AI LLM. (50,000 bps)';
         mgr7.quote = '"You\'ve been warned not to ask it how many t\'s the word \'bit\' has."';
+        mgr7.title = "BitGPT";
+        document.getElementById("manager7btn").classList.add("unlocked");
     } else {
         mgr7.desc = default_desc_m;
         mgr7.quote = default_quote;
@@ -538,30 +558,37 @@ function update() {
     manager1_element_count.innerHTML = mgr1.count;
     manager1_element_desc.innerHTML = mgr1.desc;
     manager1_element_quote.innerHTML = mgr1.quote
+    manager1_element_title.innerHTML = mgr1.title;
     manager2_element_price.innerHTML = mgr2.price.toLocaleString();
     manager2_element_count.innerHTML = mgr2.count;
     manager2_element_desc.innerHTML = mgr2.desc;
     manager2_element_quote.innerHTML = mgr2.quote;
+    manager2_element_title.innerHTML = mgr2.title;
     manager3_element_price.innerHTML = mgr3.price.toLocaleString();
     manager3_element_count.innerHTML = mgr3.count;
     manager3_element_desc.innerHTML = mgr3.desc;
     manager3_element_quote.innerHTML = mgr3.quote;
+    manager3_element_title.innerHTML = mgr3.title;
     manager4_element_price.innerHTML = mgr4.price.toLocaleString();
     manager4_element_count.innerHTML = mgr4.count;
     manager4_element_desc.innerHTML = mgr4.desc;
     manager4_element_quote.innerHTML = mgr4.quote;
+    manager4_element_title.innerHTML = mgr4.title;
     manager5_element_price.innerHTML = mgr5.price.toLocaleString();
     manager5_element_count.innerHTML = mgr5.count;
     manager5_element_desc.innerHTML = mgr5.desc;
     manager5_element_quote.innerHTML = mgr5.quote;
+    manager5_element_title.innerHTML = mgr5.title;
     manager6_element_price.innerHTML = mgr6.price.toLocaleString();
     manager6_element_count.innerHTML = mgr6.count;
     manager6_element_desc.innerHTML = mgr6.desc;
     manager6_element_quote.innerHTML = mgr6.quote;
+    manager6_element_title.innerHTML = mgr6.title;
     manager7_element_price.innerHTML = mgr7.price.toLocaleString();
     manager7_element_count.innerHTML = mgr7.count;
     manager7_element_desc.innerHTML = mgr7.desc;
     manager7_element_quote.innerHTML = mgr7.quote;
+    manager7_element_title.innerHTML = mgr7.title;
 
     lastSaved = Date.now();
 
