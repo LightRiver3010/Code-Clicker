@@ -14,92 +14,114 @@ per_sec_element = document.getElementById("per_sec");
 
 star_won_element = document.getElementById("won-star");
 
-upgr1_element_count = document.getElementById("upgrade1count");
-upgr1_element_price = document.getElementById("upgrade1price");
-upgr1_desc = document.getElementById("upgr1desc");
-upgr1_quote = document.getElementById("upgr1quote");
+const upgradeElements = {};
+const managerElements = {};
 
-upgr2_element_count = document.getElementById("upgrade2count");
-upgr2_element_price = document.getElementById("upgrade2price");
-upgr2_desc = document.getElementById("upgr2desc");
-upgr2_quote = document.getElementById("upgr2quote");
+for (let i = 1; i <= 9; i++) {
+    upgradeElements[i] = {
+        count: document.getElementById(`upgrade${i}count`),
+        price: document.getElementById(`upgrade${i}price`),
+        desc: document.getElementById(`upgr${i}desc`),
+        quote: document.getElementById(`upgr${i}quote`)
+    };
+}
 
-upgr3_element_count = document.getElementById("upgrade3count");
-upgr3_element_price = document.getElementById("upgrade3price");
-upgr3_desc = document.getElementById("upgr3desc");
-upgr3_quote = document.getElementById("upgr3quote");
+for (let i = 1; i <= 7; i++) {
+    managerElements[i] = {
+        price : document.getElementById(`manager${i}price`),
+        count : document.getElementById(`manager${i}count`),
+        title : document.getElementById(`manager${i}_title`),
+        desc : document.getElementById(`mgr${i}desc`),
+        quote : document.getElementById(`mgr${i}quote`)
+    };
+}  
 
-upgr4_element_count = document.getElementById("upgrade4count");
-upgr4_element_price = document.getElementById("upgrade4price");
-upgr4_desc = document.getElementById("upgr4desc");
-upgr4_quote = document.getElementById("upgr4quote");
+// upgr1_element_count = document.getElementById("upgrade1count");
+// upgr1_element_price = document.getElementById("upgrade1price");
+// upgr1_desc = document.getElementById("upgr1desc");
+// upgr1_quote = document.getElementById("upgr1quote");
 
-upgr5_element_count = document.getElementById("upgrade5count");
-upgr5_element_price = document.getElementById("upgrade5price");
-upgr5_desc = document.getElementById("upgr5desc");
-upgr5_quote = document.getElementById("upgr5quote");
+// upgr2_element_count = document.getElementById("upgrade2count");
+// upgr2_element_price = document.getElementById("upgrade2price");
+// upgr2_desc = document.getElementById("upgr2desc");
+// upgr2_quote = document.getElementById("upgr2quote");
 
-upgr6_element_count = document.getElementById("upgrade6count");
-upgr6_element_price = document.getElementById("upgrade6price");
-upgr6_desc = document.getElementById("upgr6desc");
-upgr6_quote = document.getElementById("upgr6quote");
+// upgr3_element_count = document.getElementById("upgrade3count");
+// upgr3_element_price = document.getElementById("upgrade3price");
+// upgr3_desc = document.getElementById("upgr3desc");
+// upgr3_quote = document.getElementById("upgr3quote");
 
-upgr7_element_count = document.getElementById("upgrade7count");
-upgr7_element_price = document.getElementById("upgrade7price");
-upgr7_desc = document.getElementById("upgr7desc");
-upgr7_quote = document.getElementById("upgr7quote");
+// upgr4_element_count = document.getElementById("upgrade4count");
+// upgr4_element_price = document.getElementById("upgrade4price");
+// upgr4_desc = document.getElementById("upgr4desc");
+// upgr4_quote = document.getElementById("upgr4quote");
 
-upgr8_element_count = document.getElementById("upgrade8count");
-upgr8_element_price = document.getElementById("upgrade8price");
-upgr8_desc = document.getElementById("upgr8desc");
-upgr8_quote = document.getElementById("upgr8quote");
+// upgr5_element_count = document.getElementById("upgrade5count");
+// upgr5_element_price = document.getElementById("upgrade5price");
+// upgr5_desc = document.getElementById("upgr5desc");
+// upgr5_quote = document.getElementById("upgr5quote");
 
-upgr9_element_count = document.getElementById("upgrade9count");
-upgr9_element_price = document.getElementById("upgrade9price");
-upgr9_desc = document.getElementById("upgr9desc");
-upgr9_quote = document.getElementById("upgr9quote");
+// upgr6_element_count = document.getElementById("upgrade6count");
+// upgr6_element_price = document.getElementById("upgrade6price");
+// upgr6_desc = document.getElementById("upgr6desc");
+// upgr6_quote = document.getElementById("upgr6quote");
 
-manager1_element_price = document.getElementById("manager1price");
-manager1_element_count = document.getElementById("manager1count");
-manager1_element_title = document.getElementById("manager1_title");
-manager1_element_desc = document.getElementById("mgr1desc");
-manager1_element_quote = document.getElementById("mgr1quote");
+// upgr7_element_count = document.getElementById("upgrade7count");
+// upgr7_element_price = document.getElementById("upgrade7price");
+// upgr7_desc = document.getElementById("upgr7desc");
+// upgr7_quote = document.getElementById("upgr7quote");
 
-manager2_element_price = document.getElementById("manager2price");
-manager2_element_count = document.getElementById("manager2count");
-manager2_element_title = document.getElementById("manager2_title");
-manager2_element_desc = document.getElementById("mgr2desc");
-manager2_element_quote = document.getElementById("mgr2quote");
+// upgr8_element_count = document.getElementById("upgrade8count");
+// upgr8_element_price = document.getElementById("upgrade8price");
+// upgr8_desc = document.getElementById("upgr8desc");
+// upgr8_quote = document.getElementById("upgr8quote");
 
-manager3_element_price = document.getElementById("manager3price");
-manager3_element_count = document.getElementById("manager3count");
-manager3_element_title = document.getElementById("manager3_title");
-manager3_element_desc = document.getElementById("mgr3desc");
-manager3_element_quote = document.getElementById("mgr3quote");
+// upgr9_element_count = document.getElementById("upgrade9count");
+// upgr9_element_price = document.getElementById("upgrade9price");
+// upgr9_desc = document.getElementById("upgr9desc");
+// upgr9_quote = document.getElementById("upgr9quote");
 
-manager4_element_price = document.getElementById("manager4price");
-manager4_element_count = document.getElementById("manager4count");
-manager4_element_title = document.getElementById("manager4_title");
-manager4_element_desc = document.getElementById("mgr4desc");
-manager4_element_quote = document.getElementById("mgr4quote");
+// manager1_element_price = document.getElementById("manager1price");
+// manager1_element_count = document.getElementById("manager1count");
+// manager1_element_title = document.getElementById("manager1_title");
+// manager1_element_desc = document.getElementById("mgr1desc");
+// manager1_element_quote = document.getElementById("mgr1quote");
 
-manager5_element_price = document.getElementById("manager5price");
-manager5_element_count = document.getElementById("manager5count");
-manager5_element_title = document.getElementById("manager5_title");
-manager5_element_desc = document.getElementById("mgr5desc");
-manager5_element_quote = document.getElementById("mgr5quote");
+// manager2_element_price = document.getElementById("manager2price");
+// manager2_element_count = document.getElementById("manager2count");
+// manager2_element_title = document.getElementById("manager2_title");
+// manager2_element_desc = document.getElementById("mgr2desc");
+// manager2_element_quote = document.getElementById("mgr2quote");
 
-manager6_element_price = document.getElementById("manager6price");
-manager6_element_count = document.getElementById("manager6count");
-manager6_element_title = document.getElementById("manager6_title");
-manager6_element_desc = document.getElementById("mgr6desc");
-manager6_element_quote = document.getElementById("mgr6quote");
+// manager3_element_price = document.getElementById("manager3price");
+// manager3_element_count = document.getElementById("manager3count");
+// manager3_element_title = document.getElementById("manager3_title");
+// manager3_element_desc = document.getElementById("mgr3desc");
+// manager3_element_quote = document.getElementById("mgr3quote");
 
-manager7_element_price = document.getElementById("manager7price");
-manager7_element_count = document.getElementById("manager7count");
-manager7_element_title = document.getElementById("manager7_title");
-manager7_element_desc = document.getElementById("mgr7desc");
-manager7_element_quote = document.getElementById("mgr7quote");
+// manager4_element_price = document.getElementById("manager4price");
+// manager4_element_count = document.getElementById("manager4count");
+// manager4_element_title = document.getElementById("manager4_title");
+// manager4_element_desc = document.getElementById("mgr4desc");
+// manager4_element_quote = document.getElementById("mgr4quote");
+
+// manager5_element_price = document.getElementById("manager5price");
+// manager5_element_count = document.getElementById("manager5count");
+// manager5_element_title = document.getElementById("manager5_title");
+// manager5_element_desc = document.getElementById("mgr5desc");
+// manager5_element_quote = document.getElementById("mgr5quote");
+
+// manager6_element_price = document.getElementById("manager6price");
+// manager6_element_count = document.getElementById("manager6count");
+// manager6_element_title = document.getElementById("manager6_title");
+// manager6_element_desc = document.getElementById("mgr6desc");
+// manager6_element_quote = document.getElementById("mgr6quote");
+
+// manager7_element_price = document.getElementById("manager7price");
+// manager7_element_count = document.getElementById("manager7count");
+// manager7_element_title = document.getElementById("manager7_title");
+// manager7_element_desc = document.getElementById("mgr7desc");
+// manager7_element_quote = document.getElementById("mgr7quote");
 
 upgrade1_element_circle = document.getElementById("auto_clicker");
 upgrade2_element_circle = document.getElementById("fresh_fish");
@@ -364,12 +386,6 @@ continue_button_element.addEventListener('click', function() {
 
 
 function update() {
-    
-    if (upgr2.count === 0) {
-        multiplier = 1;
-    } else {
-        multiplier = upgr2.count + 1
-    }
     if (ppc == 1) {
         altWords = " bit (b)";
         altScore = ppc;
@@ -516,79 +532,79 @@ function update() {
     alt_score_element.innerHTML = altScore;
     alt_text_element.innerHTML = altWords;
 
-    upgr1_element_count.innerHTML = upgr1.count;
-    upgr1_element_price.innerHTML = upgr1.price.toLocaleString();
+    upgradeElements[1].count.innerHTML = upgr1.count;
+    upgradeElements[1].price.innerHTML = upgr1.price.toLocaleString();
     upgr1_desc.innerHTML = upgr1.desc;
     upgr1_quote.innerHTML = upgr1.quote;
-    upgr2_element_count.innerHTML = upgr2.count;
-    upgr2_element_price.innerHTML = upgr2.price.toLocaleString();
+    upgradeElements[2].count.innerHTML = upgr2.count;
+    upgradeElements[2].price.innerHTML = upgr2.price.toLocaleString();
     upgr2_quote.innerHTML = upgr2.quote;
     upgr2_desc.innerHTML = upgr2.desc;
-    upgr3_element_count.innerHTML = upgr3.count;
-    upgr3_element_price.innerHTML = upgr3.price.toLocaleString();
+    upgradeElements[3].count.innerHTML = upgr3.count;
+    upgradeElements[3].price.innerHTML = upgr3.price.toLocaleString();
     upgr3_quote.innerHTML = upgr3.quote;
     upgr3_desc.innerHTML = upgr3.desc;
-    upgr4_element_count.innerHTML = upgr4.count;
-    upgr4_element_price.innerHTML = upgr4.price.toLocaleString();
+    upgradeElements[4].count.innerHTML = upgr4.count;
+    upgradeElements[4].price.innerHTML = upgr4.price.toLocaleString();
     upgr4_quote.innerHTML = upgr4.quote;
     upgr4_desc.innerHTML = upgr4.desc;
-    upgr5_element_count.innerHTML = upgr5.count;
-    upgr5_element_price.innerHTML = upgr5.price.toLocaleString();
+    upgradeElements[5].count.innerHTML = upgr5.count;
+    upgradeElements[5].price.innerHTML = upgr5.price.toLocaleString();
     upgr5_quote.innerHTML = upgr5.quote;
     upgr5_desc.innerHTML = upgr5.desc;
-    upgr6_element_count.innerHTML = upgr6.count;
-    upgr6_element_price.innerHTML = upgr6.price.toLocaleString();
+    upgradeElements[6].count.innerHTML = upgr6.count;
+    upgradeElements[6].price.innerHTML = upgr6.price.toLocaleString();
     upgr6_quote.innerHTML = upgr6.quote;
     upgr6_desc.innerHTML = upgr6.desc;
-    upgr7_element_count.innerHTML = upgr7.count;
-    upgr7_element_price.innerHTML = upgr7.price.toLocaleString();
+    upgradeElements[7].count.innerHTML = upgr7.count;
+    upgradeElements[7].price.innerHTML = upgr7.price.toLocaleString();
     upgr7_quote.innerHTML = upgr7.quote;
     upgr7_desc.innerHTML = upgr7.desc;
-    upgr8_element_count.innerHTML = upgr8.count;
-    upgr8_element_price.innerHTML = upgr8.price.toLocaleString();
+    upgradeElements[8].count.innerHTML = upgr8.count;
+    upgradeElements[8].price.innerHTML = upgr8.price.toLocaleString();
     upgr8_quote.innerHTML = upgr8.quote;
     upgr8_desc.innerHTML = upgr8.desc;
-    upgr9_element_count.innerHTML = upgr9.count;
-    upgr9_element_price.innerHTML = upgr9.price.toLocaleString();
+    upgradeElements[9].count.innerHTML = upgr9.count;
+    upgradeElements[9].price.innerHTML = upgr9.price.toLocaleString();
     upgr9_quote.innerHTML = upgr9.quote;
     upgr9_desc.innerHTML = upgr9.desc;
 
 
-    manager1_element_price.innerHTML = mgr1.price.toLocaleString();
-    manager1_element_count.innerHTML = mgr1.count;
-    manager1_element_desc.innerHTML = mgr1.desc;
-    manager1_element_quote.innerHTML = mgr1.quote
-    manager1_element_title.innerHTML = mgr1.title;
-    manager2_element_price.innerHTML = mgr2.price.toLocaleString();
-    manager2_element_count.innerHTML = mgr2.count;
-    manager2_element_desc.innerHTML = mgr2.desc;
-    manager2_element_quote.innerHTML = mgr2.quote;
-    manager2_element_title.innerHTML = mgr2.title;
-    manager3_element_price.innerHTML = mgr3.price.toLocaleString();
-    manager3_element_count.innerHTML = mgr3.count;
-    manager3_element_desc.innerHTML = mgr3.desc;
-    manager3_element_quote.innerHTML = mgr3.quote;
-    manager3_element_title.innerHTML = mgr3.title;
-    manager4_element_price.innerHTML = mgr4.price.toLocaleString();
-    manager4_element_count.innerHTML = mgr4.count;
-    manager4_element_desc.innerHTML = mgr4.desc;
-    manager4_element_quote.innerHTML = mgr4.quote;
-    manager4_element_title.innerHTML = mgr4.title;
-    manager5_element_price.innerHTML = mgr5.price.toLocaleString();
-    manager5_element_count.innerHTML = mgr5.count;
-    manager5_element_desc.innerHTML = mgr5.desc;
-    manager5_element_quote.innerHTML = mgr5.quote;
-    manager5_element_title.innerHTML = mgr5.title;
-    manager6_element_price.innerHTML = mgr6.price.toLocaleString();
-    manager6_element_count.innerHTML = mgr6.count;
-    manager6_element_desc.innerHTML = mgr6.desc;
-    manager6_element_quote.innerHTML = mgr6.quote;
-    manager6_element_title.innerHTML = mgr6.title;
-    manager7_element_price.innerHTML = mgr7.price.toLocaleString();
-    manager7_element_count.innerHTML = mgr7.count;
-    manager7_element_desc.innerHTML = mgr7.desc;
-    manager7_element_quote.innerHTML = mgr7.quote;
-    manager7_element_title.innerHTML = mgr7.title;
+    managerElements[1].price.innerHTML = mgr1.price.toLocaleString();
+    managerElements[1].count.innerHTML = mgr1.count;
+    managerElements[1].desc.innerHTML = mgr1.desc;
+    managerElements[1].quote.innerHTML = mgr1.quote
+    managerElements[1].title.innerHTML = mgr1.title;
+    managerElements[2].price.innerHTML = mgr2.price.toLocaleString();
+    managerElements[2].count.innerHTML = mgr2.count;
+    managerElements[2].desc.innerHTML = mgr2.desc;
+    managerElements[2].quote.innerHTML = mgr2.quote;
+    managerElements[2].title.innerHTML = mgr2.title;
+    managerElements[3].price.innerHTML = mgr3.price.toLocaleString();
+    managerElements[3].count.innerHTML = mgr3.count;
+    managerElements[3].desc.innerHTML = mgr3.desc;
+    managerElements[3].quote.innerHTML = mgr3.quote;
+    managerElements[3].title.innerHTML = mgr3.title;
+    managerElements[4].price.innerHTML = mgr4.price.toLocaleString();
+    managerElements[4].count.innerHTML = mgr4.count;
+    managerElements[4].desc.innerHTML = mgr4.desc;
+    managerElements[4].quote.innerHTML = mgr4.quote;
+    managerElements[4].title.innerHTML = mgr4.title;
+    managerElements[5].price.innerHTML = mgr5.price.toLocaleString();
+    managerElements[5].count.innerHTML = mgr5.count;
+    managerElements[5].desc.innerHTML = mgr5.desc;
+    managerElements[5].quote.innerHTML = mgr5.quote;
+    managerElements[5].title.innerHTML = mgr5.title;
+    managerElements[6].price.innerHTML = mgr6.price.toLocaleString();
+    managerElements[6].count.innerHTML = mgr6.count;
+    managerElements[6].desc.innerHTML = mgr6.desc;
+    managerElements[6].quote.innerHTML = mgr6.quote;
+    managerElements[6].title.innerHTML = mgr6.title;
+    managerElements[7].price.innerHTML = mgr7.price.toLocaleString();
+    managerElements[7].count.innerHTML = mgr7.count;
+    managerElements[7].desc.innerHTML = mgr7.desc;
+    managerElements[7].quote.innerHTML = mgr7.quote;
+    managerElements[7].title.innerHTML = mgr7.title;
 
     lastSaved = Date.now();
 
@@ -666,23 +682,23 @@ setInterval(function auto_bits() {
 
     update();
 
-    red_check(upgr1_element_price, ppc);
-    red_check(upgr2_element_price, ppc);
-    red_check(upgr3_element_price, ppc);
-    red_check(upgr4_element_price, ppc);
-    red_check(upgr5_element_price, ppc);
-    red_check(upgr6_element_price, ppc);
-    red_check(upgr7_element_price, ppc);
-    red_check(upgr8_element_price, ppc);
-    red_check(upgr9_element_price, ppc);
+    red_check(upgradeElements[1].price, ppc);
+    red_check(upgradeElements[2].price, ppc);
+    red_check(upgradeElements[3].price, ppc);
+    red_check(upgradeElements[4].price, ppc);
+    red_check(upgradeElements[5].price, ppc);
+    red_check(upgradeElements[6].price, ppc);
+    red_check(upgradeElements[7].price, ppc);
+    red_check(upgradeElements[8].price, ppc);
+    red_check(upgradeElements[9].price, ppc);
 
-    red_check(manager1_element_price, ppc);
-    red_check(manager2_element_price, ppc);
-    red_check(manager3_element_price, ppc);
-    red_check(manager4_element_price, ppc);
-    red_check(manager5_element_price, ppc);
-    red_check(manager6_element_price, ppc);
-    red_check(manager7_element_price, ppc);
+    red_check(managerElements[1].price, ppc);
+    red_check(managerElements[2].price, ppc);
+    red_check(managerElements[3].price, ppc);
+    red_check(managerElements[4].price, ppc);
+    red_check(managerElements[5].price, ppc);
+    red_check(managerElements[6].price, ppc);
+    red_check(managerElements[7].price, ppc);
 
 }, 1000);
 
