@@ -692,14 +692,26 @@ setInterval(function auto_save() {
     console.log("Data Saved!")
 }, 1000);
 
-function code_click() {
+
+// CLICKING ON THE CLICKER IMAGE
+let clickImg = document.getElementById("click-box");
+
+clickImg.addEventListener('click', function() {
+    clickImg.classList.remove('clicked');
+    void clickImg.offsetWidth;
+    clickImg.classList.add('clicked');
     click_sound.sound.currentTime = 0;
     click_sound.sound.play();
     click_bonus = 1 * multiplier;
     click_bonus += per_sec * 0.01;
     ppc += Math.round(click_bonus);
-    update()
-}
+    update();
+})
+
+clickImg.addEventListener('animationend', function() {
+    clickImg.classList.remove('clicked');
+})
+
 
 
 // GAME SAVING AND LOADING
