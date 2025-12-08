@@ -541,23 +541,13 @@ setInterval(function auto_bits() {
 
     update();
 
-    red_check(upgradeElements[1].price, ppc);
-    red_check(upgradeElements[2].price, ppc);
-    red_check(upgradeElements[3].price, ppc);
-    red_check(upgradeElements[4].price, ppc);
-    red_check(upgradeElements[5].price, ppc);
-    red_check(upgradeElements[6].price, ppc);
-    red_check(upgradeElements[7].price, ppc);
-    red_check(upgradeElements[8].price, ppc);
-    red_check(upgradeElements[9].price, ppc);
+    for (let i = 1; i <= 9; i++) {
+        red_check(upgradeElements[i].price, ppc);
+    }
 
-    red_check(managerElements[1].price, ppc);
-    red_check(managerElements[2].price, ppc);
-    red_check(managerElements[3].price, ppc);
-    red_check(managerElements[4].price, ppc);
-    red_check(managerElements[5].price, ppc);
-    red_check(managerElements[6].price, ppc);
-    red_check(managerElements[7].price, ppc);
+    for (let i = 1; i <=7; i++) {
+        red_check(managerElements[i].price, ppc);
+    }
 
 }, 1000);
 
@@ -605,6 +595,11 @@ function loadGame() {
 }
 
 function get_data() {
+    let datas = [ppc, multiplier, upgrades, managers, won];
+    return datas;
+}
+
+function get_csv_data() {
     let datas = [ppc, multiplier,
         mgr1.count, mgr1.price, mgr2.count, mgr2.price, mgr3.count, 
         mgr3.price, mgr4.count, mgr4.price, mgr5.count, mgr5.price,
@@ -617,7 +612,7 @@ function get_data() {
 
 function exporting() {
     // Seleting the data to export
-    datas = get_data();
+    datas = get_csv_data();
     const data = datas.join('\n'); //Join each element together with a newline (each value on its own line)
     const link = document.createElement('a'); //Create a new anchor element on the page called 'link'
     link.href = "data:text/csv;charset=utf-8," + encodeURI(data); //Link is now referencing an actual link (encoded by URI)
@@ -643,12 +638,34 @@ document.getElementById('import-btn').addEventListener('click', function() { //A
     reader.onload = function(e) { //onload = when FileReader is done reading the file. The 'e' is an object containing information on the file being read
         const csv = e.target.result; //csv is now equal to the target (the csv file)'s result (which is the information)
         const data = parseCSV(csv); //Parse the data (turn it into a readable format; an array)
-        read_data(data); //Call another function that reads the data into the game's format (see below)
+        read_csv_data(data); //Call another function that reads the data into the game's format (see below)
     }
     reader.readAsText(file); //Actually start reading the file (calling the above function)
 })
 
 function read_data(data) {
+    ppc = parseInt(data[0]);
+    multiplier = parseInt(data[1]);
+
+    for (let i = 1; i <= 7; i++) {
+        managers[i].count = data[3][i].count;
+        managers[i].price = data[3][i].price;
+        managers[i].desc = data[3][i].desc;
+        managers[i].quote = data[3][i].quote;
+        managers[i].title = data[3][i].title;
+    }
+
+    for (let i = 1; i <= 9; i++) {
+        upgrades[i].count = data[2][i].count;
+        upgrades[i].price = data[2][i].price;
+        upgrades[i].desc = data[2][i].desc;
+        upgrades[i].quote = data[2][i].quote;
+    }
+
+    won = data[4];
+    }
+
+function read_csv_data(data) {
     ppc = parseInt(data[0]);
     multiplier = parseInt(data[1]);
     mgr1.count = parseInt(data[2]);
@@ -686,7 +703,8 @@ function read_data(data) {
     upgr9.price = parseInt(data[33]);
 
     won = data[34];
-}
+    }
+
 
 // SETTINGS TOGGLES
 function gif_toggle() {
