@@ -24,7 +24,7 @@ for (let i = 1; i <= 9; i++) {
         desc: document.getElementById(`upgrade${i}_desc`),
         quote: document.getElementById(`upgrade${i}_quote`)
     };
-}
+} 
 
 for (let i = 1; i <= 7; i++) {
     managerElements[i] = {
@@ -51,6 +51,8 @@ class Manager {
         this.price = price;
         this.count = 0;
         this.title = "???";
+        this.desc = "You must buy the previous manager(s) first!";
+        this.quote = "...";
     }
     buy(total) {
         if (total >= this.price) {
@@ -72,12 +74,12 @@ class Manager {
 }
 
 class Upgrade {
-    constructor(price, mult, desc, quote) {
+    constructor(price, mult) {
         this.price = price;
         this.count = 0;
         this.mult = mult;
-        this.desc = desc;
-        this.quote = quote;
+        this.desc = "You must buy the previous upgrade(s) first!";
+        this.quote = "...";
     }
     buy(total) {
         if (total >= this.price) {
@@ -117,17 +119,24 @@ const mgr5 = new Manager(750000);
 const mgr6 = new Manager(1200000);
 const mgr7 = new Manager(20000000);
 
+// (first one must be defined; it will automatically be unlocked)
+mgr1.desc = "A Cat, willing to click every once in a while... (1 bps)"
+mgr1.quote = '"Oh he can click all right. But does he want to do it for YOU?"'
+mgr1.title = "Cat";
+
 const managers = [null, mgr1, mgr2, mgr3, mgr4, mgr5, mgr6, mgr7];
 
-const upgr1 = new Upgrade(100, 3, "Buy an auto-clicker to click for you every second!", "Banned in most competitive settings...");
-const upgr2 = new Upgrade(500, 4, "Make Cats work twice as hard with fresh fish!", "Meow meow...meow.");
-const upgr3 = new Upgrade(2500, 5, "filler", "filler");
-const upgr4 = new Upgrade(25000, 5, "filler", "filler");
-const upgr5 = new Upgrade(150000, 6, "filler", "filler");
-const upgr6 = new Upgrade(1000000, 8, "filler", "filler");
-const upgr7 = new Upgrade(5000000, 6, "filler", "filler");
-const upgr8 = new Upgrade(40000000, 6, "filler", "filler");
-const upgr9 = new Upgrade(750000000, 4, "filler", "filler");
+const upgr1 = new Upgrade(100, 3);
+upgr1.desc = "Buy an auto-clicker to click for you every second!";
+upgr1.quote = "Banned in most competitive settings...";
+const upgr2 = new Upgrade(500, 4);
+const upgr3 = new Upgrade(2500, 5);
+const upgr4 = new Upgrade(25000, 5);
+const upgr5 = new Upgrade(150000, 6);
+const upgr6 = new Upgrade(1000000, 8);
+const upgr7 = new Upgrade(5000000, 6);
+const upgr8 = new Upgrade(40000000, 6);
+const upgr9 = new Upgrade(750000000, 4);
 
 const upgrades = [null, upgr1, upgr2, upgr3, upgr4, upgr5, upgr6, upgr7, upgr8, upgr9];
 
@@ -154,143 +163,35 @@ let mgr_per_sec = 0;
 let altWords = "bits";
 let altScore = 0;
 
-let default_desc = "You must buy the previous upgrade(s) first!";
-let default_quote = '"..."'
-let default_desc_m = "You must buy the previous manager(s) first!";
-let default_title = "???";
 
-let lastSaved = Date.now();
-
-
-
+// (first one is always able to be bought)
 document.getElementById('manager1btn').addEventListener('click', function() {
     ppc = mgr1.buy(ppc);
     update();
 })
 
-document.getElementById('manager2btn').addEventListener('click', function() {
-    if (mgr1.count >= 1) {
-        ppc = mgr2.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-
-document.getElementById('manager3btn').addEventListener('click', function() {
-    if (mgr2.count >= 1) {
-        ppc = mgr3.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-
-document.getElementById('manager4btn').addEventListener('click', function() {
-    if (mgr3.count >= 1) {
-        ppc = mgr4.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-
-document.getElementById('manager5btn').addEventListener('click', function() {
-    if (mgr4.count >= 1) {
-        ppc = mgr5.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-
-document.getElementById('manager6btn').addEventListener('click', function() {
-    if (mgr5.count >= 1) {
-        ppc = mgr6.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-
-document.getElementById('manager7btn').addEventListener('click', function() {
-    if (mgr6.count >= 1) {
-        ppc = mgr7.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-
+for (let i = 2; i <= 7; i++) {
+    document.getElementById(`manager${i}btn`).addEventListener('click', function () {
+        if (managers[i-1].count >= 1) {
+            ppc = managers[i].buy(ppc);
+            update();
+        }
+    })
+}
 
 document.getElementById('upgrade1btn').addEventListener('click', function() {
     ppc = upgr1.buy(ppc);
     update();
 })
-document.getElementById('upgrade2btn').addEventListener('click', function() {
-    if (upgr1.count >= 1) {
-        ppc = upgr2.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-document.getElementById('upgrade3btn').addEventListener('click', function() {
-    if (upgr1.count >= 1) {
-        ppc = upgr3.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-document.getElementById('upgrade4btn').addEventListener('click', function() {
-    if (upgr3.count >= 1 && upgr2.count >= 1) {
-        ppc = upgr4.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-document.getElementById('upgrade5btn').addEventListener('click', function() {
-    if (upgr4.count >= 1) {
-        ppc = upgr5.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-document.getElementById('upgrade6btn').addEventListener('click', function() {
-    if (upgr5.count >= 1) {
-        ppc = upgr6.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-document.getElementById('upgrade7btn').addEventListener('click', function() {
-    if (upgr6.count >= 1) {
-        ppc = upgr7.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-document.getElementById('upgrade8btn').addEventListener('click', function() {
-    if (upgr6.count >= 1) {
-        ppc = upgr8.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
-document.getElementById('upgrade9btn').addEventListener('click', function() {
-    if (upgr8.count >= 1 && upgr7.count >= 1) {
-        ppc = upgr9.buy(ppc);
-        update();
-    } else {
-        ppc = ppc;
-    }
-})
+
+for (let i = 2; i <= 9; i++) {
+    document.getElementById(`upgrade${i}btn`).addEventListener('click', function () {
+        if (upgrades[i-1].count >= 1) {
+            ppc = upgrades[i].buy(ppc);
+            update();
+        }
+    })
+}
 
 play_button_element.addEventListener('click', function() {
     intro_element.classList.add("start_over");
@@ -303,6 +204,8 @@ continue_button_element.addEventListener('click', function() {
 
 
 function update() {
+
+    // UPDATING ALT TEXT
     if (ppc == 1) {
         altWords = " bit (b)";
         altScore = ppc;
@@ -329,126 +232,80 @@ function update() {
         altScore = Math.round(ppc / 8000000000000);
     }
 
+    // UPDATING DESCRIPTIONS AND QUOTES OF UPGRADES/MANAGERS
     if (upgr1.count > 0) {
         upgr2.desc = "Make all Cats produce 2x bits with some fresh fish!";
         upgr2.quote= "Meow meow...meow.";
         upgr3.desc = "Make each autoclicker click provide 3x as many bits!";
         upgr3.quote = "The newest model, complete with over 13 extra buttons!";
-
-    } else {
-        upgr2.desc = default_desc;
-        upgr2.quote = default_quote;
-        upgr3.desc = default_desc;
-        upgr3.quote = default_quote;
     }
     if (upgr3.count > 0 && upgr2.count > 0) {
         upgr4.desc = "Make Monkeys produce 2x bits with some Bit Bananas!";
         upgr4.quote = "Give a monkey a bit banana, and he'll soon begin farming them for profit...";
-    } else {
-        upgr4.desc = default_desc;
-        upgr4.quote = default_quote;
-    }
+    } 
     if (upgr4.count > 0) {
         upgr5.desc = "Make hackers produce 3x bits with some Cool Hats!";
         upgr5.quote = "White hats, black hats, red hats - hackers just love hats!";
-    } else {
-        upgr5.desc = default_desc;
-        upgr5.quote = default_quote;
-    }
+    } 
     if (upgr5.count > 0) {
         upgr6.desc = "Code each autoclicker to produce 10x the bits!";
         upgr6.quote = "Heavily recommended for Computer Science Internships...";
-    } else {
-        upgr6.desc = default_desc;
-        upgr6.quote = default_quote;
     }
     if (upgr6.count > 0) {
         upgr7.desc = "Make all human workers produce 25% more bits and earn 5x more bits per click with some Energy Drinks!";
         upgr7.quote = "Warning: May cause cancer of the head, neck, spine, lungs, throat, and/or death.";
         upgr8.desc = "Boost all corporation bits by 50% with incredible new graphics cards!";
         upgr8.quote = "Playing Snake.io while slacking off has never looked so beautiful...";
-    } else {
-        upgr7.desc = default_desc;
-        upgr7.quote = default_quote;
-        upgr8.desc = default_desc;
-        upgr8.quote = default_quote;
     }
     if (upgr8.count > 0 && upgr7.count > 0) {
         upgr9.desc = "Boost BitGPT's bit production by 2x with a new deep reasoning model!";
         upgr9.quote = "I think, therefore I click...";
-    } else {
-        upgr9.desc = default_desc;
-        upgr9.quote = default_quote;
     }
-
-
-    mgr1.desc = "A Cat, willing to click every once in a while... (1 bps)"
-    mgr1.quote = '"Oh he can click all right. But does he want to do it for YOU?"'
-    mgr1.title = "Cat";
 
     if (mgr1.count > 0) {
         mgr2.desc = 'A Baby, just learning how to click. (5 bps)';
         mgr2.quote = '"Let me put this in a language you can understand...Go go ga ga."';
         mgr2.title = "Baby";
         document.getElementById("manager2btn").classList.add("unlocked");
-    } else {
-        mgr2.desc = default_desc_m;
-        mgr2.quote = default_quote;
     }
     if (mgr2.count > 0) {
         mgr3.desc = 'A Monkey, happy to mindlessly click away. (30 bps)';
         mgr3.quote = '"Why bother with code monkeys when you can have regular monkeys?"';
         mgr3.title = "Monkey";
         document.getElementById("manager3btn").classList.add("unlocked");
-    } else {
-        mgr3.desc = default_desc_m;
-        mgr3.quote = default_quote;
     }
     if (mgr3.count > 0) {
         mgr4.desc = 'A dark-web Hacker, willing to cheat in some bits...for a price. (150 bps)';
         mgr4.quote = '"He browses using DuckDuckGo, in Ingonito Mode, with a VPN...untraceable."';
         mgr4.title = "Hacker";
         document.getElementById("manager4btn").classList.add("unlocked");
-    } else {
-        mgr4.desc = default_desc_m;
-        mgr4.quote = default_quote;
     }
     if (mgr4.count > 0) {
         mgr5.desc = 'Invest in a new startup Bitz.io specializing in bit-mining. (1,000 bps)';
         mgr5.quote = '"Have you heard about Light-coin? It\'s the next big thing, trust me."';
         mgr5.title = "Bitz.io";
         document.getElementById("manager5btn").classList.add("unlocked");
-    } else {
-        mgr5.desc = default_desc_m;
-        mgr5.quote = default_quote;
     }
     if (mgr5.count > 0) {
         mgr6.desc = 'Invest in a well-respected Tech Firm specializing in bit-production. (8,000 bps)';
         mgr6.quote = '"I think they said their HQ is in Ice-cream Cone Valley?"';
         mgr6.title = "Tech Firm";
         document.getElementById("manager6btn").classList.add("unlocked");
-    } else {
-        mgr6.desc = default_desc_m;
-        mgr6.quote = default_quote;
     }
     if (mgr6.count > 0) {
         mgr7.desc = 'Buy a share of BitGPT, a revolutionary new bit-producing ML AI LLM. (50,000 bps)';
         mgr7.quote = '"You\'ve been warned not to ask it how many t\'s the word \'bit\' has."';
         mgr7.title = "BitGPT";
         document.getElementById("manager7btn").classList.add("unlocked");
-    } else {
-        mgr7.desc = default_desc_m;
-        mgr7.quote = default_quote;
     }
     
-
+    // UPDATING BIT COUNT AND PER-SECOND BIT COUNT/ALTERNATE TEXT 
     ppc_element.innerHTML = ppc.toLocaleString();
-
     per_sec_element.innerHTML = per_sec.toLocaleString();
-
     alt_score_element.innerHTML = altScore;
     alt_text_element.innerHTML = altWords;
 
+    // UPDATING INFO OF UPGRADES
     for (let i = 1; i <= 9; i++) {
         upgradeElements[i].count.innerHTML = upgrades[i].count;
         upgradeElements[i].price.innerHTML = upgrades[i].price.toLocaleString();
@@ -456,7 +313,7 @@ function update() {
         upgradeElements[i].quote.innerHTML = upgrades[i].quote;
     }
 
-
+    // UPDATING INFO FOR MANAGERS
     for (let i = 1; i <= 7; i++) {
      managerElements[i].count.innerHTML = managers[i].count;
      managerElements[i].price.innerHTML = managers[i].price.toLocaleString();
@@ -465,8 +322,8 @@ function update() {
      managerElements[i].title.innerHTML = managers[i].title;
     }
 
-    lastSaved = Date.now();
 
+    // REPLACING UPGRADE TREE CIRLCES
     if (upgr1.count > 0) {
         upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
         upgrade3_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
@@ -488,6 +345,7 @@ function update() {
         upgrade9_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
     }
 
+    // CHECKING WIN CONDITIONS
     if (ppc >= 8000000000000 && won === false) {
         won = true;
         outro_element.classList.add("outro");
@@ -495,7 +353,6 @@ function update() {
     if (won === true) {
         star_won_element.classList.remove("invisible");
     }
-
 }
 
 
@@ -513,6 +370,7 @@ function red_check(price_element, total) {
 
 // AUTO BITS & AUTO SAVE
 setInterval(function auto_bits() {
+    // FINDING THE TOTALS FOR EACH MANAGER + UPGRADE COMBO
     one_total = (upgr2.count > 0) ? (mgr1.count * (upgr2.count*2)) : mgr1.count;
     two_total = mgr2.count;
     three_total = (upgr4.count > 0) ? (upgr4.count * 2 * mgr3.count) : mgr3.count;
@@ -529,7 +387,11 @@ setInterval(function auto_bits() {
 
     mgr_per_sec = (one_total) + human_total + corp_total + (seven_total * 50000);
 
-    base_click = 1 * multiplier + mgr_per_sec * 0.01;
+    multiplier = 1 + mgr_per_sec * 0.05;
+
+    base_click = 1 * multiplier;
+
+    // FINDING THE TOTALS FOR THE AUTOCLICKER UPGRADE
     auto_click = upgr1.count * base_click;
     auto_click = (upgr3.count > 0) ? (auto_click * (upgr3.count * 3)) : auto_click;
     auto_click = (upgr6.count > 0) ? (auto_click * (upgr6.count * 10)) : auto_click;
@@ -538,9 +400,9 @@ setInterval(function auto_bits() {
 
     per_sec = mgr_per_sec + auto_click;
     ppc += per_sec;
-
     update();
 
+    // RED CHECKS
     for (let i = 1; i <= 9; i++) {
         red_check(upgradeElements[i].price, ppc);
     }
@@ -551,6 +413,7 @@ setInterval(function auto_bits() {
 
 }, 1000);
 
+//SAVING DATA IN BROWSER
 setInterval(function auto_save() {
     data = get_data();
     localStorage.setItem('clickerData', JSON.stringify(data));
@@ -576,7 +439,6 @@ clickImg.addEventListener('click', function() {
 clickImg.addEventListener('animationend', function() {
     clickImg.classList.remove('clicked');
 })
-
 
 
 // GAME SAVING AND LOADING
