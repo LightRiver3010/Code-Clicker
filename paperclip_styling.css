@@ -1077,3 +1077,35 @@ input[type="file"] {
     border: 5px solid lavender;
     right: 200px;
 }
+
+/* MOBILE */
+
+.mobile-screen {
+    position: absolute;
+    z-index: 0;
+}
+
+@media (max-width: 1200px) {
+    .mobile-screen {
+        background-color: black;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        z-index: 9999;
+        flex-direction: column;
+        padding: 9vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-screen img {
+        max-width: 30vh;
+        height: auto;
+    }
+
+    .mobile-screen h2 {
+        color: white;
+        text-align: center;
+        font-size: clamp(1vh, 3vh, 10vh);
+    }
+}
