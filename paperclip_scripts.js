@@ -108,6 +108,7 @@ class Sounds {
 
 const bgm = new Sounds("assets/bgm.mp3");
 bgm.sound.loop = true;
+bgm.sound.volume = 0.3;
 const click_sound = new Sounds ("assets/mouse_click.mp3");
 const purchase_sound = new Sounds ("assets/purchase.mp3");
 
@@ -366,8 +367,6 @@ function red_check(price_element, total) {
     }
 }
 
-
-
 // AUTO BITS & AUTO SAVE
 setInterval(function auto_bits() {
     // FINDING THE TOTALS FOR EACH MANAGER + UPGRADE COMBO
@@ -566,7 +565,6 @@ function read_csv_data(data) {
 
     won = data[34];
     }
-
 
 // SETTINGS TOGGLES
 function gif_toggle() {
