@@ -1082,7 +1082,8 @@ input[type="file"] {
 
 .mobile-screen {
     position: absolute;
-    z-index: 0;
+    z-index: -5;
+    opacity: 0;
 }
 
 @media (max-width: 1200px) {
@@ -1096,6 +1097,7 @@ input[type="file"] {
         padding: 9vh;
         align-items: center;
         justify-content: center;
+        opacity: 100;
     }
 
     .mobile-screen img {
