@@ -1,0 +1,5 @@
+dist/
+icons/
+node_modules/
+*.zip
+*.exe
