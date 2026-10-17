@@ -17,4 +17,7 @@ pool = oracledb.create_pool(
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    with pool.acquire() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT 1 FROM dual")
+            return {"status": "ok", "db": cur.fetchone()[0]}
