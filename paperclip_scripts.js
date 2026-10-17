@@ -3,6 +3,7 @@ ppc_element = document.getElementById("paperclip");
 
 alt_score_element = document.getElementById("alt-score");
 alt_text_element = document.getElementById("bytes");
+click_count_element = document.getElementById("click-count");
 
 play_button_element = document.getElementById("startplay");
 intro_element = document.getElementById("intro-scene");
@@ -155,6 +156,7 @@ let human_total = 0;
 let corp_total = 0;
 
 let base_click = 0;
+let click_count = 0;
 
 let ppc = 0;
 let multiplier = 1;
@@ -432,6 +434,8 @@ clickImg.addEventListener('click', function() {
     click_bonus = 1 * multiplier;
     click_bonus += per_sec * 0.01;
     ppc += Math.round(click_bonus);
+    click_count++;
+    click_count_element.innerHTML = click_count;
     update();
 })
 

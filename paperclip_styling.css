@@ -585,6 +585,15 @@ body {
     font-size: 1.5vw;
 }
 
+.click-count {
+    display: flex;
+    position: absolute;
+    left: 1vw;
+    top: 81vh;
+    width: 15vw;
+    height: auto;
+}
+
 .game-bottom {
     min-height: 7vh;
     display: flex;

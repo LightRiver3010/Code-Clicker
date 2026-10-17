@@ -3,3 +3,4 @@ icons/
 node_modules/
 *.zip
 *.exe
+.env
