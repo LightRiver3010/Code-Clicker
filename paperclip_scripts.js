@@ -530,7 +530,7 @@ document.getElementById('import-btn').addEventListener('click', function() { //A
 
 function read_data(data) {
     ppc = parseInt(data[0]);
-    lifetimePPC = parseInt(data[-1]);
+    lifetimePPC = parseInt(data[5]);
     multiplier = parseInt(data[1]);
 
     for (let i = 1; i <= 7; i++) {
@@ -553,7 +553,7 @@ function read_data(data) {
 
 function read_csv_data(data) {
     ppc = parseInt(data[0]);
-    lifetimePPC = parseInt(data[-1]);
+    lifetimePPC = parseInt(data[35]);
     multiplier = parseInt(data[1]);
     mgr1.count = parseInt(data[2]);
     mgr1.price = parseInt(data[3]);
