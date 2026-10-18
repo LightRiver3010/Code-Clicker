@@ -4,16 +4,12 @@
 // While testing locally, open the game at http://localhost:PORT (not 127.0.0.1),
 // so the game and the API count as the same site and the cookie is sent.
 
-// =====================================================================
-// 1. CONNECT THESE SIX HOOKS TO YOUR GAME (the only part you must edit)
-// =====================================================================
+// --- Hooks to actual game ---
 const hooks = {
-  // Return the object that holds ALL of your game's state.
   getSaveData: () => {
     const [ppc, multiplier, upgrades, managers, won, lifetimePPC] = get_data();
     return { ppc, multiplier, upgrades, managers, won, lifetimePPC };
   },
-  // Replace the game's state with `data` and redraw the screen.
   applySaveData: (data) => {
     ppc = data.ppc;
     multiplier = data.multiplier;
@@ -23,7 +19,6 @@ const hooks = {
     copyInto(managers, data.managers);
     update();
   },
-  // Stop and restart the game loop (your setInterval timer).
   pauseGame: () => {
     stopGameLoop();
   },
@@ -33,7 +28,7 @@ const hooks = {
   getHeadlineStat: (data) => { // "Headline stat aka lifetime bits"
     return data.lifetimePPC;
   },
-  // Delete the game's own save from localStorage (used when logging out).
+  // used for logging out; clear imported save data
   clearLocalSave: () => {
     localStorage.removeItem('clickerData');
   },
@@ -45,12 +40,10 @@ function copyInto(target, saved) { //Must copy items to prevent pointers at outd
   }
 }
 
-// =====================================================================
-// 2. SETTINGS AND SHARED VARIABLES
-// =====================================================================
+
 const API_URL =
   location.hostname === "localhost"
-    ? "http://localhost:8000"
+    ? "http://localhost:5500"
     : "https://api.savaryn.me";
 const META_KEY = "cloud_meta"; // where we remember how this device relates to the cloud
 const AUTOSAVE_MS = 60 * 1000; // upload about once a minute
@@ -66,11 +59,9 @@ let uploading = false;
 const el = (id) => document.getElementById(id);
 const fmt = (n) => Number(n).toLocaleString();
 
-// =====================================================================
-// 3. TALKING TO THE SERVER
-// =====================================================================
-// Sends one request and always returns { status, data }. Status 0 means
-// "couldn't reach the server". `body` can be an object or ready-made JSON text.
+// --- Talking to server ---
+// Sends one request and always returns { status, data }. 
+// Status 0 means it couldn't reach the server
 async function api(path, method = "GET", body) {
   try {
     const res = await fetch(API_URL + path, {
@@ -96,7 +87,7 @@ async function api(path, method = "GET", body) {
   }
 }
 
-// Turns a failed reply into a message a player can read.
+// Turns a failed reply into a readable message the player can understand
 function errorText(res) {
   if (res.status === 0) return "Can't reach the server. Try again later.";
   if (res.status === 429) return "Too many attempts. Wait a bit and try again.";
@@ -106,9 +97,7 @@ function errorText(res) {
   return "Something went wrong (" + res.status + ").";
 }
 
-// =====================================================================
-// 4. REMEMBERING HOW THIS DEVICE RELATES TO THE CLOUD
-// =====================================================================
+// --- Connecting the player's device info to the cloud ---
 // meta = { playerId, baseRevision, syncedJson }
 //   baseRevision: the cloud revision this device's save was last based on
 //   syncedJson:   the exact save text that matched the cloud at that moment
@@ -154,9 +143,7 @@ function snapshot() {
 const hasProgress = () =>
   Number(hooks.getHeadlineStat(hooks.getSaveData())) > 0;
 
-// =====================================================================
-// 5. PAGE TEXT AND BUTTONS
-// =====================================================================
+// --- Setting status for cloud bar in settings --- 
 function setStatus(text) {
   el("cloud-status").textContent = text;
 }
@@ -167,11 +154,9 @@ function showLoggedIn(on) {
   el("cloud-logout").hidden = !on;
 }
 
-// =====================================================================
-// 6. LOADING, COMPARING AND SAVING
-// =====================================================================
-// Runs after login and on every page load: asks the server for the cloud
-// save, then decides what to do with it. Nothing is uploaded before this ends.
+// --- Actually loading/comparing save data
+// This function runs immediately, each page load. It asks server (DB) for cloud save (via FastAPI/Caddy)
+// Once it has that save, it decides what to do with it (implement, most of the time)
 async function startSync() {
   const res = await api("/save");
 
@@ -220,10 +205,13 @@ async function reconcile(cloud, local) {
   }
   // The cloud is older than what we last saw (e.g. the database was reset)
   if (cloud.revision < baseRevision) return askWhichToKeep(cloud);
+
   // Nothing unsent on this device: just take the cloud's version
   if (!unsynced) return applyCloud(cloud);
+
   // Only this device changed things: send them up
   if (cloud.revision === baseRevision) return upload(baseRevision);
+
   // Both sides changed (e.g. played offline while another device saved): ask
   return askWhichToKeep(cloud);
 }
@@ -280,10 +268,9 @@ async function askWhichToKeep(cloud) {
   else applyCloud(cloud);
 }
 
-// =====================================================================
-// 7. LOGIN, REGISTER, LOGOUT
-// =====================================================================
-// Used by both the Log in and Register buttons (path is "/login" or "/register").
+
+
+// --- Login/Logout/Registering
 async function authenticate(path) {
   const username = el("cloud-username").value.trim();
   const password = el("cloud-password").value;
@@ -324,9 +311,9 @@ async function logout() {
   location.reload();
 }
 
-// =====================================================================
-// 8. AUTOSAVE AND START-UP
-// =====================================================================
+
+
+// --- Autosaving & Startup
 // Runs every minute: retries the first sync if we were offline, otherwise
 // uploads when there is progress the cloud hasn't seen.
 async function autosaveTick() {

@@ -49,7 +49,9 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # Setting up CORS such that only the game's website can call the API & send cookies
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[ALLOWED_ORIGIN],
+    allow_origins=[ALLOWED_ORIGIN,
+                   "http://127.0.0.1:5500",
+                   "http://localhost:5500"],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT"],
     allow_headers=["Content-Type"],
