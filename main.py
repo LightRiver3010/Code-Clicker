@@ -173,7 +173,7 @@ def read_save(cur, player_id: int) -> Dict[str, Any]:
     row = cur.fetchone()
     if row is None:
         return {"revision": 0, "game_state": None}  # "no save yet"
-    return {"revision": int(row[1]), "game_state": json.loads(row[0])}
+    return {"revision": int(row[1]), "game_state": row[0]}
 
 @app.get("/save")
 def get_save(player_id: int = Depends(current_player)):
