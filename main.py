@@ -177,7 +177,9 @@ def read_save(cur, player_id: int) -> Dict[str, Any]:
 def get_save(player_id: int = Depends(current_player)):
     with pool.acquire() as conn:
         with conn.cursor() as cur:
-            return read_save(cur, player_id) # Gets the save value associated with the user's id
+            result = read_save(cur, player_id)
+    result["player_id"] = player_id
+    return result
         
 @app.put("/save") #Put-ting the user's save data into the DB
 def put_save(body: SaveIn, player_id: int = Depends(current_player)):

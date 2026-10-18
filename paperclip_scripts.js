@@ -159,6 +159,7 @@ let base_click = 0;
 let click_count = 0;
 
 let ppc = 0;
+let lifetimePPC = 0;
 let multiplier = 1;
 let per_sec = 0;
 let mgr_per_sec = 0;
@@ -370,7 +371,7 @@ function red_check(price_element, total) {
 }
 
 // AUTO BITS & AUTO SAVE
-setInterval(function auto_bits() {
+function auto_bits() {
     // FINDING THE TOTALS FOR EACH MANAGER + UPGRADE COMBO
     one_total = (upgr2.count > 0) ? (mgr1.count * (upgr2.count*2)) : mgr1.count;
     two_total = mgr2.count;
@@ -401,6 +402,7 @@ setInterval(function auto_bits() {
 
     per_sec = mgr_per_sec + auto_click;
     ppc += per_sec;
+    lifetimePPC += per_sec;
     update();
 
     // RED CHECKS
@@ -412,7 +414,24 @@ setInterval(function auto_bits() {
         red_check(managerElements[i].price, ppc);
     }
 
-}, 1000);
+}
+
+// Must get game loop value to prevent saving clashes while uploading to DB
+let gameLoop = null;
+
+function startGameLoop() {
+    if (gameLoop == null) {
+        gameLoop = setInterval(auto_bits, 1000);
+    }
+}
+
+function stopGameLoop() {
+    clearInterval(gameLoop);
+    gameLoop = null;
+}
+
+startGameLoop();
+
 
 //SAVING DATA IN BROWSER
 setInterval(function auto_save() {
@@ -434,6 +453,7 @@ clickImg.addEventListener('click', function() {
     click_bonus = 1 * multiplier;
     click_bonus += per_sec * 0.01;
     ppc += Math.round(click_bonus);
+    lifetimePPC += Math.round(click_bonus);
     click_count++;
     click_count_element.innerHTML = click_count;
     update();
@@ -460,7 +480,7 @@ function loadGame() {
 }
 
 function get_data() {
-    let datas = [ppc, multiplier, upgrades, managers, won];
+    let datas = [ppc, multiplier, upgrades, managers, won, lifetimePPC];
     return datas;
 }
 
@@ -471,7 +491,7 @@ function get_csv_data() {
         mgr6.count, mgr6.price, mgr7.count, mgr7.price, upgr1.count, upgr1.price, 
         upgr2.count, upgr2.price, upgr3.count, upgr3.price, upgr4.count, upgr4.price,
         upgr5.count, upgr5.price, upgr6.count, upgr6.price, upgr7.count, upgr7.price,
-        upgr8.count, upgr8.price, upgr9.count, upgr9.price, won];
+        upgr8.count, upgr8.price, upgr9.count, upgr9.price, won, lifetimePPC];
     return datas;
 }
 
@@ -510,6 +530,7 @@ document.getElementById('import-btn').addEventListener('click', function() { //A
 
 function read_data(data) {
     ppc = parseInt(data[0]);
+    lifetimePPC = parseInt(data[-1]);
     multiplier = parseInt(data[1]);
 
     for (let i = 1; i <= 7; i++) {
@@ -532,6 +553,7 @@ function read_data(data) {
 
 function read_csv_data(data) {
     ppc = parseInt(data[0]);
+    lifetimePPC = parseInt(data[-1]);
     multiplier = parseInt(data[1]);
     mgr1.count = parseInt(data[2]);
     mgr1.price = parseInt(data[3]);

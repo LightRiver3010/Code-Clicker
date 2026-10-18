@@ -4,6 +4,7 @@
 <head>
     <meta title="Code Clicker - Cookie Clicker for Code!">
     <script src="paperclip_scripts.js" defer></script>
+    <script type="module" src="cloud.js"></script>
     <link rel="stylesheet" type="text/css" href="paperclip_styling.css">
     <link rel="icon" type="image/x-icon" href="assets/no_border.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,6 +152,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div id="cloud-panel" class="account-row">
+                    <span id="cloud-status">Loading...</span>
+                    <input id="cloud-username" placeholder="username" autocomplete="username">
+                    <input id="cloud-password" type="password" placeholder="password" autocomplete="current-password">
+                    <button id="cloud-login">Log in</button>
+                    <button id="cloud-register">Register</button>
+                    <button id="cloud-logout" hidden>Log out</button>
                 </div>
              </div>
 

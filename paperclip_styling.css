@@ -427,6 +427,38 @@
     margin-right: 5px;
 }
 
+.account-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 0;
+    border-top: 3px solid black;
+    font-size: 1.1vw;
+}
+
+#cloud-status {
+    flex: 1;
+}
+
+.account-row input {
+    width: 12vw;
+    height: 2.5vw;
+    font-size: 1vw;
+    letter-spacing: 0;
+}
+
+.account-row button {
+    height: 2.5vw;
+    padding: 0 1vw;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+.account-row [hidden] {
+    display: none !important;
+}
+
 .hidden {
     opacity: 0;
     z-index: 0;
