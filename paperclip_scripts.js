@@ -402,6 +402,14 @@ function auto_bits() {
 
     per_sec = mgr_per_sec + auto_click;
     ppc += per_sec;
+    console.log({
+    lifetimePPC,
+    per_sec,
+    mgr_per_sec,
+    auto_click,
+    multiplier,
+    base_click
+});
     lifetimePPC += per_sec;
     update();
 
