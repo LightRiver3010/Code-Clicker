@@ -34,10 +34,16 @@ const hooks = {
   },
 };
 
-function copyInto(target, saved) { //Must copy items to prevent pointers at outdated objects
-  for (const key of Object.keys(saved)) {
-    Object.assign(target[key], saved[key]);
-  }
+function copyInto(target, saved) { // Copy items to prevent pointer errors with old saves
+    if (!saved) return;
+
+    for (const key of Object.keys(saved)) {
+        if (target[key] == null || saved[key] == null) {
+            continue;
+        }
+
+        Object.assign(target[key], saved[key]);
+    }
 }
 
 
