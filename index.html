@@ -85,7 +85,18 @@
             <p><a href="mailto:james.savaryn@gmail.com"> Email Me! </a></p>
         </div>
         <div class="setting">
-             <button id="settings-cog"><img id = "cog-pic" src="assets\settings.png"></button>
+             <button id="leaderboard-button" class="topbar-icon-button" aria-label="Open leaderboard">
+                <img id="leaderboard-pic" src="assets\leaderboard.png" alt="">
+             </button>
+             <div id="leaderboard-menu" class="leaderboard-menu hidden" aria-labelledby="leaderboard-button">
+                <div class="leaderboard-title">LEADERBOARD</div>
+                <div class="leaderboard-subtitle">TOP 5 LIFETIME BITS</div>
+                <div id="leaderboard-status" class="leaderboard-status">Loading...</div>
+                <ol id="leaderboard-list" class="leaderboard-list"></ol>
+             </div>
+             <button id="settings-cog" class="topbar-icon-button" aria-label="Open settings">
+                <img id="cog-pic" src="assets\settings.png" alt="">
+             </button>
              <div id = "settings-menu" class="settings-menu hidden">
                 <div class="settings-titles">
                     <div class="settings-title">

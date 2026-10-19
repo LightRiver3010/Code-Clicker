@@ -165,6 +165,28 @@ def logout(response: Response):
     ) # Just delete the user's cookie on logout; they'll fetch it again later with login
     return {"ok": True}
 
+@app.get("/leaderboard") # Fetch the top 5 users with the most lifetime bits from the DB
+def leaderboard():
+    with pool.acquire() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT p.username, "
+                "       NVL(JSON_VALUE(gs.game_state, "
+                "'$.lifetimePPC' RETURNING NUMBER DEFAULT 0 ON ERROR), 0) AS lifetime_bits "
+                "FROM players p "
+                "JOIN game_saves gs ON gs.player_id = p.player_id "
+                "ORDER BY lifetime_bits DESC, p.username ASC "
+                "FETCH FIRST 5 ROWS ONLY"
+            )
+            rows = cur.fetchall()
+
+    return {
+        "leaderboard": [
+            {"username": row[0], "lifetimePPC": row[1]}
+            for row in rows
+        ]
+    }
+
 def read_save(cur, player_id: int) -> Dict[str, Any]:
     cur.execute(
         "SELECT game_state, revision FROM game_saves WHERE player_id = :p",

@@ -12,6 +12,7 @@ The project was entirely self-paced and self-taught; no college courses or lectu
 ## Major Features
 - **7 Managers and 9 Upgrades —** For steady progression and lots of unlockable content
 - **Auto-Save & Manual Save/Load —** For convenience and the ability to play across computers, respectively
+- **Global Leaderboard —** View the top five players ranked by lifetime bits
 - **Responsive Design —** So the game looks good on any type of laptop screen
 - **About two hours of gameplay —** Long enough to be completed in one huge stretch or a few shorter sessions
 - **Intro and Outro Cutscenes —** To mark the beginning and end of the game in a fun way

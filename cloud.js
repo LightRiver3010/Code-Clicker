@@ -93,6 +93,57 @@ async function api(path, method = "GET", body) {
   }
 }
 
+function renderLeaderboard(entries) {
+  const list = el("leaderboard-list");
+  const status = el("leaderboard-status");
+  list.replaceChildren();
+
+  if (!entries.length) {
+    status.textContent = "No saved scores yet.";
+    return;
+  }
+
+  status.textContent = "";
+  for (const entry of entries) {
+    const row = document.createElement("li");
+    row.className = "leaderboard-entry";
+
+    const username = document.createElement("span");
+    username.textContent = entry.username;
+
+    const score = document.createElement("span");
+    score.className = "leaderboard-score";
+    score.textContent = fmt(entry.lifetimePPC) + " bits";
+
+    row.append(username, score);
+    list.appendChild(row);
+  }
+}
+
+async function loadLeaderboard() {
+  const status = el("leaderboard-status");
+  status.textContent = "Loading...";
+  const result = await api("/leaderboard");
+
+  if (result.status !== 200 || !result.data || !Array.isArray(result.data.leaderboard)) {
+    status.textContent = errorText(result);
+    el("leaderboard-list").replaceChildren();
+    return;
+  }
+
+  renderLeaderboard(result.data.leaderboard);
+}
+
+const leaderboardButton = el("leaderboard-button");
+const leaderboardMenu = el("leaderboard-menu");
+leaderboardButton.addEventListener("click", function () {
+  this.classList.toggle("clicked");
+  leaderboardMenu.classList.toggle("hidden");
+  if (!leaderboardMenu.classList.contains("hidden")) {
+    loadLeaderboard();
+  }
+});
+
 // Turns a failed reply into a readable message the player can understand
 function errorText(res) {
   if (res.status === 0) return "Can't reach the server. Try again later.";
