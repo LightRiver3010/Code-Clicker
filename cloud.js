@@ -11,10 +11,10 @@ const hooks = {
     return { ppc, multiplier, upgrades, managers, won, lifetimePPC };
   },
   applySaveData: (data) => {
-    ppc = data.ppc;
+    ppc = Math.ceil(Number(data.ppc)) || 0;
     multiplier = data.multiplier;
     won = data.won;
-    lifetimePPC = data.lifetimePPC;
+    lifetimePPC = Math.ceil(Number(data.lifetimePPC)) || 0;
     copyInto(upgrades, data.upgrades);
     copyInto(managers, data.managers);
     update();
@@ -328,9 +328,32 @@ async function askWhichToKeep(cloud) {
 
 
 // --- Login/Logout/Registering
+const LOCAL_DEBUG_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]"]);
+const DEBUG_GRANT_BITS = 8000000000000;
+
+function tryLocalDebugGrant(path, username, password) {
+  if (
+    path !== "/login" ||
+    !LOCAL_DEBUG_HOSTS.has(location.hostname) ||
+    username.toLowerCase() !== "lightriver" ||
+    password !== ""
+  ) {
+    return false;
+  }
+
+  const save = hooks.getSaveData();
+  save.ppc += DEBUG_GRANT_BITS;
+  save.lifetimePPC += DEBUG_GRANT_BITS;
+  hooks.applySaveData(save);
+  localStorage.setItem("clickerData", JSON.stringify(get_data()));
+  setStatus("Local debug grant applied: 1 TB.");
+  return true;
+}
+
 async function authenticate(path) {
   const username = el("cloud-username").value.trim();
   const password = el("cloud-password").value;
+  if (tryLocalDebugGrant(path, username, password)) return;
   if (!username || !password) return setStatus("Enter a username and password.");
 
   setStatus("Working...");

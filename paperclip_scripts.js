@@ -22,6 +22,7 @@ for (let i = 1; i <= 9; i++) {
     upgradeElements[i] = {
         count: document.getElementById(`upgrade${i}_count`),
         price: document.getElementById(`upgrade${i}_price`),
+        title: document.getElementById(`upgrade${i}btn`).querySelector(".upgrade-title"),
         desc: document.getElementById(`upgrade${i}_desc`),
         quote: document.getElementById(`upgrade${i}_quote`)
     };
@@ -64,7 +65,7 @@ class Manager {
             if (this.price < 3) {
                 this.price += 1;
             } else {
-                this.price *= 1.15;
+                this.price *= 1.17;
                 this.price = Math.round(this.price);
             }
             return total;
@@ -75,15 +76,16 @@ class Manager {
 }
 
 class Upgrade {
-    constructor(price, mult) {
+    constructor(price, mult, maxPurchases) {
         this.price = price;
         this.count = 0;
         this.mult = mult;
+        this.maxPurchases = maxPurchases;
         this.desc = "You must buy the previous upgrade(s) first!";
         this.quote = "...";
     }
     buy(total) {
-        if (total >= this.price) {
+        if (total >= this.price && this.count < this.maxPurchases) {
             purchase_sound.sound.currentTime = 0;
             purchase_sound.sound.play();
             total -= this.price;
@@ -95,6 +97,9 @@ class Upgrade {
             return total;
         }
 }
+    isMaxed() {
+        return this.count >= this.maxPurchases;
+    }
 }
 
 class Sounds {
@@ -128,19 +133,31 @@ mgr1.title = "Cat";
 
 const managers = [null, mgr1, mgr2, mgr3, mgr4, mgr5, mgr6, mgr7];
 
-const upgr1 = new Upgrade(100, 3);
+const upgr1 = new Upgrade(100, 3, 10);
 upgr1.desc = "Buy an auto-clicker to click for you every second!";
 upgr1.quote = "Banned in most competitive settings...";
-const upgr2 = new Upgrade(500, 4);
-const upgr3 = new Upgrade(2500, 5);
-const upgr4 = new Upgrade(25000, 5);
-const upgr5 = new Upgrade(150000, 6);
-const upgr6 = new Upgrade(1000000, 8);
-const upgr7 = new Upgrade(5000000, 6);
-const upgr8 = new Upgrade(40000000, 6);
-const upgr9 = new Upgrade(750000000, 4);
+const upgr2 = new Upgrade(500, 4, 5);
+const upgr3 = new Upgrade(2500, 5, 3);
+const upgr4 = new Upgrade(25000, 5, 5);
+const upgr5 = new Upgrade(150000, 6, 3);
+const upgr6 = new Upgrade(1000000, 8, 2);
+const upgr7 = new Upgrade(5000000, 6, 3);
+const upgr8 = new Upgrade(40000000, 6, 2);
+const upgr9 = new Upgrade(750000000, 4, 3);
 
 const upgrades = [null, upgr1, upgr2, upgr3, upgr4, upgr5, upgr6, upgr7, upgr8, upgr9];
+const upgradeRequirements = [
+    null,
+    [],
+    [1],
+    [1],
+    [2, 3],
+    [4],
+    [5],
+    [6],
+    [6],
+    [7, 8]
+];
 
 let won = false;
 
@@ -190,7 +207,9 @@ document.getElementById('upgrade1btn').addEventListener('click', function() {
 
 for (let i = 2; i <= 9; i++) {
     document.getElementById(`upgrade${i}btn`).addEventListener('click', function () {
-        if (upgrades[i-1].count >= 1) {
+        const requirementsMet = upgradeRequirements[i]
+            .every(requirement => upgrades[requirement].count >= 1);
+        if (requirementsMet && !upgrades[i].isMaxed()) {
             ppc = upgrades[i].buy(ppc);
             update();
         }
@@ -204,6 +223,7 @@ play_button_element.addEventListener('click', function() {
 
 continue_button_element.addEventListener('click', function() {
     outro_element.classList.remove("outro");
+    outro_element.setAttribute("hidden", "");
 })
 
 
@@ -309,12 +329,35 @@ function update() {
     alt_score_element.innerHTML = altScore;
     alt_text_element.innerHTML = altWords;
 
+    const upgradeUnlocked = [
+        null,
+        true,
+        upgr1.count > 0,
+        upgr1.count > 0,
+        upgr2.count > 0 && upgr3.count > 0,
+        upgr4.count > 0,
+        upgr5.count > 0,
+        upgr6.count > 0,
+        upgr6.count > 0,
+        upgr7.count > 0 && upgr8.count > 0
+    ];
+
     // UPDATING INFO OF UPGRADES
     for (let i = 1; i <= 9; i++) {
         upgradeElements[i].count.innerHTML = upgrades[i].count;
-        upgradeElements[i].price.innerHTML = upgrades[i].price.toLocaleString();
+        upgradeElements[i].price.innerHTML = upgrades[i].isMaxed()
+            ? "MAXED"
+            : upgrades[i].price.toLocaleString();
         upgradeElements[i].desc.innerHTML = upgrades[i].desc;
         upgradeElements[i].quote.innerHTML = upgrades[i].quote;
+        upgradeElements[i].title.textContent = upgradeUnlocked[i]
+            ? upgradeElements[i].title.dataset.name
+            : "???";
+        document.getElementById(`upgrade${i}btn`).disabled = upgrades[i].isMaxed();
+        document.getElementById(`upgrade${i}btn`).classList.toggle(
+            "upgrade-locked",
+            !upgradeUnlocked[i]
+        );
     }
 
     // UPDATING INFO FOR MANAGERS
@@ -324,30 +367,41 @@ function update() {
      managerElements[i].desc.innerHTML =  managers[i].desc;
      managerElements[i].quote.innerHTML = managers[i].quote;
      managerElements[i].title.innerHTML = managers[i].title;
+     const managerButton = document.getElementById(`manager${i}btn`);
+     managerButton.classList.toggle(
+         "manager-locked",
+         i > 1 && managers[i - 1].count < 1
+     );
+     managerButton.classList.toggle(
+         "manager-count-large",
+         managers[i].count >= 100
+     );
     }
 
 
-    // REPLACING UPGRADE TREE CIRLCES
-    if (upgr1.count > 0) {
-        upgrade2_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
-        upgrade3_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
+    // UPDATE UPGRADE VISIBILITY AND TREE PATHS
+    for (let i = 1; i <= 9; i++) {
+        const button = document.getElementById(`upgrade${i}btn`);
+        const node = document.getElementById([
+            null, "auto_clicker", "fresh_fish", "raiser_mouze",
+            "bit_bananas", "cool_hats", "neatcode_practice",
+            "energy_drinks", "btx_4090", "deep_reasoning"
+        ][i]);
+        button.classList.remove("upgrade-hidden");
+        button.classList.toggle("upgrade-locked", !upgradeUnlocked[i]);
+        node.classList.remove("upgrade-hidden");
+        node.classList.toggle("upgrade_item", upgradeUnlocked[i]);
+        node.classList.toggle("upgrade_item_locked", !upgradeUnlocked[i]);
+        node.textContent = upgradeUnlocked[i] || upgrades[i].count > 0
+            ? node.dataset.name
+            : "???";
     }
-    if (upgr2.count > 0 && upgr3.count > 0) {
-        upgrade4_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
-    }
-    if (upgr4.count > 0) {
-        upgrade5_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
-    }
-    if (upgr5.count > 0) {
-        upgrade6_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
-    }
-    if (upgr6.count > 0) {
-        upgrade7_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
-        upgrade8_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
-    }
-    if (upgr7.count > 0 && upgr8.count > 0) {
-        upgrade9_element_circle.classList.replace("upgrade_item_locked", "upgrade_item")
-    }
+    document.getElementById("connector-1-2").classList.toggle("path-purchased", upgr2.count > 0 || upgr3.count > 0);
+    document.getElementById("connector-2-3").classList.toggle("path-purchased", upgr4.count > 0);
+    document.getElementById("connector-3-4").classList.toggle("path-purchased", upgr5.count > 0);
+    document.getElementById("connector-4-5").classList.toggle("path-purchased", upgr6.count > 0);
+    document.getElementById("connector-5-6").classList.toggle("path-purchased", upgr7.count > 0 || upgr8.count > 0);
+    document.getElementById("connector-6-7").classList.toggle("path-purchased", upgr9.count > 0);
 
     // CHECKING WIN CONDITIONS
     if (ppc >= 8000000000000 && won === false) {
@@ -363,7 +417,7 @@ function update() {
 //  CHECK FOR RED TEXT (IF NOT ENOUGH DOUGH)
 function red_check(price_element, total) {
     price = parseInt(price_element.textContent.replace(/,/g, ''));
-    if (total >= price) {
+    if (Number.isNaN(price) || total >= price) {
         price_element.classList.remove("red_price");
     } else {
         price_element.classList.add("red_price");
@@ -373,34 +427,36 @@ function red_check(price_element, total) {
 // AUTO BITS & AUTO SAVE
 function auto_bits() {
     // FINDING THE TOTALS FOR EACH MANAGER + UPGRADE COMBO
-    one_total = (upgr2.count > 0) ? (mgr1.count * (upgr2.count*2)) : mgr1.count;
+    const diminishingBonus = (base, count) =>
+        count > 0 ? 1 + (base - 1) * Math.sqrt(count) : 1;
+    one_total = mgr1.count * diminishingBonus(2, upgr2.count);
     two_total = mgr2.count;
-    three_total = (upgr4.count > 0) ? (upgr4.count * 2 * mgr3.count) : mgr3.count;
-    four_total = (upgr5.count > 0) ? (upgr5.count * 3 * mgr4.count) : mgr4.count;
+    three_total = mgr3.count * diminishingBonus(2, upgr4.count);
+    four_total = mgr4.count * diminishingBonus(3, upgr5.count);
     five_total = mgr5.count;
     six_total = mgr6.count;
-    seven_total = (upgr9.count > 0) ? (upgr9.count * 2 * mgr7.count) : mgr7.count;
+    seven_total = mgr7.count * diminishingBonus(2, upgr9.count);
 
     human_total = (two_total * 5) + (three_total * 30) + (four_total * 150);
-    human_total = (upgr7.count > 0) ? (human_total * 1.25) : human_total;
+    human_total *= diminishingBonus(1.25, upgr7.count);
     human_total = Math.round(human_total);
     corp_total = (five_total * 1000) + (six_total * 8000);
-    corp_total = (upgr8.count > 0) ? (corp_total * 2) : corp_total;
+    corp_total *= diminishingBonus(1.5, upgr8.count);
 
     mgr_per_sec = (one_total) + human_total + corp_total + (seven_total * 50000);
 
-    multiplier = 1 + mgr_per_sec * 0.05;
+    multiplier = 1 + Math.sqrt(mgr_per_sec) * 0.05;
 
     base_click = 1 * multiplier;
 
     // FINDING THE TOTALS FOR THE AUTOCLICKER UPGRADE
     auto_click = upgr1.count * base_click;
-    auto_click = (upgr3.count > 0) ? (auto_click * (upgr3.count * 3)) : auto_click;
-    auto_click = (upgr6.count > 0) ? (auto_click * (upgr6.count * 10)) : auto_click;
-    auto_click = (upgr7.count > 0) ? (auto_click * (upgr7.count * 5)) : auto_click;
+    auto_click *= diminishingBonus(3, upgr3.count);
+    auto_click *= diminishingBonus(10, upgr6.count);
+    auto_click *= diminishingBonus(5, upgr7.count);
     auto_click = Math.round(auto_click)
 
-    per_sec = mgr_per_sec + auto_click;
+    per_sec = Math.ceil(mgr_per_sec + auto_click);
     ppc += per_sec;
     console.log({
     lifetimePPC,
@@ -410,7 +466,9 @@ function auto_bits() {
     multiplier,
     base_click
 });
+    ppc = Math.ceil(ppc);
     lifetimePPC += per_sec;
+    lifetimePPC = Math.ceil(lifetimePPC);
     update();
 
     // RED CHECKS
@@ -537,9 +595,9 @@ document.getElementById('import-btn').addEventListener('click', function() { //A
 })
 
 function read_data(data) {
-    ppc = parseInt(data[0]);
+    ppc = Math.ceil(Number(data[0])) || 0;
     const savedLifetime = Number(data[5]);
-    lifetimePPC = Number.isFinite(savedLifetime) ? savedLifetime : 0;
+    lifetimePPC = Number.isFinite(savedLifetime) ? Math.ceil(savedLifetime) : 0;
     multiplier = parseInt(data[1]);
 
     for (let i = 1; i <= 7; i++) {
@@ -561,9 +619,9 @@ function read_data(data) {
     }
 
 function read_csv_data(data) {
-    ppc = parseInt(data[0]);
+    ppc = Math.ceil(Number(data[0])) || 0;
     const savedLifetime = Number(data[35]);
-    lifetimePPC = Number.isFinite(savedLifetime) ? savedLifetime : 0;
+    lifetimePPC = Number.isFinite(savedLifetime) ? Math.ceil(savedLifetime) : 0;
     multiplier = parseInt(data[1]);
     mgr1.count = parseInt(data[2]);
     mgr1.price = parseInt(data[3]);

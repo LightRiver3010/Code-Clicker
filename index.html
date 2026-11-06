@@ -200,7 +200,7 @@
                     <polygon points="50,5 61,38 95,38 67,59 78,92 50,72 22,92 33,59 5,38 39,38">
                 </svg>
                 <div class="version-box">
-                    <div class="version-num highlight">v2.0</div>
+                    <div class="version-num highlight">v3.0</div>
                 </div>
                 <div class="click-count">
                     <div class="version-num highlight">Click Count: <span id="click-count">0</span></div>
@@ -230,7 +230,7 @@
                     <p id="upgrade1_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Auto-Clicker</div>
+                    <div class="upgrade-title" data-name="Auto-Clicker">Auto-Clicker</div>
                     <div class="upgrade-count" id="upgrade1_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -250,7 +250,7 @@
                     <p id="upgrade2_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Fresh Fish</div>
+                    <div class="upgrade-title" data-name="Fresh Fish">Fresh Fish</div>
                     <div class="upgrade-count" id="upgrade2_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -270,7 +270,7 @@
                     <p id="upgrade3_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Raiser Mouze</div>
+                    <div class="upgrade-title" data-name="Raiser Mouze">Raiser Mouze</div>
                     <div class="upgrade-count" id="upgrade3_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -290,7 +290,7 @@
                     <p id="upgrade4_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Bit Bananas</div>
+                    <div class="upgrade-title" data-name="Bit Bananas">Bit Bananas</div>
                     <div class="upgrade-count" id="upgrade4_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -310,7 +310,7 @@
                     <p id="upgrade5_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Cool Hats</div>
+                    <div class="upgrade-title" data-name="Cool Hats">Cool Hats</div>
                     <div class="upgrade-count" id="upgrade5_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -330,7 +330,7 @@
                     <p id="upgrade6_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">NeatCode</div>
+                    <div class="upgrade-title" data-name="NeatCode">NeatCode</div>
                     <div class="upgrade-count" id="upgrade6_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -350,7 +350,7 @@
                     <p id="upgrade7_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title" id="upgr7title">Energy Drinks</div>
+                    <div class="upgrade-title" id="upgr7title" data-name="Energy Drinks">Energy Drinks</div>
                     <div class="upgrade-count" id="upgrade7_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -370,7 +370,7 @@
                     <p id="upgrade8_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">BTX 4090</div>
+                    <div class="upgrade-title" data-name="BTX 4090">BTX 4090</div>
                     <div class="upgrade-count" id="upgrade8_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -390,7 +390,7 @@
                     <p id="upgrade9_quote">"..."</p>
                 </div>
                 <div class="upgrade-top">
-                    <div class="upgrade-title">Reasoning</div>
+                    <div class="upgrade-title" data-name="Reasoning">Reasoning</div>
                     <div class="upgrade-count" id="upgrade9_count">0</div>
                 </div>
                 <div class="upgrade-below">
@@ -408,43 +408,49 @@
         </div>
         <div class="upgrade_tree">
             <div class="upgrade_row" id="row1">
-                <div class="upgrade_item" id="auto_clicker">
+                <div class="upgrade_item" id="auto_clicker" data-name="Auto-Clicker">
                     Auto-Clicker
                 </div>
             </div>
+            <div class="upgrade-connector branch-connector" id="connector-1-2"></div>
             <div class="upgrade_row" id="row2">
-                <div class="upgrade_item_locked" id="fresh_fish">
+                <div class="upgrade_item_locked" id="fresh_fish" data-name="Fresh Fish">
                     Fresh Fish
                 </div>
-                <div class="upgrade_item_locked" id="raiser_mouze">
+                <div class="upgrade_item_locked" id="raiser_mouze" data-name="Raiser Mouze">
                     Raiser Mouze
                 </div>
             </div>
+            <div class="upgrade-connector" id="connector-2-3"></div>
             <div class="upgrade_row" id="row3">
-                <div class="upgrade_item_locked" id="bit_bananas">
+                <div class="upgrade_item_locked" id="bit_bananas" data-name="Bit Bananas">
                     Bit Bananas
                 </div>
             </div>
+            <div class="upgrade-connector" id="connector-3-4"></div>
             <div class="upgrade_row" id="row4">
-                <div class="upgrade_item_locked" id="cool_hats">
+                <div class="upgrade_item_locked" id="cool_hats" data-name="Cool Hats">
                     Cool Hats
                 </div>
             </div>
+            <div class="upgrade-connector" id="connector-4-5"></div>
             <div class="upgrade_row" id="row5">
-                <div class="upgrade_item_locked" id="neatcode_practice">
+                <div class="upgrade_item_locked" id="neatcode_practice" data-name="NeatCode">
                     NeatCode
                 </div>
             </div>
+            <div class="upgrade-connector branch-connector" id="connector-5-6"></div>
             <div class="upgrade_row" id="row6">
-                <div class="upgrade_item_locked" id="energy_drinks">
+                <div class="upgrade_item_locked" id="energy_drinks" data-name="Energy Drinks">
                     Energy Drinks
                 </div>
-                <div class="upgrade_item_locked" id="btx_4090">
+                <div class="upgrade_item_locked" id="btx_4090" data-name="BTX 4090">
                     BTX 4090
                 </div>
             </div>
+            <div class="upgrade-connector" id="connector-6-7"></div>
             <div class="upgrade_row" id="row7">
-                <div class="upgrade_item_locked" id="deep_reasoning">
+                <div class="upgrade_item_locked" id="deep_reasoning" data-name="Reasoning">
                     Reasoning
                 </div>
             </div>
